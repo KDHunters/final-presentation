@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>팀 프레젠테이션</title>
+  <link rel="stylesheet" href="common.css">
+  <script src="deck.js" defer></script>
+</head>
+<body>
+  <div class="deck">
+    <header class="deck-header">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span>팀 프레젠테이션</span>
+    </header>
+    <main id="stage" class="stage" aria-busy="true">
+      <p class="deck-message" role="status">슬라이드를 불러오는 중입니다.</p>
+    </main>
+    <noscript><p class="deck-message">슬라이드를 보려면 JavaScript를 켜 주세요.</p></noscript>
+    <nav class="deck-nav" aria-label="슬라이드 이동">
+      <button id="previous" type="button" aria-controls="stage" disabled>
+        <span aria-hidden="true">←</span> 이전
+      </button>
+      <p id="position" class="position" role="status" aria-atomic="true">슬라이드 준비 중</p>
+      <button id="next" type="button" aria-controls="stage" disabled>
+        다음 <span aria-hidden="true">→</span>
+      </button>
+    </nav>
+    <p class="key-hint">키보드 ← / → 로도 이동할 수 있습니다.</p>
+  </div>
+</body>
+</html>
