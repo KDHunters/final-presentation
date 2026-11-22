@@ -1,3 +1,12 @@
+/* Pretendard v1.3.9 Medium: one static face. See assets/Pretendard-OFL.txt. */
+@font-face {
+  font-family: 'Pretendard';
+  src: url('assets/Pretendard-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   color-scheme: light;
   --surface: #fff;
@@ -6,8 +15,26 @@
   --accent: #4338ca;
   --line: #dce2ef;
   --tint: #f0efff;
-  font-family: system-ui, -apple-system, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  --brown: #392A20;
+  --text-light: #F2E4C9;
+  --highlight: #FFE98A;
+  --highlight-ink: #3D3326;
+  --font-family: 'Pretendard', system-ui, -apple-system, 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+  font-family: var(--font-family);
 }
+
+.highlight {
+  display: inline;
+  background: var(--highlight);
+  color: var(--highlight-ink);
+  padding-block: 0;
+  padding-inline: 4px;
+  margin-inline: -4px; /* Extend the paint without shifting the text. */
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.bg-brown { background-color: var(--brown); }
 
 *, *::before, *::after { box-sizing: border-box; }
 body { margin: 0; background: var(--surface); color: var(--ink); }
