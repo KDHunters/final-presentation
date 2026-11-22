@@ -2,8 +2,6 @@
   'use strict';
 
   const stage = document.querySelector('#stage');
-  const previous = document.querySelector('#previous');
-  const next = document.querySelector('#next');
   const position = document.querySelector('#position');
   // Paths are resolved from index.html, including when deployed under a subdirectory.
   const root = new URL('.', window.location.href);
@@ -11,20 +9,13 @@
   let order = [];
   let current = -1;
   let request = 0;
+  let touchStart = null;
+  const interactive = 'a[href], button, input, textarea, select, summary, video, audio, [contenteditable]:not([contenteditable="false"]), [role="button"], [role="slider"]';
 
   async function read(path, format) {
     const response = await fetch(new URL(path, root));
     if (!response.ok) throw new Error(`${path}: HTTP ${response.status}`);
     return response[format]();
-  }
-
-  function updateNav() {
-    previous.disabled = current <= 0;
-    next.disabled = current < 0 || current >= order.length - 1;
-    if (current >= 0) {
-      position.textContent = `${current + 1} / ${order.length}`;
-      position.setAttribute('aria-label', `전체 ${order.length}장 중 ${current + 1}번째 슬라이드`);
-    }
   }
 
   function showError(message) {
@@ -34,6 +25,7 @@
     error.textContent = message;
     stage.replaceChildren(error);
     stage.setAttribute('aria-busy', 'false');
+    window.scrollTo(0, 0);
   }
 
   async function loadSlide(path) {
@@ -54,32 +46,78 @@
   }
 
   async function show(index) {
-    if (index < 0 || index >= order.length) return;
+    if (index < 0 || index >= order.length || index === current) return;
     const id = ++request;
     current = index;
-    updateNav();
     stage.setAttribute('aria-busy', 'true');
     try {
       const section = await loadSlide(order[index]);
       if (id !== request) return;
       stage.replaceChildren(section);
       stage.setAttribute('aria-busy', 'false');
+      window.scrollTo(0, 0);
+      const heading = section.querySelector('h1, h2');
+      position.textContent = `전체 ${order.length}장 중 ${index + 1}번째 슬라이드${heading ? ': ' + heading.textContent.trim() : ''}`;
     } catch {
       if (id !== request) return;
       showError('이 슬라이드를 열지 못했습니다. 파일 경로와 슬라이드 형식을 확인해 주세요.');
     }
   }
 
-  previous.addEventListener('click', () => void show(current - 1));
-  next.addEventListener('click', () => void show(current + 1));
+  async function toggleFullscreen() {
+    try {
+      if (document.fullscreenElement) await document.exitFullscreen?.();
+      else await document.documentElement.requestFullscreen?.();
+    } catch {
+      // Some browsers or embedded contexts do not allow fullscreen.
+    }
+  }
+
   document.addEventListener('keydown', (event) => {
-    if (event.defaultPrevented || event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) return;
-    if (event.target instanceof Element && event.target.closest('input, textarea, select, [contenteditable]:not([contenteditable="false"])')) return;
-    const step = event.key === 'ArrowLeft' ? -1 : event.key === 'ArrowRight' ? 1 : 0;
-    if (!step || current < 0) return;
+    if (event.defaultPrevented || event.isComposing || event.altKey || event.ctrlKey || event.metaKey) return;
+    if (event.target instanceof Element && event.target.closest(interactive)) return;
+    if (event.shiftKey && event.key !== ' ') return;
+    if (event.key.toLowerCase() === 'f' || event.code === 'KeyF') {
+      event.preventDefault();
+      if (!event.repeat) void toggleFullscreen();
+      return;
+    }
+    if (current < 0) return;
+    let target;
+    switch (event.key) {
+      case 'ArrowLeft':
+      case 'PageUp': target = current - 1; break;
+      case 'ArrowRight':
+      case 'PageDown': target = current + 1; break;
+      case ' ': target = current + (event.shiftKey ? -1 : 1); break;
+      case 'Home': target = 0; break;
+      case 'End': target = order.length - 1; break;
+      default: return;
+    }
     event.preventDefault();
-    void show(current + step);
+    if (!event.repeat) void show(target);
   });
+
+  stage.addEventListener('touchstart', (event) => {
+    touchStart = null;
+    if (event.touches.length !== 1 || (event.target instanceof Element && event.target.closest(interactive))) return;
+    const { identifier, clientX, clientY } = event.touches[0];
+    touchStart = { identifier, clientX, clientY };
+  }, { passive: true });
+
+  stage.addEventListener('touchend', (event) => {
+    const start = touchStart;
+    touchStart = null;
+    if (!start || event.touches.length !== 0 || current < 0) return;
+    const touch = Array.from(event.changedTouches).find(({ identifier }) => identifier === start.identifier);
+    if (!touch) return;
+    const dx = touch.clientX - start.clientX;
+    const dy = touch.clientY - start.clientY;
+    if (Math.abs(dx) < 50 || Math.abs(dx) <= Math.abs(dy) * 1.5) return;
+    void show(current + (dx < 0 ? 1 : -1));
+  }, { passive: true });
+
+  stage.addEventListener('touchcancel', () => { touchStart = null; }, { passive: true });
 
   async function init() {
     if (window.location.protocol === 'file:') {

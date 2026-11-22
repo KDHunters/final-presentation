@@ -1,9 +1,9 @@
-# Team Presentation
+# Final Presentation
 
 여러 사람이 슬라이드를 나누어 작성하는 웹 발표 자료입니다.
 
-- 저장소: [KDHunters/team-presentation](https://github.com/KDHunters/team-presentation)
-- 발표 보기: [GitHub Pages](https://kdhunters.github.io/team-presentation/)
+- 저장소: [KDHunters/final-presentation](https://github.com/KDHunters/final-presentation)
+- 발표 보기: [GitHub Pages](https://kdhunters.github.io/final-presentation/)
 - 배포 설정: 저장소의 **Settings → Pages → Deploy from a branch**에서 `main` 브랜치와 `/(root)`를 선택하고 저장합니다.
 
 ## 구성
@@ -43,4 +43,11 @@
 python3 -m http.server
 ```
 
-브라우저에서 `http://localhost:8000/`을 엽니다. 방향키 또는 화면의 버튼으로 슬라이드를 이동합니다. 종료하려면 터미널에서 `Ctrl+C`를 누릅니다.
+브라우저에서 `http://localhost:8000/`을 엽니다. 슬라이드는 화면을 가득 채우며 이전·다음 버튼 없이 조작합니다.
+
+- `←` / `→`: 이전 / 다음 슬라이드
+- `Space`: 다음 슬라이드
+- `F`: 전체화면 전환
+- 터치 화면: 좌우로 스와이프해 이동
+
+종료하려면 터미널에서 `Ctrl+C`를 누릅니다.
