@@ -1,0 +1,103 @@
+<section class="slide title-slide" id="title-slide">
+  <style>
+    /* Title slide background. */
+    .stage:has(> .title-slide) {
+      position: fixed;
+      inset: 0;
+      overflow: hidden;
+      background: var(--brown);
+    }
+
+    .stage > .title-slide {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: min(100vw, calc(100dvh * 16 / 9));
+      aspect-ratio: 1920 / 1080;
+      min-block-size: 0;
+      padding: 0;
+      transform: translate(-50%, -50%);
+    }
+
+    @supports (transform: scale(tan(atan2(1px, 1px)))) {
+      .stage > .title-slide {
+        width: 1920px;
+        height: 1080px;
+        transform: translate(-50%, -50%)
+          scale(min(tan(atan2(100vw, 1920px)), tan(atan2(100dvh, 1080px))));
+      }
+    }
+
+    .stage > .title-slide > .phone-frames {
+      position: absolute;
+      left: 49.6875%; /* Reference x = 636 of 1280. */
+      top: 10.2777777778%; /* Reference y = 74, with 16:9 stage height extended to 720. */
+      width: 44.84375%; /* Reference crop width = 574 of 1280. */
+      height: auto;
+      display: block;
+      pointer-events: none;
+    }
+
+    @media print {
+      .stage > .title-slide {
+        position: static;
+        width: 1920px;
+        height: 1080px;
+        background: var(--brown);
+        transform: none;
+        print-color-adjust: exact;
+      }
+    }
+
+.title-slide > .sticky-pet-brand {
+  position: absolute;
+  left: 6.875%; /* 132px on the 1920px stage. */
+  top: 46.2962962963%;
+  transform: translateY(-50%);
+  width: 33.28125%; /* 639px on the 1920px stage. */
+}
+.title-slide > .sticky-pet-brand > .sticky-pet-wordmark {
+  width: 100%; /* 639px: 9× the 71px source. */
+  height: auto;
+  display: block;
+  image-rendering: pixelated;
+}
+
+.title-slide > .sticky-pet-brand > .sticky-pet-subtitle {
+  margin: 5.633802817% 0 0; /* Preserve the original 36px gap. */
+  color: var(--text-light);
+  font: 500 34px/1.5 var(--font-family);
+  font-synthesis: none;
+  text-align: left;
+}
+.title-slide > .sticky-pet-brand > .sticky-pet-subtitle > span {
+  display: block;
+  white-space: nowrap;
+}
+.title-slide > .sticky-pet-team {
+  position: absolute;
+  left: 6.875%;
+  top: 81.85185185%;
+  margin: 0;
+  color: var(--text-light);
+  font: 500 25px/1.52 var(--font-family);
+  font-synthesis: none;
+  text-align: left;
+}
+.title-slide > .sticky-pet-team {
+  display: grid;
+  grid-template-columns: max-content max-content max-content;
+  column-gap: 16px;
+  white-space: nowrap;
+}
+</style>
+  <div class="sticky-pet-brand">
+    <img class="sticky-pet-wordmark" src="assets/sticky-pet-wordmark.png" width="71" height="16" alt="Sticky Pet" draggable="false">
+    <p class="sticky-pet-subtitle"><span>앱 켜는 3초 사이 까먹는 <mark class="highlight">ADHD</mark>를 위한</span><span>폰 화면 위 <mark class="highlight">가장 빠른 메모 펫</mark></span></p>
+  </div>
+  <p class="sticky-pet-team"><span>TEAM</span> <span>|</span> <span>우리가락마구니사냥꾼(2-13)</span> <span>MEMBER</span> <span>|</span> <span>김서영 박도현 조현석</span></p>
+  <img class="phone-frames" src="assets/phone-screens.webp" width="1148" height="1292" alt="" draggable="false">
+  <img class="phone-frames phone-edge-underfill" src="assets/phone-edge-underfill.png" width="1148" height="1292" alt="" aria-hidden="true" draggable="false">
+  <img class="phone-frames phone-checklist-rear-overlay" src="assets/phone-checklist-rear-white-status.png" width="1148" height="1292" alt="오른쪽 뒷폰: 영상 위에 열린 할 일 체크리스트 메모." draggable="false">
+  <img class="phone-frames phone-yard-front-overlay" src="assets/phone-yard-front-white-status.png" width="1148" height="1292" alt="왼쪽 앞폰: 인절미가 있는 스티키펫 마당." draggable="false">
+</section>
