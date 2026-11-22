@@ -28,6 +28,16 @@
       }
     }
 
+    .stage > .slide--yard-green > .phone-frames {
+      position: absolute;
+      left: 49.6875%; /* Reference x = 636 of 1280. */
+      top: 10.2777777778%; /* Reference y = 74, with 16:9 stage height extended to 720. */
+      width: 44.84375%; /* Reference crop width = 574 of 1280. */
+      height: auto;
+      display: block;
+      pointer-events: none;
+    }
+
     @media print {
       .stage > .slide--yard-green {
         position: static;
@@ -39,4 +49,5 @@
       }
     }
   </style>
+  <img class="phone-frames" src="assets/phone-frames.png" width="574" height="646" alt="" draggable="false">
 </section>
