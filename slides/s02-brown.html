@@ -1,0 +1,45 @@
+<section class="slide bg-brown brown-blank" aria-label="인터뷰 음성">
+  <style>
+    .slide.brown-blank { position: fixed; inset: 0; background-color: #2B2C43; }
+    .brown-blank > .slide-folio { display: none; }
+    .interview-wave {
+      position: absolute;
+      --wave-top: calc(max(9vh, 2rem) + env(safe-area-inset-top));
+      --wave-height: clamp(5rem, 15vh, 8rem);
+      --wave-end: calc(var(--wave-top) + var(--wave-height));
+      --caption-lead: clamp(.75rem, 3vh, 1.5rem);
+      --reference-gap: clamp(.25rem, .9vh, .65rem);
+      --caption-space: calc(100dvh - 2 * var(--wave-end) - var(--caption-lead));
+      /* Keep the original type scale; distribute the remaining space over three gaps. */
+      --fit-height: calc((var(--caption-space) - 4 * var(--reference-gap)) / 5.4);
+      --caption-size: max(.75rem, min(4.9vw, var(--fit-height)));
+      --caption-gap: clamp(var(--reference-gap), calc((var(--caption-space) - 4.32 * var(--caption-size)) / 3), 5vh);
+      inset-block-start: var(--wave-top);
+      inset-inline: 0;
+      display: grid;
+      justify-items: center;
+      gap: var(--caption-lead);
+      color: var(--text-light);
+      text-align: center;
+    }
+    .interview-wave__signal {
+      display: block;
+      inline-size: min(30rem, calc(100% - 3rem));
+      block-size: var(--wave-height);
+    }
+    .interview-wave__captions {
+      display: grid;
+      gap: var(--caption-gap);
+      padding-inline: clamp(.5rem, 3vw, 3rem);
+      color: var(--text-light);
+      font: 500 calc(var(--caption-size) * 0.7)/1.08 var(--font-family);
+      letter-spacing: -.025em;
+      white-space: nowrap;
+    }
+  </style>
+  <div class="interview-wave" data-interview-wave>
+    <svg class="interview-wave__signal" viewBox="0 0 420 112" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" aria-hidden="true" focusable="false"></svg>
+    <div class="interview-wave__captions" data-interview-caption aria-live="polite" aria-atomic="false" aria-relevant="additions"></div>
+  </div>
+  <audio preload="auto" data-interview-audio="assets/audio/interview-22.30-34.m4a"></audio>
+</section>

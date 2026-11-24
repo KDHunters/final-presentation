@@ -10,6 +10,9 @@
   let current = -1;
   let request = 0;
   let touchStart = null;
+  let disposeSlide = null;
+  let interviewModule = null;
+  const interviewPath = 'slides/s02-brown.html';
   const interactive = 'a[href], button, input, textarea, select, summary, video, audio, [contenteditable]:not([contenteditable="false"]), [role="button"], [role="slider"]';
 
   async function read(path, format) {
@@ -42,18 +45,29 @@
       }
       cache.set(path, section);
     }
-    return cache.get(path).cloneNode(true);
+    return cache.get(path);
   }
 
   async function show(index) {
     if (index < 0 || index >= order.length || index === current) return;
     const id = ++request;
     current = index;
+    disposeSlide?.();
+    disposeSlide = null;
     stage.setAttribute('aria-busy', 'true');
     try {
-      const section = await loadSlide(order[index]);
+      const path = order[index];
+      // On a normal advance, do not await here: Safari needs play() in the input event.
+      const template = cache.get(path) ?? await loadSlide(path);
+      const section = template.cloneNode(true);
+      let interview = null;
+      if (section.querySelector('[data-interview-wave]')) {
+        interview = interviewModule ?? await import(new URL('assets/js/interview-wave.js', root));
+        interviewModule = interview;
+      }
       if (id !== request) return;
       stage.replaceChildren(section);
+      disposeSlide = interview?.mountInterviewWave(section, root) ?? null;
       stage.setAttribute('aria-busy', 'false');
       window.scrollTo(0, 0);
       const heading = section.querySelector('h1, h2');
@@ -98,6 +112,11 @@
     if (!event.repeat) void show(target);
   });
 
+  stage.addEventListener('click', (event) => {
+    if (current !== 0 || !(event.target instanceof Element) || event.target.closest(interactive)) return;
+    if (stage.querySelector('.title-slide')) void show(1);
+  });
+
   stage.addEventListener('touchstart', (event) => {
     touchStart = null;
     if (event.touches.length !== 1 || (event.target instanceof Element && event.target.closest(interactive))) return;
@@ -134,6 +153,13 @@
         throw new Error('order.json: 슬라이드 경로 배열이 필요합니다.');
       }
       order = paths;
+      if (order.includes(interviewPath)) {
+        // Prepare the template and module before showing the first navigable slide.
+        await Promise.allSettled([
+          loadSlide(interviewPath),
+          import(new URL('assets/js/interview-wave.js', root)).then((module) => { interviewModule = module; }),
+        ]);
+      }
       await show(0);
     } catch {
       showError('슬라이드 목록을 열지 못했습니다. order.json에 올바른 슬라이드 경로가 있는지 확인해 주세요.');
