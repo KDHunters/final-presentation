@@ -1,0 +1,45 @@
+<section class="slide slide--cream s03-spend" aria-label="ADHD Tax: 월 평균 ADHD로 인한 추가 지출액">
+  <style>
+    .s03-spend { --unknown:#D1D1D1; --mid:#B9B9B9; --upper:#A1A1A1; --red:#BA302F; --legend:#666; background:var(--cream); color:var(--brown); grid-template-columns:minmax(0, 1fr); padding:0; place-items:center; }
+    .s03-spend svg { display:block; width:min(94vw,190dvh); height:auto; font-family:var(--font-family); fill:currentColor; }
+  .s03-spend .s03-key-legend text { text-shadow: 0 2px 2px rgb(90 32 28 / 22%); }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .s03-spend .s03-wipe { stroke-dasharray:100 100; animation:s03-fill 1.25s ease-in-out both; }
+      .s03-spend .s03-red-wedge { animation:s03-pop .48s cubic-bezier(.22,.68,.28,1) 1.25s both; }
+    }
+    @keyframes s03-fill { from { stroke-dashoffset:100; } to { stroke-dashoffset:0; } }
+    @keyframes s03-pop {
+      from { fill:var(--upper); opacity:.60; d:path("M260.000 119.000 A200 200 0 1 1 173.223 499.194 L207.934 427.116 A120 120 0 1 0 260.000 199.000 Z"); transform:translate(0,0); }
+      to { fill:var(--red); opacity:1; d:path("M260.000 108.880 A210.12 210.12 0 1 1 168.832 508.312 L207.934 427.116 A120 120 0 1 0 260.000 199.000 Z"); transform:translate(3.90px,.89px); }
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .s03-spend { --s03-emphasis: .48s cubic-bezier(.22,.68,.28,1) 1.25s both; }
+      .s03-spend .s03-red-wedge { animation: s03-pop var(--s03-emphasis); }
+      .s03-spend .s03-legend-row { animation:s03-arrange var(--s03-emphasis); }
+      .s03-spend .s03-key-legend { animation:s03-arrange var(--s03-emphasis), s03-key-color var(--s03-emphasis); }
+      .s03-spend .s03-key-legend text { animation:s03-key-text var(--s03-emphasis); }
+      .s03-spend .s03-key-legend rect { animation:s03-key-marker var(--s03-emphasis); }
+    }
+    @keyframes s03-arrange { from {transform:translateY(var(--s03-from-y))} to {transform:translateY(0)} }
+    @keyframes s03-key-color { from {fill:var(--legend);opacity:.60} to {fill:var(--red);opacity:1} }
+    @keyframes s03-key-text { from {font-size:var(--s03-from-size);font-weight:500;text-shadow:0 0 0 transparent} to {font-size:var(--s03-to-size);font-weight:700;text-shadow:0 2px 2px rgb(90 32 28 / 22%)} }
+    @keyframes s03-key-marker { from {x:586px;y:420.1px;width:14px;height:14px;fill:var(--upper)} to {x:580px;y:414.1px;width:26px;height:26px;fill:var(--red)} }
+  </style>
+  <svg viewBox="0 0 1220 545" role="img" aria-labelledby="s03-title s03-desc">
+    <title id="s03-title">ADHD Tax: 월 평균 ADHD로 인한 추가 지출액</title><desc id="s03-desc">잘 모르겠음 7.1%, 월 3만~5만원 21.4%, 월 5만~10만원 14.3%, 월 10만원 이상 57.1%.</desc>
+    <text x="54" y="65" font-size="48" font-weight="700" letter-spacing="-2">ADHD Tax: 월 평균 ADHD로 인한 추가 지출액</text>
+    <defs><mask id="s03-ccw-reveal" maskUnits="userSpaceOnUse" x="35" y="92" width="450" height="454"><path class="s03-wipe" d="M260 155 A164 164 0 0 0 260 483 A164 164 0 0 0 260 155 Z" pathLength="100" fill="none" stroke="white" stroke-width="126"/></mask></defs>
+    <g mask="url(#s03-ccw-reveal)">
+    <path class="s03-red-wedge" transform="translate(3.90 0.89)" d="M260.000 108.880 A210.12 210.12 0 1 1 168.832 508.312 L207.934 427.116 A120 120 0 1 0 260.000 199.000 Z" fill="var(--red)" stroke="var(--cream)" stroke-width="4"/>
+<path d="M173.223 499.194 A200 200 0 0 1 103.634 443.698 L166.180 393.819 A120 120 0 0 0 207.934 427.116 Z" fill="var(--unknown)" opacity="0.60" stroke="var(--cream)" stroke-width="4"/>
+<path d="M103.634 443.698 A200 200 0 0 1 103.634 194.302 L166.180 244.181 A120 120 0 0 0 166.180 393.819 Z" fill="var(--mid)" opacity="0.60" stroke="var(--cream)" stroke-width="4"/>
+<path d="M103.634 194.302 A200 200 0 0 1 260.000 119.000 L260.000 199.000 A120 120 0 0 0 166.180 244.181 Z" fill="var(--upper)" opacity="0.60" stroke="var(--cream)" stroke-width="4"/>
+    </g>
+    <g class="s03-legend-row" style="--s03-from-y:44px" fill="var(--legend)" opacity="0.60"><path d="M582 210.6H1147" stroke="currentColor" stroke-opacity=".12"/><rect x="586" y="163" width="14" height="14" rx="4" fill="var(--unknown)"/><text x="624" y="180" font-size="24">잘 모르겠음</text><text x="1143" y="181" text-anchor="end" font-weight="500" font-size="25">7.1%</text></g>
+<g class="s03-legend-row" style="--s03-from-y:32.1px" fill="var(--legend)" opacity="0.60"><path d="M582 292.5H1147" stroke="currentColor" stroke-opacity=".12"/><rect x="586" y="244.9" width="14" height="14" rx="4" fill="var(--mid)"/><text x="624" y="261.9" font-size="24">월 3만~5만원</text><text x="1143" y="262.9" text-anchor="end" font-weight="500" font-size="25">21.4%</text></g>
+<g class="s03-legend-row" style="--s03-from-y:20.2px" fill="var(--legend)" opacity="0.60"><path d="M582 374.4H1147" stroke="currentColor" stroke-opacity=".12"/><rect x="586" y="326.8" width="14" height="14" rx="4" fill="var(--upper)"/><text x="624" y="343.8" font-size="24">월 5만~10만원</text><text x="1143" y="344.8" text-anchor="end" font-weight="500" font-size="25">14.3%</text></g>
+<g fill="var(--red)" class="s03-key-legend" style="--s03-from-y:-3.1px"><rect x="580" y="414.1" width="26" height="26" rx="4" fill="var(--red)"/><text x="624" y="437.1" style="--s03-from-size:24px;--s03-to-size:39px" font-size="39" font-weight="700">월 10만원 이상</text><text x="1143" y="438.1" text-anchor="end" font-weight="700" style="--s03-from-size:25px;--s03-to-size:38.5px" font-size="38.5">57.1%</text></g>
+  </svg>
+</section>
