@@ -41,8 +41,13 @@
       --s04-step: calc(var(--s04-bubble-height) + var(--s04-row-gap));
       --s04-duration: .386666666666667s;
       --s04-easing: cubic-bezier(.22, .61, .36, 1);
-      --s04-second: 1.633333333333333s;
-      --s04-third: 3.133333333333333s;
+      --s04-first: .133333333333333s;
+      --s04-second: calc(var(--s04-first) + 1s);
+      --s04-third: calc(var(--s04-second) + 1s);
+      --s04-focus-delay: calc(var(--s04-third) + var(--s04-duration) + 1.5s);
+      --s04-focus-duration: .35s;
+      --s04-focus-blur: .080729166666667cqw; /* 1.55 px at 1920 px */
+      --s04-ink: #585653;
       position: absolute;
       inset-inline: 18.75cqw;
       inset-block-end: calc(50% - (3 * var(--s04-bubble-height) + 2 * var(--s04-row-gap)) / 2);
@@ -53,7 +58,7 @@
       letter-spacing: -.025em;
     }
     .s04-limitations .s04-message {
-      --s04-delay: .133333333333333s;
+      --s04-delay: var(--s04-first);
       --s04-rise: var(--s04-row-gap);
       position: absolute;
       inset-inline: 0;
@@ -82,16 +87,36 @@
       padding: var(--s04-padding-block) 2.291667cqw;
       border-radius: 1.875cqw 1.875cqw 1.875cqw .43cqw;
       background: #FFFFFF;
-      color: #585653;
+      color: var(--s04-ink);
       visibility: hidden;
       opacity: 0;
       will-change: transform, opacity;
       animation: s04-rise-in var(--s04-duration) var(--s04-easing) var(--s04-delay) both;
     }
+    @property --s04-focus-stroke {
+      syntax: '<length>';
+      inherits: false;
+      initial-value: 0px;
+    }
+    /* Only the text changes, once the last slide-in has settled. The mark
+       shares the normal baseline throughout, so the two-line layout stays put. */
     .s04-limitations .s04-bubble mark.highlight {
-      font-size: calc(1em + 0.15625cqw); /* +3 px on the 1920 px design stage */
-      line-height: 0; /* Keep the surrounding text on its original baselines. */
-      -webkit-text-stroke: 1.55px currentColor;
+      color: inherit;
+      background: transparent;
+      line-height: 0;
+      -webkit-text-stroke: var(--s04-focus-stroke, 0px) currentColor;
+      animation: s04-focus-mark var(--s04-focus-duration) ease-out var(--s04-focus-delay) forwards;
+    }
+    .s04-limitations .s04-plain {
+      animation: s04-focus-plain var(--s04-focus-duration) ease-out var(--s04-focus-delay) forwards;
+    }
+    @keyframes s04-focus-mark {
+      from { color: var(--s04-ink); background-color: transparent; font-size: 1em; --s04-focus-stroke: 0px; }
+      to { color: var(--highlight-ink); background-color: var(--highlight); font-size: calc(1em + .15625cqw); --s04-focus-stroke: 1.55px; }
+    }
+    @keyframes s04-focus-plain {
+      from { color: var(--s04-ink); filter: none; }
+      to { color: #757370; filter: blur(var(--s04-focus-blur)); }
     }
     .s04-limitations .s04-message:nth-child(3) .s04-bubble {
       white-space: nowrap; /* Keep the authored <br> as the only break. */
@@ -115,15 +140,21 @@
 
     /* Retain the reading pauses, but make each update instantaneous. */
     @media (prefers-reduced-motion: reduce) {
-      .s04-limitations .s04-thread { --s04-duration: 0s; }
-      .s04-limitations .s04-message:first-child { --s04-delay: 0s; }
+      .s04-limitations .s04-thread {
+        --s04-first: 0s;
+        --s04-duration: 0s;
+        --s04-focus-duration: 0s;
+      }
       .s04-limitations .s04-message,
       .s04-limitations .s04-bubble { will-change: auto; }
     }
+    @media (forced-colors: active) {
+      .s04-limitations .s04-thread { --s04-focus-blur: 0px; }
+    }
   </style>
   <ol class="s04-thread" role="list">
-    <li class="s04-message"><p class="s04-bubble">메모하려고 앱을 찾거나 이것저것 설정하는 사이에<br> <mark class="highlight">뭘 적으려고 했는지 잊어버려요</mark></p></li>
-    <li class="s04-message"><p class="s04-bubble">눈에 보이지 않으면 <mark class="highlight">메모한 사실 자체를 까먹어요.</mark><br> 처음 며칠만 열심히 쓰다가 엡에 들어가는걸 잊어요.</p></li>
-    <li class="s04-message"><p class="s04-bubble">까먹기 전에 적으려고 <mark class="highlight">눈앞에 보이는 곳에 일단 메모</mark>해요.<br> 정작 필요할 때는 어딨는지 찾기 어려워요.</p></li>
+    <li class="s04-message"><p class="s04-bubble"><span class="s04-plain">메모하려고 앱을 찾거나 이것저것 설정하는 사이에</span><br> <mark class="highlight">뭘 적으려고 했는지 잊어버려요</mark></p></li>
+    <li class="s04-message"><p class="s04-bubble"><span class="s04-plain">눈에 보이지 않으면</span> <mark class="highlight">메모한 사실 자체를 까먹어요.</mark><br> <span class="s04-plain">처음 며칠만 열심히 쓰다가 앱에 들어가는걸 잊어요.</span></p></li>
+    <li class="s04-message"><p class="s04-bubble"><span class="s04-plain">까먹기 전에 적으려고</span> <mark class="highlight">눈앞에 보이는 곳에 일단 메모</mark><span class="s04-plain">해요.</span><br> <span class="s04-plain">정작 필요할 때는 어딨는지 찾기 어려워요.</span></p></li>
   </ol>
 </section>
