@@ -1,0 +1,32 @@
+<section class="slide bg-brown s08-feedback" aria-label="중간평가 피드백" data-steps="2" data-step="0">
+<style>
+.stage:has(> .s08-feedback){position:fixed;inset:0;background:var(--brown);display:grid;place-items:center}
+.stage>.s08-feedback{width:min(100vw,177.77778dvh);aspect-ratio:16/9;min-block-size:0;padding:0;gap:0;display:grid;place-items:center;grid-template-columns:1fr;container-type:inline-size;color:var(--text-light)}
+.s08-feedback .s08-flow{width:94cqw}
+.s08-feedback .s08-label{margin:0 0 2cqw;color:var(--highlight);font:700 3cqw/1.2 var(--font-family);letter-spacing:-.045em}
+.s08-feedback .s08-quotes{list-style:none;margin:0;padding:0;display:grid;gap:1.4cqw}
+.s08-feedback .s08-quote{margin:0;padding:2.1cqw 2.2cqw;display:flex;align-items:baseline;gap:1.8cqw;background:var(--text-light);color:var(--highlight-ink);border-left:.5cqw solid #B99F85}
+.s08-feedback .s08-quote b{flex:none;font:700 1.8cqw/1.2 var(--font-family);color:#846D5C;letter-spacing:-.02em;white-space:nowrap}
+.s08-feedback .s08-quote p{margin:0;min-width:0;font:500 2.18cqw/1.5 var(--font-family);letter-spacing:-.035em;white-space:nowrap}
+.s08-feedback .s08-reply{visibility:hidden;background:transparent;color:var(--text-light);border-left-color:var(--text-light);box-shadow:inset 0 0 0 .2cqw var(--text-light)}
+.s08-feedback .s08-reply b{color:var(--highlight);font-size:2.6cqw;line-height:1;min-width:4.3cqw}
+.s08-feedback[data-step="1"] .s08-reply--1,.s08-feedback[data-step="2"] .s08-reply--1,.s08-feedback[data-step="2"] .s08-reply--2{visibility:visible}
+@media screen and (prefers-reduced-motion: no-preference) {
+  .s08-feedback .s08-flow{animation:s08-enter 340ms ease-out 180ms both}
+  .stage[aria-busy="true"]>.s08-feedback .s08-flow{animation-play-state:paused}
+  .s08-feedback[data-step="1"] .s08-reply--1,.s08-feedback[data-step="2"] .s08-reply--1,.s08-feedback[data-step="2"] .s08-reply--2{animation:s08-enter 300ms ease-out both}
+  @keyframes s08-enter{from{opacity:0;transform:translateY(.65cqw)}to{opacity:1;transform:translateY(0)}}
+}
+</style>
+<div class="s08-flow">
+  <h2 class="s08-label">중간평가 피드백</h2>
+  <ul class="s08-quotes">
+    <li class="s08-quote"><b>의견 1</b><p>‘ADHD 진단자’ 직접 소구 대신 ‘생각 정리가 어려운 사람’으로 문구를 넓혀 규제·낙인 위험을 줄이길 바람</p></li>
+    <!-- 단계 1: 의견 1 아래 반영 카드 (deck.js data-step) -->
+    <li class="s08-quote s08-reply s08-reply--1"><b aria-hidden="true">→</b><p>서비스·마케팅에서 ‘ADHD’ 직접 표현 제거</p></li>
+    <li class="s08-quote"><b>의견 2</b><p>일반 사용자에게도 충분히 소구할 수 있어 대상 확대를 고려해 보면 좋겠음</p></li>
+    <!-- 단계 2: 의견 2 아래 반영 카드 -->
+    <li class="s08-quote s08-reply s08-reply--2"><b aria-hidden="true">→</b><p>누구나 겪는 망각과 일상의 불편함에 집중</p></li>
+  </ul>
+</div>
+</section>
