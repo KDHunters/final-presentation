@@ -82,10 +82,19 @@
       padding: var(--s04-padding-block) 2.291667cqw;
       border-radius: 1.875cqw 1.875cqw 1.875cqw .43cqw;
       background: var(--text-light);
+      color: #585653;
       visibility: hidden;
       opacity: 0;
       will-change: transform, opacity;
       animation: s04-rise-in var(--s04-duration) var(--s04-easing) var(--s04-delay) both;
+    }
+    .s04-limitations .s04-bubble mark.highlight {
+      font-size: calc(1em + 0.15625cqw); /* +3 px on the 1920 px design stage */
+      line-height: 0; /* Keep the surrounding text on its original baselines. */
+      -webkit-text-stroke: 1.55px currentColor;
+    }
+    .s04-limitations .s04-message:nth-child(3) .s04-bubble {
+      white-space: nowrap; /* Keep the authored <br> as the only break. */
     }
     .s04-limitations .s04-message:nth-child(2) .s04-bubble {
       border-bottom-left-radius: 1.875cqw;
