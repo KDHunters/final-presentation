@@ -38,6 +38,22 @@
       pointer-events: none;
     }
 
+    /* On taller landscape screens, keep the 16:9 cover flush with the bottom. */
+    @media screen and (orientation: landscape) and (aspect-ratio < 16/9) {
+      .stage > .title-slide {
+        top: auto;
+        bottom: 0;
+        transform: translateX(-50%);
+        transform-origin: center bottom;
+      }
+
+      @supports (transform: scale(tan(atan2(1px, 1px)))) {
+        .stage > .title-slide {
+          transform: translateX(-50%) scale(tan(atan2(100vw, 1920px)));
+        }
+      }
+    }
+
     @media print {
       .stage > .title-slide {
         position: static;
@@ -52,21 +68,20 @@
 .title-slide > .sticky-pet-brand {
   position: absolute;
   left: 6.875%; /* 132px on the 1920px stage. */
-  top: 46.2962962963%;
-  transform: translateY(-50%);
-  width: 33.28125%; /* 639px on the 1920px stage. */
+  top: 26.9444444444%; /* Group top: y=291px on the 1080px stage. */
+  width: 36.9791666667%; /* 710px on the 1920px stage. */
 }
 .title-slide > .sticky-pet-brand > .sticky-pet-wordmark {
-  width: 100%; /* 639px: 9× the 71px source. */
+  width: 100%; /* 710px: 10× the 71px source. */
   height: auto;
   display: block;
   image-rendering: pixelated;
 }
 
 .title-slide > .sticky-pet-brand > .sticky-pet-subtitle {
-  margin: 5.633802817% 0 0; /* Preserve the original 36px gap. */
+  margin: 5.633802817% 0 0; /* Keep the proportional logo-to-copy gap (40px). */
   color: var(--text-light);
-  font: 500 34px/1.5 var(--font-family);
+  font: 500 38px/1.5 var(--font-family);
   font-synthesis: none;
   text-align: left;
 }
@@ -81,10 +96,10 @@
 .title-slide > .sticky-pet-team {
   position: absolute;
   left: 6.875%;
-  top: 81.85185185%;
+  bottom: 11.1111111111%; /* Preserve the 120px stage-bottom inset. */
   margin: 0;
   color: var(--text-light);
-  font: 500 25px/1.52 var(--font-family);
+  font: 500 30px/1.52 var(--font-family);
   font-synthesis: none;
   text-align: left;
 }
