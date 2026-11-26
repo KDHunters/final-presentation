@@ -48,8 +48,24 @@
     return cache.get(path);
   }
 
+  // Slides with <section data-steps="N"> reveal in steps (data-step 0..N) before the deck moves on.
+  // Slides without data-steps keep the plain one-input-one-slide behavior.
+  function go(target) {
+    const section = stage.firstElementChild;
+    const steps = Number(section?.dataset?.steps) || 0;
+    if (steps && Math.abs(target - current) === 1) {
+      const next = (Number(section.dataset.step) || 0) + (target - current);
+      if (next >= 0 && next <= steps) {
+        section.dataset.step = String(next);
+        return;
+      }
+    }
+    return show(target);
+  }
+
   async function show(index) {
     if (index < 0 || index >= order.length || index === current) return;
+    const from = current;
     const id = ++request;
     current = index;
     disposeSlide?.();
@@ -66,6 +82,8 @@
         interviewModule = interview;
       }
       if (id !== request) return;
+      // Forward entry starts at step 0; coming back with "previous" shows every step.
+      if (section.dataset.steps) section.dataset.step = from > index ? section.dataset.steps : '0';
       stage.replaceChildren(section);
       disposeSlide = interview?.mountInterviewWave(section, root) ?? null;
       stage.setAttribute('aria-busy', 'false');
@@ -109,7 +127,7 @@
       default: return;
     }
     event.preventDefault();
-    if (!event.repeat) void show(target);
+    if (!event.repeat) void go(target);
   });
 
   stage.addEventListener('click', (event) => {
@@ -133,7 +151,7 @@
     const dx = touch.clientX - start.clientX;
     const dy = touch.clientY - start.clientY;
     if (Math.abs(dx) < 50 || Math.abs(dx) <= Math.abs(dy) * 1.5) return;
-    void show(current + (dx < 0 ? 1 : -1));
+    void go(current + (dx < 0 ? 1 : -1));
   }, { passive: true });
 
   stage.addEventListener('touchcancel', () => { touchStart = null; }, { passive: true });
