@@ -5,7 +5,7 @@
       position: fixed;
       inset: 0;
       overflow: hidden;
-      background: var(--cream);
+      background: var(--brown);
     }
     .stage > .s05-limitations {
       position: absolute;
@@ -44,12 +44,12 @@
       inset: 0;
       z-index: 1;
       pointer-events: none;
-      background: #392A20;
+      background: #251A14;
       animation: s05-veil-fallback 650ms ease-in-out both;
     }
     @supports ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
       .stage > .s05-limitations::after {
-        background: rgb(57 42 32 / 74%);
+        background: rgb(37 26 20 / 86%);
         -webkit-backdrop-filter: blur(calc(min(100vw, 100dvh * 16 / 9) * .009375));
         backdrop-filter: blur(calc(min(100vw, 100dvh * 16 / 9) * .009375));
         animation: s05-veil 650ms ease-in-out both;
@@ -61,12 +61,12 @@
     }
     @keyframes s05-veil {
       from {
-        background: rgb(57 42 32 / 0%);
+        background: rgb(37 26 20 / 0%);
         -webkit-backdrop-filter: blur(0);
         backdrop-filter: blur(0);
       }
       to {
-        background: rgb(57 42 32 / 74%);
+        background: rgb(37 26 20 / 86%);
         -webkit-backdrop-filter: blur(calc(min(100vw, 100dvh * 16 / 9) * .009375));
         backdrop-filter: blur(calc(min(100vw, 100dvh * 16 / 9) * .009375));
       }
@@ -128,10 +128,19 @@
       block-size: 100%;
       padding: var(--s05-padding-block) 2.291667cqw;
       border-radius: 1.875cqw 1.875cqw 1.875cqw .43cqw;
-      background: var(--text-light);
+      background: #FFFFFF;
+      color: #585653;
       visibility: visible;
       opacity: 1;
       transform: translateY(0);
+    }
+    .s05-limitations .s05-bubble mark.highlight {
+      font-size: calc(1em + 0.15625cqw); /* +3 px on the 1920 px design stage */
+      line-height: 0; /* Keep the surrounding text on its original baselines. */
+      -webkit-text-stroke: 1.55px currentColor;
+    }
+    .s05-limitations .s05-message:nth-child(3) .s05-bubble {
+      white-space: nowrap; /* Keep the authored <br> as the only break. */
     }
     .s05-limitations .s05-message:nth-child(2) .s05-bubble {
       border-bottom-left-radius: 1.875cqw;
