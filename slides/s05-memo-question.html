@@ -9,21 +9,27 @@
     }
     .stage > .s05-limitations {
       position: absolute;
+      inset: 0;
+      min-block-size: 0;
+      display: block;
+      overflow: hidden;
+      padding: 0;
+      background: transparent;
+      color: var(--brown);
+    }
+    .s05-limitations .s05-canvas {
+      position: absolute;
       top: 50%;
       left: 50%;
       width: min(100vw, calc(100dvh * 16 / 9));
       aspect-ratio: 1920 / 1080;
-      min-block-size: 0;
       container-type: inline-size;
-      display: block;
-      overflow: hidden;
-      padding: 0;
-      background: var(--cream);
-      color: var(--brown);
       transform: translate(-50%, -50%);
+      background: transparent;
     }
+    .s05-limitations .s05-canvas--title { z-index: 2; pointer-events: none; }
     @supports (transform: scale(tan(atan2(1px, 1px)))) {
-      .stage > .s05-limitations {
+      .s05-limitations .s05-canvas {
         width: 1920px;
         height: 1080px;
         transform: translate(-50%, -50%)
@@ -36,7 +42,7 @@
       content: '';
       position: absolute;
       inset: 0;
-      z-index: 2147483646;
+      z-index: 1;
       pointer-events: none;
       background: #392A20;
       animation: s05-veil-fallback 650ms ease-in-out both;
@@ -44,8 +50,8 @@
     @supports ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
       .stage > .s05-limitations::after {
         background: rgb(57 42 32 / 74%);
-        -webkit-backdrop-filter: blur(.9375cqw);
-        backdrop-filter: blur(.9375cqw);
+        -webkit-backdrop-filter: blur(calc(min(100vw, 100dvh * 16 / 9) * .009375));
+        backdrop-filter: blur(calc(min(100vw, 100dvh * 16 / 9) * .009375));
         animation: s05-veil 650ms ease-in-out both;
       }
     }
@@ -61,8 +67,8 @@
       }
       to {
         background: rgb(57 42 32 / 74%);
-        -webkit-backdrop-filter: blur(.9375cqw);
-        backdrop-filter: blur(.9375cqw);
+        -webkit-backdrop-filter: blur(calc(min(100vw, 100dvh * 16 / 9) * .009375));
+        backdrop-filter: blur(calc(min(100vw, 100dvh * 16 / 9) * .009375));
       }
     }
     @keyframes s05-question-fade {
@@ -132,10 +138,14 @@
       border-bottom-right-radius: .43cqw;
     }
   </style>
+  <div class="s05-canvas">
   <ol class="s05-thread" role="list">
     <li class="s05-message"><p class="s05-bubble">메모하려고 앱을 찾거나 이것저것 설정하는 사이에<br> <mark class="highlight">뭘 적으려고 했는지 잊어버려요</mark></p></li>
     <li class="s05-message"><p class="s05-bubble">눈에 보이지 않으면 <mark class="highlight">메모한 사실 자체를 까먹어요.</mark><br> 처음 며칠만 열심히 쓰다가 엡에 들어가는걸 잊어요.</p></li>
     <li class="s05-message"><p class="s05-bubble">까먹기 전에 적으려고 <mark class="highlight">눈앞에 보이는 곳에 일단 메모</mark>해요.<br> 정작 필요할 때는 어딨는지 찾기 어려워요.</p></li>
   </ol>
+  </div>
+  <div class="s05-canvas s05-canvas--title">
   <h1 class="s05-question"><span><mark class="highlight">까먹기 전에/한 곳에 모아서</mark> 메모하려면?</span></h1>
+  </div>
 </section>
