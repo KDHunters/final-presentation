@@ -82,8 +82,11 @@
         interviewModule = interview;
       }
       if (id !== request) return;
-      // Forward entry starts at step 0; coming back with "previous" shows every step.
-      if (section.dataset.steps) section.dataset.step = from > index ? section.dataset.steps : '0';
+      // Most step slides resume fully revealed when entered from the next slide.
+      if (section.dataset.steps) {
+        const resume = from > index && section.dataset.stepEntry !== 'reset';
+        section.dataset.step = resume ? section.dataset.steps : '0';
+      }
       stage.replaceChildren(section);
       disposeSlide = interview?.mountInterviewWave(section, root) ?? null;
       stage.setAttribute('aria-busy', 'false');
@@ -131,8 +134,12 @@
   });
 
   stage.addEventListener('click', (event) => {
-    if (current !== 0 || !(event.target instanceof Element) || event.target.closest(interactive)) return;
-    if (stage.querySelector('.title-slide')) void show(1);
+    if (!(event.target instanceof Element) || event.target.closest(interactive)) return;
+    if (stage.firstElementChild?.hasAttribute('data-step-click')) {
+      if (stage.getAttribute('aria-busy') !== 'true') void go(current + 1);
+      return;
+    }
+    if (current === 0 && stage.querySelector('.title-slide')) void show(1);
   });
 
   stage.addEventListener('touchstart', (event) => {

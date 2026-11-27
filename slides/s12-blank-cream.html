@@ -1,0 +1,70 @@
+<section class="slide s11-feedback" aria-label="사용자 피드백 스크린샷" data-steps="5" data-step="0" data-step-entry="reset" data-step-click>
+<style>
+.stage:has(> .s11-feedback) {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: var(--cream);
+}
+.stage > .s11-feedback {
+  display: block;
+  position: relative;
+  width: min(100vw, calc(100dvh * 16 / 9));
+  aspect-ratio: 16 / 9;
+  min-block-size: 0;
+  padding: 0;
+  background: var(--cream);
+}
+/* Six excerpts on a proportional 1920 × 1080 canvas, with 12 px gutters. */
+.s11-feedback > :is(img, svg) {
+  position: absolute;
+  inset-inline-start: var(--x);
+  inset-block-start: var(--y);
+  width: var(--w);
+  height: auto;
+}
+.s11-feedback > :is(img:nth-of-type(1), svg[data-card="1"]) { --x: 1.562500%; --y: 5.275061%; --w: 48.596850%; }
+.s11-feedback > :is(img:nth-of-type(2), svg[data-card="2"]) { --x: 50.784350%; --y: 5.275061%; --w: 47.653150%; }
+.s11-feedback > :is(img:nth-of-type(3), svg[data-card="3"]) { --x: 1.562500%; --y: 34.064038%; --w: 96.875000%; }
+.s11-feedback > :is(img:nth-of-type(4), svg[data-card="4"]) { --x: 1.562500%; --y: 15.025612%; --w: 48.596850%; }
+.s11-feedback > :is(img:nth-of-type(5), svg[data-card="5"]) { --x: 1.562500%; --y: 55.113051%; --w: 96.875000%; }
+.s11-feedback > :is(img:nth-of-type(6), svg[data-card="6"]) { --x: 1.562500%; --y: 75.818308%; --w: 96.875000%; }
+/* Each mark shares the source image's coordinates; only the original glyph coverage is recolored. */
+.s11-feedback > .s11-mark { display: block; visibility: hidden; pointer-events: none; }
+.s11-feedback .s11-mark rect { fill: var(--highlight); }
+.s11-feedback:not([data-step="0"]) > [data-mark="1"],
+.s11-feedback:not([data-step="0"], [data-step="1"]) > [data-mark="2"],
+.s11-feedback:not([data-step="0"], [data-step="1"], [data-step="2"]) > [data-mark="3"],
+.s11-feedback:not([data-step="0"], [data-step="1"], [data-step="2"], [data-step="3"]) > [data-mark="4"],
+.s11-feedback:not([data-step="0"], [data-step="1"], [data-step="2"], [data-step="3"], [data-step="4"]) > [data-mark="5"] { visibility: visible; }
+</style>
+<img src="assets/s11-feedback-excerpt-01.png" width="240" height="24" alt="토끼 입양을 제안하는 후기 발췌">
+<img src="assets/s11-feedback-excerpt-02.png" width="453" height="148" alt="반려동물 돌보기와 수익화를 제안하는 후기 발췌">
+<img src="assets/s11-feedback-excerpt-03.png" width="501" height="58" alt="반려동물 선택과 캐릭터 저장 옵션을 제안하는 후기 발췌">
+<img src="assets/s11-feedback-excerpt-04.png" width="453" height="94" alt="견종, 파스텔 테마, 스티커, 메모 정리 기능을 제안하는 후기 발췌">
+<img src="assets/s11-feedback-excerpt-05.png" width="501" height="57" alt="구글 계정을 통한 메모 백업을 제안하는 후기 발췌">
+<img src="assets/s11-feedback-excerpt-06.png" width="501" height="55" alt="강아지 행동과 견종 선택에 대한 후기 발췌">
+<svg class="s11-mark" data-card="1" data-mark="1" viewBox="0 0 240 24" aria-hidden="true" focusable="false">
+  <rect x="110.9711" y="5" width="120.0578" height="13"/>
+  <image href="assets/s11-feedback-mark-01.png" width="240" height="24"/>
+</svg>
+<svg class="s11-mark" data-card="4" data-mark="2" viewBox="0 0 453 94" aria-hidden="true" focusable="false">
+  <rect x="403.058" y="42" width="39.884" height="13"/>
+  <rect x="7.058" y="60" width="252.884" height="14"/>
+  <image href="assets/s11-feedback-mark-02.png" width="453" height="94"/>
+</svg>
+<svg class="s11-mark" data-card="3" data-mark="3" viewBox="0 0 501 58" aria-hidden="true" focusable="false">
+  <rect x="410.9226" y="6" width="81.1548" height="13"/>
+  <rect x="6.9226" y="24" width="223.0774" height="14"/>
+  <image href="assets/s11-feedback-mark-03.png" width="501" height="58"/>
+</svg>
+<svg class="s11-mark" data-card="5" data-mark="4" viewBox="0 0 501 57" aria-hidden="true" focusable="false">
+  <rect x="306.9226" y="6" width="187.1548" height="13"/>
+  <image href="assets/s11-feedback-mark-04.png" width="501" height="57"/>
+</svg>
+<svg class="s11-mark" data-card="6" data-mark="5" viewBox="0 0 501 55" aria-hidden="true" focusable="false">
+  <rect x="182.9226" y="21" width="295.0774" height="14"/>
+  <image href="assets/s11-feedback-mark-05.png" width="501" height="55"/>
+</svg>
+</section>
