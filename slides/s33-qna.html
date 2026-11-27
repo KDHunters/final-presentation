@@ -1,0 +1,25 @@
+<section class="slide s33-qna" aria-labelledby="s33-qna-title">
+  <style>
+    .stage:has(> .s33-qna) { position: fixed; inset: 0; overflow: hidden; background: var(--brown); }
+    .stage > .s33-qna {
+      --stage-scale: min(tan(atan2(100vw, 1920px)), tan(atan2(100dvh, 1080px)));
+      position: absolute; top: 50%; left: 50%;
+      width: 1920px; height: 1080px; min-block-size: 0; padding: 0; overflow: hidden;
+      transform: translate(-50%, -50%) scale(var(--stage-scale));
+      background: var(--brown); color: var(--text-light); word-break: keep-all;
+      -webkit-text-size-adjust: 100%; text-size-adjust: 100%;
+    }
+    .s33-qna .copy { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
+    .s33-qna h2 { margin: 0; font: 700 168px/1.2 var(--font-family); letter-spacing: -.045em; }
+    .s33-qna .wordmark { display: block; width: 710px; height: auto; margin-top: 56px; image-rendering: pixelated; }
+    .s33-qna .team { position: absolute; left: 132px; bottom: 120px; margin: 0; display: grid; grid-template-columns: max-content max-content max-content; column-gap: 16px; white-space: nowrap; color: var(--text-light); font: 500 30px/1.52 var(--font-family); font-synthesis: none; }
+    @media screen and (prefers-reduced-motion: no-preference) {
+      .s33-qna .copy { animation: s33-qna-enter 320ms ease-out 80ms both; }
+      @keyframes s33-qna-enter { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+    }
+    @media print { .stage > .s33-qna { position: static; transform: none; print-color-adjust: exact; } }
+  </style>
+  <div class="copy">
+    <h2 id="s33-qna-title">Q&amp;A</h2>
+  </div>
+</section>
