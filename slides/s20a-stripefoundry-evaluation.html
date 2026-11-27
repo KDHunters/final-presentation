@@ -1,0 +1,91 @@
+<section class="slide stripefoundry-evaluation" aria-labelledby="stripefoundry-evaluation-title">
+  <style>
+    /* === FIXED 1920 × 1080 STAGE === */
+    .stage:has(> .stripefoundry-evaluation) {
+      position: fixed;
+      inset: 0;
+      overflow: hidden;
+      background: var(--brown);
+    }
+    .stage > .stripefoundry-evaluation {
+      --stage-scale: min(tan(atan2(100vw, 1920px)), tan(atan2(100dvh, 1080px)));
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      display: block;
+      align-content: center;
+      width: 1920px;
+      height: 1080px;
+      min-block-size: 0;
+      padding: 0 100px;
+      overflow: hidden;
+      transform: translate(-50%, -50%) scale(var(--stage-scale));
+      background: var(--brown);
+      color: var(--text-light);
+      -webkit-text-size-adjust: 100%;
+      text-size-adjust: 100%;
+    }
+    .stripefoundry-evaluation h2 {
+      font: 700 68px/1.16 var(--font-family);
+      letter-spacing: -.045em;
+    }
+    /* === MEASURED OUTCOMES === */
+    .stripefoundry-evaluation .results {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 36px;
+      margin: 56px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+    .stripefoundry-evaluation .result {
+      display: grid;
+      align-content: center;
+      justify-items: center;
+      grid-template-rows: 130px auto;
+      gap: 33px;
+      min-width: 0;
+      height: 514px;
+      padding: 36px 22px;
+      border: 2px solid #9A7B64;
+      border-radius: 20px;
+      background: #FFFFFF;
+      color: var(--brown);
+      text-align: center;
+    }
+    .stripefoundry-evaluation h3 {
+      align-self: center;
+      margin: 0;
+      font: 700 58px/1.12 var(--font-family);
+      letter-spacing: -.035em;
+    }
+    .stripefoundry-evaluation .result-number {
+      margin: 0;
+      color: #C62828;
+      font: 700 146px/1.05 var(--font-family);
+      font-variant-numeric: lining-nums tabular-nums;
+      letter-spacing: -.06em;
+      white-space: nowrap;
+    }
+    .stripefoundry-evaluation .result-unit { margin-left: 5px; color: var(--brown); font-size: 74px; letter-spacing: -.04em; }
+
+  </style>
+
+  <h2 id="stripefoundry-evaluation-title">StripeFoundry 정량 검증 결과</h2>
+
+  <ul class="results" role="list" aria-label="정량 검증 지표 3가지">
+    <li class="result">
+      <h3>픽셀 경계 <br>정렬 점수</h3>
+      <p class="result-number">1.86<span class="result-unit">배</span></p>
+    </li>
+    <li class="result">
+      <h3>3회 이내 <br>품질 검증 통과율</h3>
+      <p class="result-number">92<span class="result-unit">%</span></p>
+    </li>
+    <li class="result">
+      <h3>이진 알파 채널 <br>규격 충족률</h3>
+      <p class="result-number">100<span class="result-unit">%</span></p>
+    </li>
+  </ul>
+
+</section>
