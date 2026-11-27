@@ -1,0 +1,86 @@
+<section class="slide s21-resource-usage" aria-labelledby="s21-title" data-steps="2" data-step="0">
+<style>
+.stage:has(> .s21-resource-usage) { position: fixed; inset: 0; display: grid; place-items: center; background: var(--cream); }
+.stage > .s21-resource-usage {
+  display: block; width: min(100vw, calc(100dvh * 16 / 9)); aspect-ratio: 16 / 9;
+  min-block-size: 0; padding: 0; overflow: hidden; container-type: inline-size;
+  background: var(--cream); color: var(--brown);
+}
+.s21-resource-usage .wrap { padding: 2.2cqw 3.5cqw 0; }
+.s21-resource-usage h2 { font: 700 3.2cqw/1.2 var(--font-family); letter-spacing: -.045em; }
+.s21-resource-usage .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin-top: 1.8cqw; }
+.s21-resource-usage .col-a { padding-right: 2.6cqw; border-right: .12cqw solid rgba(57,42,32,.2); }
+.s21-resource-usage .col-b { padding-left: 2.6cqw; }
+.s21-resource-usage .kpi { margin: 1.6cqw 0 0; }
+.s21-resource-usage .kpi .ctx { display: block; font: 700 2.9cqw/1.3 var(--font-family); letter-spacing: -.04em; color: #392A20; }
+.s21-resource-usage .kpi .val { display: flex; align-items: baseline; gap: 1.2cqw; margin-top: .6cqw; }
+.s21-resource-usage .kpi .lab { font: 700 2.9cqw/1.2 var(--font-family); letter-spacing: -.04em; }
+.s21-resource-usage .kpi b { font: 700 4.4cqw/1 var(--font-family); letter-spacing: -.05em; color: #4F763E; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.s21-resource-usage .kpi small { display: block; margin-top: .5cqw; color: #725D4E; font: 500 2.1cqw/1.3 var(--font-family); letter-spacing: -.02em; }
+.s21-resource-usage .chart { margin-top: 1.6cqw; }
+/* memory bars */
+.s21-resource-usage ul { list-style: none; margin: 0; padding: 0; }
+.s21-resource-usage .mem li { margin-bottom: 1.5cqw; }
+.s21-resource-usage .rl { display: flex; align-items: baseline; gap: .9cqw; font: 700 2.2cqw/1.25 var(--font-family); letter-spacing: -.03em; }
+.s21-resource-usage .rl span { color: #725D4E; font: 500 1.8cqw/1.25 var(--font-family); }
+.s21-resource-usage .rb { display: flex; align-items: center; gap: .9cqw; margin-top: .35cqw; }
+.s21-resource-usage .rb i { display: block; height: 2.2cqw; border-radius: .4cqw; background: #BFB19F; transform-origin: left; }
+.s21-resource-usage .rb em { font: 700 2.7cqw/1 var(--font-family); font-style: normal; letter-spacing: -.03em; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.s21-resource-usage .rb small { font: 500 1.8cqw/1 var(--font-family); margin-left: .2cqw; color: #725D4E; }
+.s21-resource-usage .r1 .rb i { background: #4F763E; }
+.s21-resource-usage .r1 .rl b, .s21-resource-usage .r1 .rb em { color: #4F763E; }
+.s21-resource-usage .r0 .rb i { background: #E3A89E; }
+.s21-resource-usage .r0 .rl b, .s21-resource-usage .r0 .rb em { color: #B8685D; }
+.s21-resource-usage .r0 .rl span, .s21-resource-usage .r0 .rb small { color: #C98A80; }
+.s21-resource-usage .r2 .rb i { background: #8E7E6C; }
+.s21-resource-usage .r2 .rl b { color: #5E4E42; }
+.s21-resource-usage .r2 .rb em { color: #8C7B6E; }
+.s21-resource-usage .r2 .rb small { color: #8C7B6E; }
+.s21-resource-usage .mem li { position: relative; }
+.s21-resource-usage .br { position: absolute; left: 34cqw; top: 4.43cqw; height: 7.3cqw; display: flex; align-items: center; gap: .5cqw; }
+.s21-resource-usage .br svg { width: 2.2cqw; height: 7.3cqw; flex: none; }
+.s21-resource-usage .br b { font: 700 1.8cqw/1.2 var(--font-family); letter-spacing: -.03em; white-space: nowrap; color: #392A20; }
+/* battery conversion */
+.s21-resource-usage .cv-t { margin: 0 0 1cqw; font: 700 2.3cqw/1.3 var(--font-family); letter-spacing: -.03em; color: #725D4E; }
+.s21-resource-usage .cv li { display: flex; justify-content: space-between; align-items: baseline; gap: 1.5cqw; padding: 2cqw 0; border-bottom: .1cqw solid rgba(57,42,32,.14); font: 600 2.4cqw/1.25 var(--font-family); letter-spacing: -.03em; color: #B5A89B; }
+.s21-resource-usage .cv li span:last-child { font-variant-numeric: tabular-nums; white-space: nowrap; text-align: right; }
+/* step reveal: state is decided by data-step only */
+.s21-resource-usage .rb i, .s21-resource-usage .rl b, .s21-resource-usage .rl span, .s21-resource-usage .rb em, .s21-resource-usage .rb small { transition: background-color .45s ease, color .45s ease; }
+.s21-resource-usage .br { transition: opacity .45s ease, transform .45s ease, visibility 0s; }
+.s21-resource-usage .col-a { transition: border-color .45s ease; }
+.s21-resource-usage .col-b { transition: opacity .45s ease, visibility 0s; }
+.s21-resource-usage[data-step="0"] .br { opacity: 0; visibility: hidden; transform: translateY(.8cqw); }
+.s21-resource-usage[data-step="0"] .col-a, .s21-resource-usage[data-step="1"] .col-a { border-right-color: transparent; }
+.s21-resource-usage[data-step="0"] .col-b, .s21-resource-usage[data-step="1"] .col-b { opacity: 0; visibility: hidden; }
+.s21-resource-usage[data-step="0"] .col-b, .s21-resource-usage[data-step="1"] .col-b { transition: opacity .45s ease, visibility 0s .45s; }
+.s21-resource-usage:not([data-step="0"]) .r0 .rb i { background: #F1D3CD; }
+.s21-resource-usage:not([data-step="0"]) .r0 .rl b, .s21-resource-usage:not([data-step="0"]) .r0 .rb em { color: #D9A69E; }
+.s21-resource-usage:not([data-step="0"]) .r0 .rl span, .s21-resource-usage:not([data-step="0"]) .r0 .rb small { color: #E5BDB6; }
+.s21-resource-usage:not([data-step="0"]) .r2 .rb i { background: #CFC5B8; }
+.s21-resource-usage:not([data-step="0"]) .r2 .rl b, .s21-resource-usage:not([data-step="0"]) .r2 .rb em { color: #B5A89B; }
+.s21-resource-usage:not([data-step="0"]) .r2 .rb small { color: #C7BCB0; }
+@media (prefers-reduced-motion: reduce) { .s21-resource-usage *, .s21-resource-usage { transition: none !important; } }
+</style>
+<div class="wrap">
+  <h2 id="s21-title">메모리·배터리 실측</h2>
+  <div class="cols">
+    <article class="col-a">
+      <p class="kpi"><span class="ctx">고해상도 애니메이션 대비</span><span class="val"><span class="lab">메모리 사용량</span><b>-39%</b></span></p>
+      <div class="chart"><ul class="mem">
+<li class="r0"><div class="rl"><b>고해상도 애니메이션</b><span>320px 프레임</span></div><div class="rb"><i style="width:76.0%"></i><em>74.0<small>MB</small></em></div></li>
+<li class="r0"><div class="rl"><b>픽셀아트 확대 이미지</b><span>320px로 키워 둔 프레임</span></div><div class="rb"><i style="width:71.9%"></i><em>70.0<small>MB</small></em></div></li>
+<li class="r1"><div class="rl"><b>Sticky Pet 방식</b><span>32px 픽셀을 화면에서 확대</span></div><div class="rb"><i style="width:46.2%"></i><em>45.0<small>MB</small></em></div><div class="br"><svg viewBox="0 0 30 96" aria-hidden="true"><path d="M0 3H15M0 93H15M15 3V93" fill="none" stroke="#392A20" stroke-width="2.4"/><path d="M10 12L15 3L20 12M10 84L15 93L20 84" fill="none" stroke="#392A20" stroke-width="2.4"/></svg><b>3.2MB 차이</b></div></li>
+<li class="r2"><div class="rl"><b>정적 그림 1장</b></div><div class="rb"><i style="width:42.9%"></i><em>41.8<small>MB</small></em></div></li>
+      </ul></div>
+    </article>
+    <article class="col-b">
+      <p class="kpi"><span class="ctx">하루 평균</span><span class="val"><span class="lab">배터리 사용량</span><b>0.23%</b></span><small>하루 8시간 넘게 떠 있어도</small></p>
+      <div class="chart"><p class="cv-t">다른 활동은 이만큼만 써도 배터리 0.2%</p><ul class="cv">
+<li><span>인터넷 검색·웹 서핑</span><span>약 58초~1분 57초</span></li>
+<li><span>동영상 시청</span><span>약 56초~1분 43초</span></li>
+<li><span>모바일 게임</span><span>약 39~42초</span></li>
+</ul></div>
+    </article>
+  </div>
+</div>
+</section>
