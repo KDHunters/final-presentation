@@ -1,0 +1,109 @@
+<section class="slide s13-blank-cream" aria-labelledby="s13-demand-title">
+<style>
+/* === FIXED 16:9 STAGE === */
+.stage:has(> .s13-blank-cream) { position: fixed; inset: 0; display: grid; place-items: center; background: var(--cream); }
+.stage > .s13-blank-cream {
+  display: block; width: min(100vw, calc(100dvh * 16 / 9)); aspect-ratio: 16 / 9;
+  min-block-size: 0; padding: 0; overflow: hidden; container-type: inline-size;
+  background: var(--cream); color: var(--brown);
+}
+.s13-blank-cream .demand-layout { padding: 3cqw 3.5cqw; }
+.s13-blank-cream h2 { font: 700 3.2cqw/1.2 var(--font-family); letter-spacing: -.045em; }
+
+/* === INDEPENDENT USER METRIC === */
+.s13-blank-cream .demand-kpi { display: flex; align-items: center; gap: 2cqw; margin-top: 3.25cqw; }
+.s13-blank-cream .demand-kpi b { font: 700 7.4cqw/1 var(--font-family); letter-spacing: -.055em; color: #4F763E; }
+.s13-blank-cream .demand-kpi-value { position: relative; font-variant-numeric: tabular-nums; }
+.s13-blank-cream .demand-kpi-counter { display: none; position: absolute; inset: 0; text-align: right; white-space: nowrap; }
+.s13-blank-cream .demand-kpi-label { font: 700 2.4cqw/1.2 var(--font-family); letter-spacing: -.04em; }
+.s13-blank-cream .demand-kpi-label small { display: block; margin-bottom: .35cqw; }
+
+/* === ONE FULL-WIDTH BAR: REQUEST MENTIONS ONLY === */
+.s13-blank-cream .demand-chart { margin: 3.45cqw 0 0; padding-top: 1.89cqw; }
+.s13-blank-cream .demand-head { display: flex; align-items: baseline; justify-content: space-between; }
+.s13-blank-cream h3 { margin: 0; font: 700 2.1cqw/1.2 var(--font-family); letter-spacing: -.035em; }
+.s13-blank-cream .demand-basis { color: #725D4E; font: 500 1.55cqw/1.38 var(--font-family); letter-spacing: -.02em; }
+.s13-blank-cream .demand-bar { display: flex; width: 100%; height: 9.45cqw; overflow: hidden; margin-top: 1.35cqw; border-radius: .65cqw; }
+.s13-blank-cream .demand-bar > i { flex: var(--count) 1 0; min-width: 0; background: var(--swatch); }
+
+/* === MENTION LEGEND === */
+.s13-blank-cream .demand-animals { --swatch: hsl(103 46% 23%); }
+.s13-blank-cream .demand-actions { --swatch: hsl(103 39% 36%); }
+.s13-blank-cream .demand-decor { --swatch: hsl(103 34% 50%); }
+.s13-blank-cream .demand-appearance { --swatch: hsl(103 37% 64%); }
+.s13-blank-cream .demand-other { --swatch: hsl(103 42% 78%); }
+.s13-blank-cream .demand-legend {
+  display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 1.25cqw;
+  list-style: none; margin: 1.9cqw 0 0; padding: 0;
+  font: 700 1.7cqw/1.25 var(--font-family); letter-spacing: -.024em;
+}
+.s13-blank-cream .demand-legend > li { display: flex; align-items: flex-start; gap: .65cqw; white-space: nowrap; }
+.s13-blank-cream .demand-legend > li::before { content: ""; flex: 0 0 1.2cqw; height: 1.2cqw; margin-top: .45cqw; border-radius: .18cqw; background: var(--swatch); }
+.s13-blank-cream .demand-legend b { display: block; margin-top: .27cqw; font-size: 2.4cqw; letter-spacing: -.035em; }
+
+/* === SYNCHRONIZED ENTRY: ONLY THE MOUNTED SLIDE RUNS === */
+.s13-blank-cream { --s13-demand-entry-timing: 1s cubic-bezier(.2, .55, .5, .9) both; }
+@media screen and (prefers-reduced-motion: no-preference) {
+  /* The deck mounts a fresh clone on entry; preloaded templates stay detached. */
+  .stage > .s13-blank-cream .demand-kpi-final { opacity: 0; }
+  .stage > .s13-blank-cream .demand-kpi-counter { display: block; }
+  .stage > .s13-blank-cream .demand-kpi-counter::before {
+    content: "41.9%";
+    animation: s13-demand-count-up 1s steps(1, end) both;
+  }
+  /* One moving clip edge preserves the layout and widths of all five segments. */
+  .stage > .s13-blank-cream .demand-bar { animation: s13-demand-fill var(--s13-demand-entry-timing); }
+}
+/* 80 ms samples of the bar’s eased progress, formatted with (41.9 * progress).toFixed(1). */
+@keyframes s13-demand-count-up {
+  0% { content: "0.0%"; }
+  8% { content: "8.3%"; }
+  16% { content: "14.9%"; }
+  24% { content: "20.4%"; }
+  32% { content: "24.8%"; }
+  40% { content: "28.6%"; }
+  48% { content: "31.6%"; }
+  56% { content: "34.2%"; }
+  64% { content: "36.3%"; }
+  72% { content: "38.1%"; }
+  80% { content: "39.5%"; }
+  88% { content: "40.6%"; }
+  96% { content: "41.5%"; }
+  100% { content: "41.9%"; }
+}
+@keyframes s13-demand-fill {
+  from { clip-path: inset(0 100% 0 0); }
+  to { clip-path: inset(0 0 0 0); }
+}
+</style>
+<div class="demand-layout">
+  <header>
+    <h2 id="s13-demand-title">펫 관련 콘텐츠 확장에 대한 사용자 수요</h2>
+  </header>
+
+  <p class="demand-kpi">
+    <span class="demand-kpi-label"><small class="demand-basis">의견을 보낸 사용자 기준</small>에셋 추가 희망 비율</span>
+    <b class="demand-kpi-value"><span class="sr-only">41.9%</span><span class="demand-kpi-final" aria-hidden="true">41.9%</span><span class="demand-kpi-counter" aria-hidden="true"></span></b>
+  </p>
+
+  <figure class="demand-chart" aria-labelledby="s13-mentions-title">
+    <figcaption class="demand-head">
+      <h3 id="s13-mentions-title">요청 유형별 언급 비중</h3>
+    </figcaption>
+    <div class="demand-bar" aria-hidden="true">
+      <i class="demand-animals" style="--count:112"></i>
+      <i class="demand-actions" style="--count:78"></i>
+      <i class="demand-decor" style="--count:25"></i>
+      <i class="demand-appearance" style="--count:23"></i>
+      <i class="demand-other" style="--count:19"></i>
+    </div>
+    <ul class="demand-legend" role="list">
+      <li class="demand-animals"><span>동물·품종 추가<b>43.6%</b></span></li>
+      <li class="demand-actions"><span>상호작용·행동 추가<b>30.4%</b></span></li>
+      <li class="demand-decor"><span>장식·꾸미기<b>9.7%</b></span></li>
+      <li class="demand-appearance"><span>색·외형 선택지<b>8.9%</b></span></li>
+      <li class="demand-other"><span>소리 등 기타<b>7.4%</b></span></li>
+    </ul>
+  </figure>
+</div>
+</section>
