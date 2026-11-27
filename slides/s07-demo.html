@@ -1,0 +1,290 @@
+<section class="slide s07-demo" aria-labelledby="s07-title">
+  <style>
+    /* === FIXED 1920 × 1080 STAGE ===
+       The deck mounts one in-flow fragment at a time. The scoped viewport
+       and inline-size container keep this slide 16:9, including in portrait. */
+    .stage:has(> .s07-demo) {
+      position: fixed;
+      inset: 0;
+      overflow: hidden;
+      background: #193b2a;
+    }
+    .stage > .s07-demo {
+      display: block;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: min(100vw, calc(100dvh * 16 / 9));
+      min-block-size: 0;
+      aspect-ratio: 16 / 9;
+      padding: 0;
+      overflow: hidden;
+      isolation: isolate;
+      container-type: inline-size;
+      transform: translate(-50%, -50%);
+      --u: calc(100cqw / 1920);
+      --paper: #faf7e9;
+      --pet-gold: #ffe98a;
+      color: var(--paper);
+      background:
+        radial-gradient(ellipse at 87% 92%, #bea96b87 0%, transparent 51%),
+        radial-gradient(ellipse at 77% 26%, #8fb56f 0%, transparent 55%),
+        linear-gradient(118deg, #265440 0%, #336b4c 37%, #699953 76%, #7e9d58 100%);
+    }
+    @supports (transform: scale(tan(atan2(1px, 1px)))) {
+      .stage > .s07-demo {
+        width: 1920px;
+        height: 1080px;
+        transform: translate(-50%, -50%)
+          scale(min(tan(atan2(100vw, 1920px)), tan(atan2(100dvh, 1080px))));
+      }
+    }
+
+    /* === BRAND AND COPY === */
+    .s07-demo .s07-brand {
+      position: absolute;
+      z-index: 3;
+      inset: calc(275 * var(--u)) auto auto calc(132 * var(--u));
+    }
+    .s07-demo .s07-icon {
+      display: block;
+      width: calc(139 * var(--u));
+      height: calc(139 * var(--u));
+      overflow: hidden;
+      border: calc(6 * var(--u)) solid var(--paper);
+      border-radius: calc(29 * var(--u));
+      background: #6da352;
+      box-shadow: 0 calc(9 * var(--u)) calc(23 * var(--u)) #1a3d2c66;
+    }
+    .s07-demo .s07-icon img { width: 100%; }
+    .s07-demo #s07-title {
+      width: calc(639 * var(--u));
+      margin: calc(51 * var(--u)) 0 0;
+    }
+    .s07-demo #s07-title img {
+      width: 100%;
+      image-rendering: pixelated;
+    }
+    .s07-demo .s07-copy {
+      margin: calc(45 * var(--u)) 0 0;
+      font: 500 calc(43 * var(--u)) / 1.26 var(--font-family);
+      letter-spacing: -.025em;
+      white-space: nowrap;
+    }
+    .s07-demo .s07-copy span,
+    .s07-demo .s07-copy strong { display: block; }
+    .s07-demo .s07-copy strong {
+      margin-top: calc(9 * var(--u));
+      font-size: calc(56 * var(--u));
+      font-weight: 800;
+      letter-spacing: -.035em;
+    }
+    .s07-demo .s07-copy em { color: var(--pet-gold); font-style: normal; }
+
+    /* === DEVICE COMPOSITION: METAL RIMS AND CONTACT SHADOWS === */
+    .s07-demo .s07-product { position: absolute; inset: 0; margin: 0; }
+    .s07-demo .s07-shadow {
+      position: absolute;
+      top: calc(902 * var(--u));
+      left: calc(948 * var(--u));
+      width: calc(950 * var(--u));
+      height: calc(82 * var(--u));
+      transform: rotate(-3deg);
+      background: radial-gradient(ellipse, #14271672, transparent 70%);
+      filter: blur(calc(10 * var(--u)));
+    }
+    .s07-demo .s07-phone {
+      position: absolute;
+      border-radius: calc(57 * var(--u));
+      background: linear-gradient(105deg, #ded8c4 0%, #aeac9b 3%, #4f5347 9%, #bfbfae 46%, #e3dac4 65%, #737769 93%, #333c31 100%);
+      box-shadow: inset 0 0 0 calc(1.5 * var(--u)) #e9e4cd88,
+        calc(11 * var(--u)) calc(18 * var(--u)) calc(28 * var(--u)) #14231866;
+    }
+    .s07-demo .s07-phone::before {
+      content: '';
+      position: absolute;
+      z-index: 1;
+      inset: calc(4 * var(--u)) calc(14 * var(--u)) calc(5 * var(--u)) calc(4 * var(--u));
+      border-radius: calc(53 * var(--u));
+      background: #111810;
+      box-shadow: inset 0 0 0 calc(1.5 * var(--u)) #788074;
+    }
+    .s07-demo .s07-phone::after {
+      content: '';
+      position: absolute;
+      top: 28%;
+      right: calc(2 * var(--u));
+      width: calc(5 * var(--u));
+      height: calc(88 * var(--u));
+      border-radius: calc(4 * var(--u));
+      background: linear-gradient(90deg, #313c30 0%, #949a85 35%, #666e5e 100%);
+      box-shadow: calc(1 * var(--u)) 0 calc(1 * var(--u)) #eee7cf88;
+    }
+    .s07-demo .s07-rear {
+      width: calc(332 * var(--u));
+      height: calc(741 * var(--u));
+      left: calc(1502 * var(--u));
+      top: calc(191 * var(--u));
+      transform: rotate(-2.5deg);
+    }
+    .s07-demo .s07-front {
+      z-index: 2;
+      width: calc(337 * var(--u));
+      height: calc(738 * var(--u));
+      left: calc(1067 * var(--u));
+      top: calc(210 * var(--u));
+      transform: rotate(42deg);
+    }
+    .s07-demo .s07-front::before {
+      inset-inline: calc(14 * var(--u)) calc(4 * var(--u));
+    }
+    .s07-demo .s07-front::after {
+      right: auto;
+      left: calc(3 * var(--u));
+      background: linear-gradient(90deg, #797c6e, #d2cdba 32%, #646c5c);
+    }
+
+    /* === OFFICIAL STICKY PET INTERFACE ARTWORK ===
+       Source: https://play.google.com/store/apps/details?id=com.kdhunters.stickypet&hl=ko
+       Crops: listing images 2 (memo panel), 4 (memo drawer), 6 (yard).
+       The foreground panel is masked to remove all surrounding mock-video UI. */
+    .s07-demo .s07-screen {
+      position: absolute;
+      z-index: 2;
+      inset: calc(13 * var(--u)) calc(23 * var(--u)) calc(14 * var(--u)) calc(13 * var(--u));
+      overflow: hidden;
+      border-radius: calc(44 * var(--u));
+      box-shadow: 0 0 0 calc(1 * var(--u)) #000;
+    }
+    .s07-demo .s07-yard { background: #36291d; }
+    .s07-demo .s07-yard > img {
+      width: 100%;
+      height: 80%;
+      object-fit: fill;
+    }
+    .s07-demo .s07-yard > img + img {
+      height: auto;
+      margin-top: calc(3 * var(--u));
+    }
+    .s07-demo .s07-front .s07-screen {
+      inset-inline: calc(23 * var(--u)) calc(13 * var(--u));
+      background:
+        radial-gradient(ellipse at 2% 95%, #e6aa6a 0%, transparent 56%),
+        radial-gradient(ellipse at 126% 38%, #96b677 0%, transparent 71%),
+        linear-gradient(161deg, #285847 0%, #537352 49%, #a6ad6e 79%, #cdc58e 100%);
+    }
+    .s07-demo .s07-front .s07-screen::before {
+      content: '';
+      position: absolute;
+      inset: 58% -36% auto -35%;
+      height: 42%;
+      transform: rotate(-23deg);
+      border: calc(1 * var(--u)) solid #f9edbf46;
+      border-radius: 50%;
+      background: linear-gradient(160deg, #fff0b923, #6f965600 45%);
+    }
+    .s07-demo .s07-status {
+      position: absolute;
+      top: calc(18 * var(--u));
+      left: calc(22 * var(--u));
+      right: calc(22 * var(--u));
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--paper);
+      font: 500 calc(12 * var(--u)) / 1 var(--font-family);
+    }
+    .s07-demo .s07-camera {
+      position: absolute;
+      top: calc(9 * var(--u));
+      left: 50%;
+      width: calc(15 * var(--u));
+      height: calc(15 * var(--u));
+      transform: translateX(-50%);
+      border-radius: 50%;
+      background: radial-gradient(circle at 61% 44%, #39474d 3%, #172225 18%, #0e1413 43%);
+    }
+    .s07-demo .s07-panel {
+      position: absolute;
+      top: calc(109 * var(--u));
+      left: calc(16 * var(--u));
+      width: calc(269 * var(--u));
+      height: auto;
+      overflow: visible;
+      filter: drop-shadow(0 calc(8 * var(--u)) calc(12 * var(--u)) #14190c47);
+    }
+    .s07-demo .s07-homebar {
+      position: absolute;
+      left: 50%;
+      bottom: calc(8 * var(--u));
+      width: calc(95 * var(--u));
+      height: calc(4 * var(--u));
+      transform: translateX(-50%);
+      border-radius: 4px;
+      background: #faf7e9b8;
+    }
+
+    /* === ENTRY AND PRINT === */
+    @media (prefers-reduced-motion: no-preference) {
+      .s07-demo .s07-brand,
+      .s07-demo .s07-product { animation: s07-appear 360ms ease-out both; }
+      @keyframes s07-appear { from { opacity: 0; } to { opacity: 1; } }
+    }
+    @media print {
+      .stage:has(> .s07-demo) { position: static; overflow: visible; }
+      .stage > .s07-demo {
+        position: relative;
+        inset: auto;
+        width: 1920px;
+        height: 1080px;
+        transform: none;
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+      }
+      .s07-demo .s07-brand, .s07-demo .s07-product { animation: none; }
+    }
+  </style>
+
+  <header class="s07-brand">
+    <span class="s07-icon">
+      <img src="assets/s07-showcase/app-icon.png" width="512" height="512" alt="스티키펫 앱 아이콘" draggable="false">
+    </span>
+    <h1 id="s07-title">
+      <span class="sr-only">Sticky Pet</span>
+      <img src="assets/sticky-pet-wordmark.png" width="71" height="16" alt="" draggable="false">
+    </h1>
+    <p class="s07-copy">
+      <span>앱 켜는 3초 사이 까먹는 <em>ADHD</em>를 위한</span>
+      <strong>폰 화면 위 <em>가장 빠른 메모 펫</em></strong>
+    </p>
+  </header>
+
+  <figure class="s07-product" aria-label="스티키펫 앱의 플로팅 체크리스트와 마당">
+    <div class="s07-shadow" aria-hidden="true"></div>
+    <div class="s07-phone s07-rear">
+      <div class="s07-screen s07-yard">
+        <img src="assets/s07-showcase/yard-screen.png" width="940" height="1432" alt="인절미가 있는 스티키펫 마당" draggable="false">
+        <img src="assets/s07-showcase/memo-drawer.png" width="940" height="404" alt="작성한 메모를 모아 보는 메모함" draggable="false">
+        <span class="s07-homebar" aria-hidden="true"></span>
+      </div>
+    </div>
+    <div class="s07-phone s07-front">
+      <div class="s07-screen">
+        <div class="s07-status" aria-hidden="true">
+          <span>9:41</span>
+          <svg width="9%" viewBox="0 0 24 10" fill="currentColor"><path d="M0 2a7 7 0 0 1 11 0L5.5 9zM16 1h1V0h3v1h1v8h-5z"/></svg>
+        </div>
+        <span class="s07-camera" aria-hidden="true"></span>
+        <svg class="s07-panel" viewBox="0 0 760 1000" role="img" aria-label="폰 화면 위에 떠 있는 할 일 체크리스트와 빠른 메모 탭">
+          <defs>
+            <clipPath id="s07-memo-mask">
+              <path d="M4 94L16 80H84V70H72V63H66V35H72V28H78V22H84V16H91V10H103V5H138V10H151V16H158V22H164V28H170V35H175V59H169V65H155V80H435V9L441 4H521L525 9V80H543V9L549 4H629L633 9V80H653L665 93V115H753L757 119V246L753 249H665V271H733L737 275V402L733 405H665V427H733L737 431V558L733 561H665V583H733L737 587V714L733 717H665V739H733L737 743V870L733 873H665V895H733L737 899V974L733 977H665L652 991H16L4 979Z"/>
+            </clipPath>
+          </defs>
+          <image href="assets/s07-showcase/memo-panel.png" width="760" height="1000" clip-path="url(#s07-memo-mask)"/>
+        </svg>
+        <span class="s07-homebar" aria-hidden="true"></span>
+      </div>
+    </div>
+  </figure>
+</section>
