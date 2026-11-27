@@ -30,6 +30,14 @@
 .s11-feedback > :is(img:nth-of-type(4), svg[data-card="4"]) { --x: 1.562500%; --y: 15.025612%; --w: 48.596850%; }
 .s11-feedback > :is(img:nth-of-type(5), svg[data-card="5"]) { --x: 1.562500%; --y: 55.113051%; --w: 96.875000%; }
 .s11-feedback > :is(img:nth-of-type(6), svg[data-card="6"]) { --x: 1.562500%; --y: 75.818308%; --w: 96.875000%; }
+/* Keep the excerpts and their matching highlight overlays above the folio on small canvases. */
+@media (max-width: 560px), (max-height: 315px) {
+  .s11-feedback > :is(img, svg) {
+    inset-inline-start: calc(50% + (var(--x) - 50%) * .96);
+    inset-block-start: calc(var(--y) * .96);
+    width: calc(var(--w) * .96);
+  }
+}
 /* Each mark shares the source image's coordinates; only the original glyph coverage is recolored. */
 .s11-feedback > .s11-mark { display: block; visibility: hidden; pointer-events: none; }
 .s11-feedback .s11-mark rect { fill: var(--highlight); }
