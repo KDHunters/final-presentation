@@ -1,0 +1,36 @@
+<section class="slide s18-pricing-table" aria-label="Sticky Pet 단가">
+  <style>
+    .stage:has(> .s18-pricing-table) { position: fixed; inset: 0; overflow: hidden; background: #FAF7E9; }
+    .stage > .s18-pricing-table {
+      --stage-scale: min(tan(atan2(100vw, 1920px)), tan(atan2(100dvh, 1080px)));
+      position: absolute; top: 50%; left: 50%;
+      display: block; width: 1920px; height: 1080px; min-block-size: 0;
+      padding: 140px 100px 0; align-content: start; overflow: hidden;
+      transform: translate(-50%, -50%) scale(var(--stage-scale));
+      background: #FAF7E9; color: #392A20; word-break: keep-all;
+    }
+    .s18-pricing-table h2 { margin: 0; font: 700 68px/1.2 var(--font-family); letter-spacing: -.045em; }
+    .s18-pricing-table .tbl { width: auto; margin-top: 22px; }
+    .s18-pricing-table .row { display: grid; grid-template-columns: 440px minmax(0, 1fr) 300px; column-gap: 28px; align-items: center; min-height: 124px; border-bottom: 2px solid rgb(185 159 133 / .5); color: #3D3326; letter-spacing: -.02em; }
+    .s18-pricing-table .row--head .price-h { text-align: right; }
+    .s18-pricing-table .row--head { min-height: 60px; color: #846D5C; font: 500 29px/1.2 var(--font-family); border-bottom: 3px solid #B99F85; }
+    .s18-pricing-table .asset b { display: block; font: 700 47px/1.2 var(--font-family); letter-spacing: -.035em; }
+    .s18-pricing-table .incl { white-space: nowrap; color: #3D3326; font: 500 37px/1.25 var(--font-family); letter-spacing: -.02em; }
+    .s18-pricing-table .price { text-align: right; font: 700 68px/1.05 var(--font-family); letter-spacing: -.04em; }
+    .s18-pricing-table .price small { display: block; margin-top: 4px; font: 500 24px/1.2 var(--font-family); color: #846D5C; letter-spacing: -.02em; }
+    @media screen and (prefers-reduced-motion: no-preference) {
+      .s18-pricing-table .anim { animation: s18-enter 320ms ease-out 120ms both; }
+      .stage[aria-busy="true"] > .s18-pricing-table .anim { animation-play-state: paused; }
+      @keyframes s18-enter { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+    }
+  </style>
+  <h2>Sticky Pet 단가</h2>
+  <div class="tbl anim" role="table" aria-label="스티키펫 에셋 단가표">
+    <div class="row row--head" role="row"><span>에셋</span><span>포함 내용</span><span class="price-h">단가</span></div>
+    <div class="row" role="row"><div class="asset"><b>새 펫</b></div><div class="incl">동물·품종 + 기본 모션 + 전용 소리</div><div class="price">3,300원</div></div>
+    <div class="row" role="row"><div class="asset"><b>모션 팩</b></div><div class="incl">행동 2~3개</div><div class="price">2,200원</div></div>
+    <div class="row" role="row"><div class="asset"><b>마당 장식 세트</b></div><div class="incl">집·소품 테마 묶음 (소품 낱개 1,100원)</div><div class="price">2,200원</div></div>
+    <div class="row" role="row"><div class="asset"><b>색·외형</b></div><div class="incl">털색 또는 의상 1종</div><div class="price">1,100원</div></div>
+    <div class="row" role="row"><div class="asset"><b>펫 번들</b></div><div class="incl">새 펫 + 모션 팩 + 색·외형 1종</div><div class="price">5,500원</div></div>
+  </div>
+</section>
