@@ -1,0 +1,111 @@
+<section class="slide s16-blank-brown" aria-label="스티키펫 동작 갤러리">
+  <style>
+    /* === FIXED 16:9 STAGE === */
+    .stage:has(> .s16-blank-brown) {
+      position: fixed;
+      inset: 0;
+      overflow: hidden;
+      background: #392A20;
+    }
+
+    .stage > .s16-blank-brown {
+      --stage-scale: min(tan(atan2(100vw, 1920px)), tan(atan2(100dvh, 1080px)));
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      display: grid;
+      grid-template-columns: max-content;
+      place-content: center;
+      gap: 0;
+      width: 1920px;
+      height: 1080px;
+      min-block-size: 0;
+      padding: 0;
+      overflow: hidden;
+      transform: translate(-50%, -50%) scale(var(--stage-scale));
+      background: #392A20;
+      color: #F2E4C9;
+    }
+
+    /* === MOTION GALLERY === */
+    .s16-blank-brown .motion-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 480px);
+      gap: 32px 44px;
+      /* Scale videos and captions together, preserving the center and the crop. */
+      transform: scale(.90);
+      transform-origin: center;
+    }
+
+    .s16-blank-brown .motion-tile {
+      display: grid;
+      gap: 12px;
+      margin: 0;
+      text-align: center;
+    }
+
+    .s16-blank-brown .motion-frame {
+      position: relative;
+      height: 426px;
+      overflow: hidden;
+      border-radius: 20px;
+      background: #F6F4F0;
+    }
+
+    .s16-blank-brown .motion-frame > video {
+      /* Mask only empty vertical margins. Keep the original pixel scale and matte. */
+      position: absolute;
+      top: -48px;
+      left: 0;
+      display: block;
+      width: 480px;
+      height: 520px;
+      max-width: none;
+      max-height: none;
+      image-rendering: pixelated;
+      pointer-events: none;
+    }
+
+    .s16-blank-brown figcaption {
+      font-size: 42px;
+      font-weight: 500;
+      line-height: 48px;
+      letter-spacing: -.025em;
+      white-space: nowrap;
+    }
+
+    /* === DECK-GENERATED FOLIO === */
+    .slide.s16-blank-brown > .slide-folio {
+      --folio-ink: var(--text-light, #F2E4C9);
+      font-size: max(21px, calc(8px / var(--stage-scale)));
+      border-block-start-width: calc(1px / var(--stage-scale));
+    }
+  </style>
+
+  <div class="motion-grid">
+    <figure class="motion-tile">
+      <div class="motion-frame"><video src="assets/s16-motion-grid/1-tail.mp4" muted autoplay loop playsinline disablepictureinpicture></video></div>
+      <figcaption>제자리 꼬리 흔들기</figcaption>
+    </figure>
+    <figure class="motion-tile">
+      <div class="motion-frame"><video src="assets/s16-motion-grid/2-walk.mp4" muted autoplay loop playsinline disablepictureinpicture></video></div>
+      <figcaption>걷기</figcaption>
+    </figure>
+    <figure class="motion-tile">
+      <div class="motion-frame"><video src="assets/s16-motion-grid/3-liedown.mp4" muted autoplay loop playsinline disablepictureinpicture></video></div>
+      <figcaption>잠들기</figcaption>
+    </figure>
+    <figure class="motion-tile">
+      <div class="motion-frame"><video src="assets/s16-motion-grid/3b-breathe.mp4" muted autoplay loop playsinline disablepictureinpicture></video></div>
+      <figcaption>자며 숨쉬기</figcaption>
+    </figure>
+    <figure class="motion-tile">
+      <div class="motion-frame"><video src="assets/s16-motion-grid/5-turn.mp4" muted autoplay loop playsinline disablepictureinpicture></video></div>
+      <figcaption>돌아서기</figcaption>
+    </figure>
+    <figure class="motion-tile">
+      <div class="motion-frame"><video src="assets/s16-motion-grid/4-struggle.mp4" muted autoplay loop playsinline disablepictureinpicture></video></div>
+      <figcaption>버둥거리기</figcaption>
+    </figure>
+  </div>
+</section>
