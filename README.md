@@ -8,7 +8,8 @@
 
 ## 구성
 
-- `index.html`, `deck.js`: 슬라이드 뷰어
+- `index.html`, `talk/`: 발표 덱. 현석 구간 뒤에 아래 팀 슬라이드를 `order.json` 순서대로 이어 붙입니다. 자막·발표 창(`P`) 포함. 자세한 내용은 `talk/README.md`
+- `team.html`, `deck.js`: 팀 슬라이드만 보는 뷰어
 - `common.css`: 공통 스타일. `.slide`, `.two-column`, `.card` 등을 제공합니다.
 - `slides/cover.html`, `slides/example.html`: 슬라이드 조각
 - `slides/template.html`: 새 슬라이드 작성용 템플릿

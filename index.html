@@ -1,16 +1,22 @@
 <!doctype html>
 <html lang="ko">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="color-scheme" content="light">
-  <title>팀 프레젠테이션</title>
-  <link rel="stylesheet" href="common.css">
-  <script src="deck.js" defer></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>스티키펫 발표</title>
+<!-- 합본 덱의 파일은 talk/ 아래에 있다. 팀 슬라이드만 보는 원래 뷰어는 team.html -->
+<base href="talk/">
+<link rel="stylesheet" href="deck.css?v=1795800665">
 </head>
 <body>
-  <main id="stage" class="stage" aria-label="발표 슬라이드" aria-busy="true"></main>
-  <p id="position" class="sr-only" role="status" aria-atomic="true"></p>
-  <noscript><p class="deck-message">슬라이드를 보려면 JavaScript를 켜 주세요.</p></noscript>
+<div id="stage">
+  <div id="scene"></div>
+  <div id="demo"><div id="demo-label"></div><div id="demo-phone"></div></div>
+  <iframe id="team" src="team-embed.html" tabindex="-1" inert title="팀 슬라이드"></iframe>
+  <div id="folio"></div>
+  <div id="caption"><span id="caption-text"></span></div>
+  <div id="hint">스페이스·→ 다음　← 이전　C 자막　F 전체 화면　Home 처음</div>
+</div>
+<script src="deck.js?v=1795800665"></script>
 </body>
 </html>

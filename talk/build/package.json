@@ -1,0 +1,6 @@
+{
+  "private": true,
+  "description": "talk/deck.js를 다시 묶을 때만 필요합니다. npm install 뒤 sh build.sh",
+  "dependencies": {"react": "19.3.1", "react-dom": "19.3.1"},
+  "devDependencies": {"esbuild": "0.28.1"}
+}
