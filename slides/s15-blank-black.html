@@ -1,0 +1,215 @@
+<section class="slide s15-quadrants" aria-label="1부터 4까지의 4분할 슬라이드" data-step="0" data-step-click data-step-entry="reset"
+  onchange="if (this.querySelectorAll(':scope > .quadrant[data-result]').length === 4) this.dataset.steps = '3'">
+<style>
+.stage:has(> .s15-quadrants) {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+}
+
+.stage > .s15-quadrants {
+  inline-size: 100%;
+  block-size: 100%;
+  min-block-size: 0;
+  grid-template: repeat(2, minmax(0, 1fr)) / repeat(2, minmax(0, 1fr));
+  place-content: stretch;
+  gap: 0;
+  padding: 0;
+  color: var(--brown);
+  font-size: min(10vw, 14dvh);
+  font-weight: 700;
+  font-variant-numeric: lining-nums tabular-nums;
+  line-height: 1;
+}
+
+.s15-quadrants > .quadrant {
+  position: relative;
+  isolation: isolate;
+  container-type: size;
+  overflow: hidden;
+  background: var(--badge);
+}
+.s15-quadrants > .quadrant:nth-of-type(1) { --badge: #FFE98A; }
+.s15-quadrants > .quadrant:nth-of-type(2) { --badge: #FFB995; }
+.s15-quadrants > .quadrant:nth-of-type(3) { --badge: #BCE5CB; }
+.s15-quadrants > .quadrant:nth-of-type(4) { --badge: #DCCCF6; }
+
+/* Source-normalized focus and visible height; reframe when a result changes position. */
+.s15-quadrants [data-clip="190952"] { --source-aspect: 2.077922; --focus-x: .53; --focus-y: .46; --crop-height: .65; }
+.s15-quadrants [data-clip="190839"] { --source-aspect: 2.077922; --focus-x: .38; --focus-y: .255; --crop-height: .35; }
+.s15-quadrants [data-clip="200921"] { --source-aspect: 1.832061; --focus-x: .425; --focus-y: .39; --crop-height: .71; }
+.s15-quadrants [data-clip="200548"] { --source-aspect: 1.832061; --focus-x: .43; --focus-y: .61; --crop-height: .68; }
+
+.s15-quadrants [data-crop="q2-preview"] { --focus-x: .50; --focus-y: .43; --crop-height: .62; }
+.s15-quadrants [data-crop="q3-result"] { --focus-x: .32; --focus-y: .53; --crop-height: .38; }
+.s15-quadrants [data-crop="q3-scroll"] { --focus-x: .32; --focus-y: .53; --crop-height: .65; }
+.s15-quadrants [data-crop="q3-return"] { --focus-x: .32; --focus-y: .43; --crop-height: .38; }
+.s15-quadrants [data-crop="q3-preview"] { --focus-x: .50; --focus-y: .49; --crop-height: .72; }
+.s15-quadrants [data-crop="q4-first"] { --focus-x: .363; --focus-y: .70; --crop-height: .24; }
+.s15-quadrants [data-crop="q4-result"] { --focus-x: .363; --focus-y: .59; --crop-height: .24; }
+.s15-quadrants [data-crop="q4-preview"] { --focus-x: .505; --focus-y: .50; --crop-height: .94; }
+.s15-quadrants [data-crop="q4-close"] { --focus-x: .385; --focus-y: .60; --crop-height: .40; }
+
+.s15-quadrants .quadrant-number {
+  position: absolute;
+  z-index: 1;
+  inset-block-start: 10px;
+  inset-inline-start: 10px;
+  display: grid;
+  place-items: center;
+  inline-size: max-content;
+  block-size: 28px;
+  padding-inline: clamp(5px, 4cqw, 10px);
+  border-radius: 6px;
+  background: var(--badge);
+  font-size: clamp(8px, 6.3cqw, 15px);
+  white-space: nowrap;
+  pointer-events: none;
+}
+.s15-quadrants > .quadrant:nth-of-type(4) .quadrant-number {
+  inset-inline-start: auto;
+  inset-inline-end: 10px;
+}
+.s15-quadrants .source-photo {
+  position: absolute;
+  z-index: 2;
+  inset-block-start: 50%;
+  inset-inline-start: 50%;
+  transform: translate(-50%, -50%);
+  inline-size: max(52px, min(10.2vw, 23dvh));
+  margin: 0;
+  padding: clamp(3px, .4vw, 8px);
+  background: var(--cream);
+  border: 2px solid var(--brown);
+  border-radius: clamp(6px, .65vw, 13px);
+  box-shadow: 0 2px 10px rgb(27 17 10 / .28);
+  pointer-events: none;
+}
+.s15-quadrants .source-photo img {
+  display: block;
+  inline-size: 100%;
+  block-size: auto;
+  border-radius: clamp(2px, .33vw, 6px);
+}
+.s15-quadrants .source-photo figcaption {
+  margin-block-start: clamp(3px, .35vw, 7px);
+  padding-block: 1px 2px;
+  font-size: clamp(10px, 1.05vw, 21px);
+  line-height: 1.2;
+  text-align: center;
+  white-space: nowrap;
+}
+.s15-quadrants .quadrant-recording {
+  --visible-height: min(1, calc(var(--crop-height) * var(--portrait-relax, 1)));
+  --video-width: max(100cqw, calc(100cqh * var(--source-aspect) / var(--visible-height)));
+  --video-height: calc(var(--video-width) / var(--source-aspect));
+  position: absolute;
+  inset-inline-start: clamp(calc(100% - var(--video-width)), calc(50% - var(--video-width) * var(--focus-x)), 0px);
+  inset-block-start: clamp(calc(100% - var(--video-height)), calc(50% - var(--video-height) * var(--focus-y)), 0px);
+  inline-size: var(--video-width);
+  block-size: var(--video-height);
+  display: block;
+  pointer-events: none;
+}
+@media (max-aspect-ratio: 1/1) {
+  .s15-quadrants { --portrait-relax: 1.9; }
+}
+
+/* Fit the visible subject, not the surrounding transparent/empty image margins. */
+.s15-quadrants > .quadrant:nth-of-type(1) { --subject-w: .700; --subject-h: .776; --subject-x: .500; --subject-y: .528; }
+.s15-quadrants > .quadrant:nth-of-type(2) { --result-bg: #F6F6F6; --subject-w: .75; --subject-h: .82; --subject-x: .547; --subject-y: .523; }
+.s15-quadrants > .quadrant:nth-of-type(3) { --subject-w: .844; --subject-h: .938; --subject-x: .516; --subject-y: .500; }
+.s15-quadrants > .quadrant:nth-of-type(4) { --subject-w: .938; --subject-h: .907; --subject-x: .500; --subject-y: .484; }
+.s15-quadrants .quadrant-result {
+  position: absolute;
+  inset: 0;
+  visibility: hidden;
+  background: var(--result-bg, var(--cream));
+}
+.s15-quadrants .quadrant-result img {
+  --result-size: min(calc((100cqw - 16px) / var(--subject-w)), calc((100cqh - 54px) / var(--subject-h)));
+  position: absolute;
+  inset-inline-start: calc(50% - var(--result-size) * var(--subject-x));
+  inset-block-start: calc(50% + 12px - var(--result-size) * var(--subject-y));
+  inline-size: var(--result-size);
+  block-size: var(--result-size);
+  max-inline-size: none;
+}
+.s15-quadrants [data-version]:not([data-version="0"]),
+.s15-quadrants:is([data-step="2"], [data-step="3"]) [data-version="0"] { display: none; }
+.s15-quadrants[data-step="2"] [data-version="1"],
+.s15-quadrants[data-step="3"] [data-version="2"] { display: block; }
+.s15-quadrants [data-version="2"] { image-rendering: pixelated; }
+.s15-quadrants .q4-revised,
+.s15-quadrants:not([data-step="0"]) .q4-original { display: none; }
+.s15-quadrants:not([data-step="0"]) .q4-revised { display: block; }
+.s15-quadrants:not([data-step="0"]) > .quadrant:nth-of-type(4) { --result-bg: #FEFEFE; }
+.s15-quadrants .quadrant-result .q4-revised { --subject-x: .53125; --subject-y: .53125; --subject-w: .89; --subject-h: .77; }
+.s15-quadrants .quadrant-result .q1-grid { --subject-x: .50155; --subject-y: .52950; --subject-w: .69876; --subject-h: .77329; }
+.s15-quadrants .quadrant-result .q1-final { --subject-x: .5; --subject-y: .53125; --subject-w: .6875; --subject-h: .75; }
+.s15-quadrants .quadrant-result .q2-grid { --subject-x: .54658; --subject-y: .52484; --subject-w: .72050; --subject-h: .80124; }
+.s15-quadrants .quadrant-result .q2-final { --subject-x: .546875; --subject-y: .515625; --subject-w: .71875; --subject-h: .78125; }
+.s15-quadrants > [data-result] .quadrant-result { visibility: visible; }
+.s15-quadrants > [data-result] .quadrant-recording { visibility: hidden; }
+</style>
+<div class="quadrant quadrant--recording">
+  <span class="quadrant-number">1: GPT Image 2.6 Sunburst</span>
+  <video class="quadrant-recording" data-clip="190839" src="assets/slide-14-q2-190839.mp4" aria-label="1번 화면 기록" autoplay muted playsinline
+    onloadedmetadata="this.playbackRate = this.duration / 5;
+      this.updateCrop = t => { this.dataset.crop = t >= 28.43 ? 'q2-preview' : ''; };
+      const frame = (_, info) => { if (this.isConnected) { this.updateCrop(info.mediaTime); this.requestVideoFrameCallback(frame); } };
+      this.requestVideoFrameCallback?.(frame)"
+    ontimeupdate="if (!this.requestVideoFrameCallback) this.updateCrop?.(this.currentTime)"
+    onseeked="this.updateCrop?.(this.currentTime)"
+    onended="const tile = this.parentElement; tile.querySelector('img').decode().then(() => { if (tile.isConnected) { tile.dataset.result = ''; tile.dispatchEvent(new Event('change', { bubbles: true })); } }).catch(() => {})"></video>
+  <div class="quadrant-result">
+    <img data-version="0" src="assets/slide-14-result-2.png" alt="GPT Image 2.6 Sunburst의 최초 결과" width="1024" height="1024">
+    <img data-version="1" class="q1-grid" src="assets/slide-14-q1-grid.png" alt="GPT Image 2.6 Sunburst의 격자 버전" width="322" height="322">
+    <img data-version="2" class="q1-final" src="assets/slide-14-q1-final32.png" alt="GPT Image 2.6 Sunburst의 32×32 픽셀 버전" width="32" height="32">
+  </div>
+</div>
+<div class="quadrant quadrant--recording">
+  <span class="quadrant-number">2: Google Imagen 3</span>
+  <video class="quadrant-recording" data-clip="190952" src="assets/slide-14-q1-190952.mp4" aria-label="2번 화면 기록" autoplay muted playsinline
+    onloadedmetadata="this.playbackRate = this.duration / 5"
+    onended="const tile = this.parentElement; tile.querySelector('img').decode().then(() => { if (tile.isConnected) { tile.dataset.result = ''; tile.dispatchEvent(new Event('change', { bubbles: true })); } }).catch(() => {})"></video>
+  <div class="quadrant-result">
+    <img data-version="0" src="assets/slide-14-result-1.webp" alt="Google Imagen 3의 최초 결과" width="1024" height="1024">
+    <img data-version="1" class="q2-grid" src="assets/slide-14-q2-grid.png" alt="Google Imagen 3의 격자 버전" width="322" height="322">
+    <img data-version="2" class="q2-final" src="assets/slide-14-q2-final32.png" alt="Google Imagen 3의 32×32 픽셀 버전" width="32" height="32">
+  </div>
+</div>
+<div class="quadrant quadrant--recording">
+  <span class="quadrant-number">3: Codex</span>
+  <video class="quadrant-recording" data-clip="200548" src="assets/slide-14-q4-200548.mp4" aria-label="3번 화면 기록" autoplay muted playsinline
+    onloadedmetadata="this.playbackRate = this.duration / 5;
+      this.updateCrop = t => { this.dataset.crop = t &lt; 4.65 ? '' : t &lt; 7.78 ? 'q4-first' : t &lt; 9.39 ? 'q4-result' : t &lt; 11.4 ? 'q4-preview' : t &lt; 11.65 ? 'q4-close' : 'q4-result'; };
+      const frame = (_, info) => { if (this.isConnected) { this.updateCrop(info.mediaTime); this.requestVideoFrameCallback(frame); } };
+      this.requestVideoFrameCallback?.(frame)"
+    ontimeupdate="if (!this.requestVideoFrameCallback) this.updateCrop?.(this.currentTime)"
+    onseeked="this.updateCrop?.(this.currentTime)"
+    onended="const tile = this.parentElement; tile.querySelector('img').decode().then(() => { if (tile.isConnected) { tile.dataset.result = ''; tile.dispatchEvent(new Event('change', { bubbles: true })); } }).catch(() => {})"></video>
+  <div class="quadrant-result"><img src="assets/slide-14-result-4.png" alt="Codex의 최종 결과" width="1024" height="1024"></div>
+</div>
+<div class="quadrant quadrant--recording">
+  <span class="quadrant-number">4: Claude</span>
+  <!-- Original video track: 334.845 s. Its 5 s copy avoids the browser's playbackRate limit. -->
+  <video class="quadrant-recording" data-clip="200921" src="assets/slide-14-q3-200921-5s.mp4" aria-label="4번 화면 기록" autoplay muted playsinline data-source-duration="334.845"
+    onloadedmetadata="this.playbackRate = this.duration / 5;
+      this.updateCrop = time => { const t = time * Number(this.dataset.sourceDuration) / this.duration;
+        this.dataset.crop = t &lt; 316.35 ? '' : t &lt; 326.25 ? 'q3-result' : t &lt; 328.75 ? 'q3-scroll' : t &lt; 330.7 ? 'q3-return' : t &lt; 332.24 ? 'q3-preview' : 'q3-return'; };
+      const frame = (_, info) => { if (this.isConnected) { this.updateCrop(info.mediaTime); this.requestVideoFrameCallback(frame); } };
+      this.requestVideoFrameCallback?.(frame)"
+    ontimeupdate="if (!this.requestVideoFrameCallback) this.updateCrop?.(this.currentTime)"
+    onseeked="this.updateCrop?.(this.currentTime)"
+    onended="const tile = this.parentElement; tile.querySelector('img').decode().then(() => { if (tile.isConnected) { tile.dataset.result = ''; tile.dispatchEvent(new Event('change', { bubbles: true })); } }).catch(() => {})"></video>
+  <div class="quadrant-result">
+    <img class="q4-original" src="assets/slide-14-result-3.png" alt="Claude의 최초 결과" width="1024" height="1024">
+    <img class="q4-revised" src="assets/slide-14-q4-revised.png" alt="Claude의 교체 결과" width="1024" height="1024">
+  </div>
+</div>
+<figure class="source-photo">
+  <img src="assets/slide-14-source-photo.png" alt="노란 장난감과 함께 있는 강아지" width="399" height="501">
+  <figcaption>원본 사진</figcaption>
+</figure>
+</section>
