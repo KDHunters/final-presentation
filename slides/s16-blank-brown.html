@@ -1,4 +1,4 @@
-<section class="slide s16-blank-brown" aria-label="스티키펫 동작 갤러리">
+<section class="slide s16-blank-brown" aria-label="스티키펫 동작 갤러리" data-steps="1" data-step="0" data-step-entry="reset" data-step-click>
   <style>
     /* === FIXED 16:9 STAGE === */
     .stage:has(> .s16-blank-brown) {
@@ -74,6 +74,78 @@
       white-space: nowrap;
     }
 
+    /* === STEP 1: FULL-STAGE DIM AND BLUR === */
+    .s16-blank-brown > .motion-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 10;
+      display: grid;
+      place-items: center;
+      visibility: hidden;
+      pointer-events: none;
+      background: rgb(0 0 0 / 0%);
+      -webkit-backdrop-filter: blur(0px);
+      backdrop-filter: blur(0px);
+      /* Stay paintable during the exit, then hide the comparison from assistive tech. */
+      transition: background-color 480ms ease-in-out,
+                  -webkit-backdrop-filter 480ms ease-in-out,
+                  backdrop-filter 480ms ease-in-out,
+                  visibility 0s linear 480ms;
+    }
+
+    .s16-blank-brown[data-step="1"] > .motion-overlay {
+      visibility: visible;
+      background-color: rgb(0 0 0 / 55%);
+      -webkit-backdrop-filter: blur(18px);
+      backdrop-filter: blur(18px);
+      transition-delay: 0s;
+    }
+
+    .s16-blank-brown[data-step="1"] .motion-comparisons {
+      opacity: 1;
+      transition-duration: 365ms;
+      transition-delay: 85ms;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .s16-blank-brown > .motion-overlay,
+      .s16-blank-brown .motion-comparisons {
+        transition: none !important;
+      }
+    }
+
+    /* === BEFORE / AFTER COMPARISONS === */
+    .s16-blank-brown .motion-comparisons {
+      display: grid;
+      opacity: 0;
+      transition: opacity 260ms ease-in-out;
+      row-gap: 28px;
+      font-size: 120px;
+      line-height: 1.18;
+      font-variant-numeric: tabular-nums;
+      letter-spacing: -.035em;
+      color: #FFF5E1;
+      text-shadow: 0 3px 18px rgb(0 0 0 / 50%);
+    }
+
+    .s16-blank-brown .motion-comparison {
+      display: grid;
+      grid-template-columns: 667px 160px 667px;
+      align-items: baseline;
+      white-space: nowrap;
+    }
+
+    .s16-blank-brown .motion-before { text-align: right; }
+    .s16-blank-brown .motion-arrow {
+      text-align: center;
+      font-size: 88px;
+    }
+    .s16-blank-brown .motion-after {
+      color: #FFE98A;
+      font-size: 138px;
+      font-weight: 700;
+    }
+
     /* === DECK-GENERATED FOLIO === */
     .slide.s16-blank-brown > .slide-folio {
       --folio-ink: var(--text-light, #F2E4C9);
@@ -107,5 +179,11 @@
       <div class="motion-frame"><video src="assets/s16-motion-grid/4-struggle.mp4" muted autoplay loop playsinline disablepictureinpicture></video></div>
       <figcaption>버둥거리기</figcaption>
     </figure>
+  </div>
+  <div class="motion-overlay">
+    <div class="motion-comparisons">
+      <p class="motion-comparison"><span class="motion-before">50시간</span> <span class="motion-arrow">→</span> <strong class="motion-after">4분 20초</strong></p>
+      <p class="motion-comparison"><span class="motion-before">20~25만원</span> <span class="motion-arrow">→</span> <strong class="motion-after">827원</strong></p>
+    </div>
   </div>
 </section>
