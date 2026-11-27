@@ -1,0 +1,129 @@
+<section class="slide s20-pixel-pipeline" aria-labelledby="s20-pipeline-title">
+  <style>
+    /* === FIXED 1920 × 1080 STAGE === */
+    .stage:has(> .s20-pixel-pipeline) {
+      position: fixed;
+      inset: 0;
+      overflow: hidden;
+      background: var(--brown);
+    }
+    .stage > .s20-pixel-pipeline {
+      --stage-scale: min(tan(atan2(100vw, 1920px)), tan(atan2(100dvh, 1080px)));
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      display: block;
+      width: 1920px;
+      height: 1080px;
+      min-block-size: 0;
+      overflow: hidden;
+      padding: 72px 100px 0;
+      transform: translate(-50%, -50%) scale(var(--stage-scale));
+      background: var(--brown);
+      color: var(--text-light);
+      word-break: keep-all;
+      -webkit-text-size-adjust: 100%;
+      text-size-adjust: 100%;
+    }
+
+    /* === BILINGUAL PROCESS ROWS === */
+    .s20-pixel-pipeline h2 {
+      font: 700 68px/1.2 var(--font-family);
+      letter-spacing: -.045em;
+    }
+    .s20-pixel-pipeline .pipeline-steps {
+      margin: 36px 0 0;
+      padding: 0;
+      list-style: none;
+      border-top: 3px solid #B99F85;
+    }
+    .s20-pixel-pipeline .pipeline-step {
+      display: grid;
+      grid-template-columns: 88px 545px minmax(0, 1fr);
+      gap: 22px;
+      align-items: center;
+      min-height: 157px;
+      padding: 18px 0;
+      border-bottom: 2px solid rgb(185 159 133 / .75);
+    }
+    .s20-pixel-pipeline .step-number {
+      justify-self: start;
+      padding: 6px 10px;
+      background: #F2E4C9;
+      color: #5A4636;
+      font: 700 34px/1 var(--font-family);
+      font-variant-numeric: tabular-nums;
+      letter-spacing: -.025em;
+    }
+    .s20-pixel-pipeline h3 {
+      margin: 0;
+      font: 700 44px/1.18 var(--font-family);
+      letter-spacing: -.035em;
+    }
+    .s20-pixel-pipeline .step-english {
+      display: block;
+      margin-top: 6px;
+      color: #D5BEA6;
+      font: 500 29px/1.25 var(--font-family);
+    }
+    .s20-pixel-pipeline .step-detail {
+      color: var(--text-light);
+      font: 500 37px/1.37 var(--font-family);
+      letter-spacing: -.026em;
+    }
+    .s20-pixel-pipeline .highlight { font-weight: 700; white-space: nowrap; }
+
+    /* === SINGLE ENTRANCE; ALL FIVE STEPS STAY VISIBLE === */
+    @media screen and (prefers-reduced-motion: no-preference) {
+      .s20-pixel-pipeline .pipeline-steps { animation: s20-pipeline-enter 320ms ease-out 120ms both; }
+      @keyframes s20-pipeline-enter {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: none; }
+      }
+    }
+  </style>
+
+  <h2 id="s20-pipeline-title">반려동물 픽셀 에셋 생성 파이프라인</h2>
+  <ol class="pipeline-steps" role="list">
+    <li class="pipeline-step">
+      <span class="step-number" aria-hidden="true">01</span>
+      <div>
+        <h3>비주얼 프롬프팅</h3>
+        <p class="step-english" lang="en">Visual Prompting</p>
+      </div>
+      <p class="step-detail">반려동물 참조 이미지와 스타일, 격자, 자세 정보로 시각적 제약 조건 구성</p>
+    </li>
+    <li class="pipeline-step">
+      <span class="step-number" aria-hidden="true">02</span>
+      <div>
+        <h3>제약 조건 기반 이미지 생성</h3>
+        <p class="step-english" lang="en">Constraint-guided Generation</p>
+      </div>
+      <p class="step-detail">외형적 특징과 서비스 디자인 스타일을 반영한 자세별 캐릭터 생성</p>
+    </li>
+    <li class="pipeline-step">
+      <span class="step-number" aria-hidden="true">03</span>
+      <div>
+        <h3>알고리즘 기반 후처리</h3>
+        <p class="step-english" lang="en">Algorithmic Post-processing</p>
+      </div>
+      <p class="step-detail">격자 투영, 색상 추출, 외곽선 보정을 통해 32×32 픽셀 에셋으로 정규화</p>
+    </li>
+    <li class="pipeline-step">
+      <span class="step-number" aria-hidden="true">04</span>
+      <div>
+        <h3>다단계 자동 품질 검증</h3>
+        <p class="step-english" lang="en">Multi-stage Quality Validation</p>
+      </div>
+      <p class="step-detail">판정 모델, 비전 모델을 활용해 정합성, 자세, 대칭성, 캐릭터 일관성 검증</p>
+    </li>
+    <li class="pipeline-step">
+      <span class="step-number" aria-hidden="true">05</span>
+      <div>
+        <h3>피드백 기반 재생성</h3>
+        <p class="step-english" lang="en">Closed-loop Regeneration</p>
+      </div>
+      <p class="step-detail">통과시 최종 에셋 및 애니메이션 생성의 기준으로 활용, 실패시 재생성</p>
+    </li>
+  </ol>
+</section>
