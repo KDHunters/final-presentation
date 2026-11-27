@@ -63,6 +63,16 @@
     return show(target);
   }
 
+  function appendFolio(section, index) {
+    const footer = document.createElement('footer');
+    const format = (number) => String(number).padStart(2, '0');
+    footer.className = 'slide-folio';
+    // The existing live region already announces the slide position.
+    footer.setAttribute('aria-hidden', 'true');
+    footer.textContent = `${format(index + 1)} / ${format(order.length)}`;
+    section.append(footer);
+  }
+
   async function show(index) {
     if (index < 0 || index >= order.length || index === current) return;
     const from = current;
@@ -87,6 +97,8 @@
         const resume = from > index && section.dataset.stepEntry !== 'reset';
         section.dataset.step = resume ? section.dataset.steps : '0';
       }
+      // Slide 1 counts toward the total but has no visible folio.
+      if (index > 0) appendFolio(section, index);
       stage.replaceChildren(section);
       disposeSlide = interview?.mountInterviewWave(section, root) ?? null;
       stage.setAttribute('aria-busy', 'false');

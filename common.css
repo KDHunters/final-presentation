@@ -68,6 +68,46 @@ html { overscroll-behavior-x: none; }
   overflow-wrap: anywhere;
 }
 
+/* Position the folio on each slide's existing canvas, not in its content grid. */
+:where(.slide:has(> .slide-folio)) { position: relative; }
+
+.slide > .slide-folio {
+  --folio-ink: var(--brown);
+  position: absolute;
+  inset-inline: 6%;
+  inset-block-end: .8%;
+  z-index: 3;
+  border-block-start: 1px solid color-mix(in srgb, var(--folio-ink) 25%, transparent);
+  padding-block-start: .45%;
+  color: var(--folio-ink);
+  font-size: clamp(8px, min(1.1vw, 1.96dvh), 21px);
+  font-variant-numeric: tabular-nums;
+  line-height: 1.15;
+  text-align: right;
+  pointer-events: none;
+}
+
+.slide:is(.bg-brown, .s04-limitations, .s05-limitations, .s14-blank-brown) > .slide-folio {
+  --folio-ink: var(--text-light);
+}
+
+/* Slide 5 fills the viewport; align its folio with the centered 16:9 canvas. */
+.s05-limitations > .slide-folio {
+  --folio-width: min(100vw, calc(100dvh * 16 / 9));
+  inset-inline: calc((100% - var(--folio-width)) / 2 + .06 * var(--folio-width));
+  inset-block-end: calc((100dvh - var(--folio-width) * 9 / 16) / 2 + .0045 * var(--folio-width));
+  padding-block-start: calc(.0045 * var(--folio-width));
+}
+
+/* These slides transform a 1920px canvas; preserve an 8px on-screen minimum. */
+@supports (transform: scale(tan(atan2(1px, 1px)))) {
+  .slide:is(.s04-limitations, .s14-blank-brown) > .slide-folio {
+    --folio-scale: min(tan(atan2(100vw, 1920px)), tan(atan2(100dvh, 1080px)));
+    font-size: max(21px, calc(8px / var(--folio-scale)));
+    border-block-start-width: calc(1px / var(--folio-scale));
+  }
+}
+
 .slide h1, .slide h2, .slide p { margin: 0; }
 .slide h1 { font-size: clamp(2rem, 6vw, 5.25rem); line-height: 1.12; letter-spacing: -.045em; }
 .slide .eyebrow { color: var(--accent); font-size: clamp(.875rem, 1.5vw, 1.05rem); font-weight: 780; letter-spacing: .08em; }
