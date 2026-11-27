@@ -1,0 +1,57 @@
+<section class="slide s26-scale-voices" aria-labelledby="s26sv-title">
+  <style>
+    .stage:has(> .s26-scale-voices) { position: fixed; inset: 0; overflow: hidden; background: #FAF7E9; }
+    .stage > .s26-scale-voices {
+      --stage-scale: min(tan(atan2(100vw, 1920px)), tan(atan2(100dvh, 1080px)));
+      position: absolute; top: 50%; left: 50%;
+      display: flex; flex-direction: column; justify-content: center; gap: 0;
+      width: 1920px; height: 1080px; min-block-size: 0;
+      padding: 0 100px; overflow: hidden;
+      transform: translate(-50%, -50%) scale(var(--stage-scale));
+      background: #FAF7E9; color: #392A20; word-break: keep-all;
+    }
+    .s26-scale-voices p, .s26-scale-voices h2, .s26-scale-voices h3 { margin: 0; }
+    .s26-scale-voices .eyebrow { color: #846D5C; font: 500 34px/1.2 var(--font-family); letter-spacing: -.02em; }
+    .s26-scale-voices h2 { margin-top: 10px; font: 700 68px/1.2 var(--font-family); letter-spacing: -.045em; }
+    .s26-scale-voices .lead { margin-top: 14px; color: #5A4636; font: 500 40px/1.35 var(--font-family); letter-spacing: -.03em; }
+    @media screen and (prefers-reduced-motion: no-preference) {
+      .s26-scale-voices .anim { animation: s26-scale-voices-enter 320ms ease-out 120ms both; }
+      @keyframes s26-scale-voices-enter { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+    }
+    .s26-scale-voices .cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; margin-top: 36px; }
+    .s26-scale-voices .card { display: grid; grid-template-rows: auto auto; align-content: start; background: #fff; border: 3px solid #B99F85; border-radius: 0; padding: 26px 28px 26px; min-height: 0; }
+    .s26-scale-voices .label { color: #392A20; font: 700 40px/1.25 var(--font-family); letter-spacing: -.03em; white-space: nowrap; }
+    .s26-scale-voices .big { margin-top: 14px; color: #392A20; font: 500 84px/1.05 var(--font-family); letter-spacing: -.05em; white-space: nowrap; }
+    .s26-scale-voices .big small { font: 500 40px/1 var(--font-family); letter-spacing: -.03em; }
+    .s26-scale-voices .sub { margin-top: 48px; color: #392A20; font: 700 44px/1.2 var(--font-family); letter-spacing: -.04em; }
+    .s26-scale-voices .quotes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; margin-top: 20px; }
+    .s26-scale-voices .quote { display: grid; grid-template-rows: 1fr; min-height: 0; margin: 0; padding: 32px 36px; background: #fff; border: 3px solid #B99F85; border-radius: 0; }
+    .s26-scale-voices .text { align-self: center; font: 500 34px/1.45 var(--font-family); letter-spacing: -.03em; }
+  </style>
+  <p class="eyebrow">비전 · 향후 계획</p>
+  <h2 id="s26sv-title">ADHD에서 시작해, 모든 신경다양인에게</h2>
+  <p class="lead">신경다양인(neurodivergent) 모두에게 도움이 되는 앱을 만듭니다.</p>
+  <div class="cards anim">
+    <article class="card">
+      <p class="label">전 세계 성인 ADHD</p>
+      <p class="big">3.7억<small> 명</small></p>
+    </article>
+    <article class="card">
+      <p class="label">자폐 스펙트럼 (전 세계)</p>
+      <p class="big">127<small>명 중 1명</small></p>
+    </article>
+    <article class="card">
+      <p class="label">국내 20대 ADHD 진료 인원</p>
+      <p class="big">4.4<small>배</small></p>
+    </article>
+  </div>
+  <h3 class="sub anim">신경다양인 사용자의 후기</h3>
+  <div class="quotes anim">
+    <figure class="quote">
+      <p class="text">“저는 자폐가 있고, 약 때문에 주의력이 떨어져서 모든 걸 적어 둬야 해요. 정말 감사해요. 동물을 좋아하는데, 이 앱은 <span class="highlight">잊지 않도록 도와줄 뿐 아니라 기분 전환도 돼요</span>. …”</p>
+    </figure>
+    <figure class="quote">
+      <p class="text">“이 앱은 정말 도움이 돼요. 귀여우면서 상호작용도 할 수 있는 앱을 찾기가 쉽지 않았는데, 이 귀여운 앱을 발견하고 한번 써 보고 싶었어요. <span class="highlight">AUDHD가 있는 저에게 이 앱은 정말 많은 도움이 됐어요</span>. …”</p>
+    </figure>
+  </div>
+</section>

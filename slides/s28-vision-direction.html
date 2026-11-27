@@ -1,0 +1,44 @@
+<section class="slide s28-direction" aria-labelledby="s28-direction-title">
+  <style>
+    .stage:has(> .s28-direction) { position: fixed; inset: 0; overflow: hidden; background: #FAF7E9; }
+    .stage > .s28-direction {
+      --stage-scale: min(tan(atan2(100vw, 1920px)), tan(atan2(100dvh, 1080px)));
+      position: absolute; top: 50%; left: 50%;
+      display: flex; flex-direction: column; justify-content: center; width: 1920px; height: 1080px; min-block-size: 0;
+      padding: 0 100px; overflow: hidden;
+      transform: translate(-50%, -50%) scale(var(--stage-scale));
+      background: #FAF7E9; color: #392A20; word-break: keep-all;
+    }
+    .s28-direction p, .s28-direction h2, .s28-direction h3 { margin: 0; }
+    .s28-direction .eyebrow { color: #846D5C; font: 500 34px/1.2 var(--font-family); letter-spacing: -.02em; }
+    .s28-direction h2 { margin-top: 10px; font: 700 68px/1.2 var(--font-family); letter-spacing: -.045em; }
+    @media screen and (prefers-reduced-motion: no-preference) {
+      .s28-direction .anim { animation: s28-direction-enter 320ms ease-out 120ms both; }
+      @keyframes s28-direction-enter { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+    }
+    .s28-direction .cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; margin-top: 36px; }
+    .s28-direction .card { display: block; background: #fff; border: 3px solid #B99F85; border-radius: 0; padding: 44px 36px 48px; min-height: 0; }
+    .s28-direction .num { color: #B99F85; font: 500 34px/1 var(--font-family); letter-spacing: -.02em; }
+    .s28-direction .label { margin-top: 28px; color: #392A20; font: 700 46px/1.25 var(--font-family); letter-spacing: -.03em; white-space: nowrap; }
+    .s28-direction .desc { margin-top: 24px; color: #5A4636; font: 500 36px/1.5 var(--font-family); letter-spacing: -.03em; }
+  </style>
+  <p class="eyebrow">비전 · 향후 계획</p>
+  <h2 id="s28-direction-title">스티키펫이 가는 방향</h2>
+  <div class="cards anim">
+    <article class="card">
+      <p class="num">01</p>
+      <p class="label">누구나 쉽게</p>
+      <p class="desc">개발자가 아니어도, 설치만으로<br>쓸 수 있는 경량 에이전트</p>
+    </article>
+    <article class="card">
+      <p class="num">02</p>
+      <p class="label">먼저 다가가는</p>
+      <p class="desc">입력하고 기억하지 않아도 알아서</p>
+    </article>
+    <article class="card">
+      <p class="num">03</p>
+      <p class="label">바디더블링</p>
+      <p class="desc">곁에서 해낼 수 있도록</p>
+    </article>
+  </div>
+</section>
