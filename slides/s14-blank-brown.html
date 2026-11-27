@@ -1,0 +1,173 @@
+<section class="slide s14-blank-brown" aria-labelledby="s14-production-title">
+<style>
+/* === FIXED 1920 × 1080 STAGE === */
+.stage:has(> .s14-blank-brown) {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background: #392A20;
+}
+.stage > .s14-blank-brown {
+  display: block;
+  width: min(100vw, calc(100dvh * 16 / 9));
+  aspect-ratio: 16 / 9;
+  min-block-size: 0;
+  padding: 0;
+  align-content: start;
+  overflow: hidden;
+  container-type: inline-size;
+  background: #392A20;
+  color: var(--text-light);
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+@supports (transform: scale(tan(atan2(1px, 1px)))) {
+  .stage > .s14-blank-brown {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 1920px;
+    height: 1080px;
+    transform: translate(-50%, -50%)
+      scale(min(tan(atan2(100vw, 1920px)), tan(atan2(100dvh, 1080px))));
+  }
+}
+
+/* === EDITORIAL GRID & TYPOGRAPHY === */
+.s14-blank-brown .production-layout { padding: 8cqw 7cqw 0; }
+.s14-blank-brown h2 {
+  font: 700 3.2cqw/1.12 var(--font-family);
+  letter-spacing: -.045em;
+}
+/* === EQUAL METRIC CARDS === */
+.s14-blank-brown .production-data {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2.4cqw;
+  margin-top: 4.2cqw;
+}
+.s14-blank-brown .production-item {
+  display: grid;
+  align-content: center;
+  min-width: 0;
+  min-height: 27cqw;
+  padding: 3.2cqw;
+  border: .105cqw solid #9A7B5F;
+  border-radius: 1.2cqw;
+  background: #fff;
+  color: var(--brown);
+  text-align: center;
+}
+.s14-blank-brown h3 {
+  margin: 0;
+  font: 700 2.9cqw/1.16 var(--font-family);
+  letter-spacing: -.035em;
+}
+.s14-blank-brown .production-amount {
+  margin-top: .85cqw;
+  color: var(--highlight-ink);
+  font: 700 9.2cqw/1 var(--font-family);
+  font-variant-numeric: lining-nums tabular-nums;
+  letter-spacing: -.052em;
+  white-space: nowrap;
+}
+.s14-blank-brown .production-item--fee .production-amount { font-size: 8.3cqw; line-height: calc(9.2 / 8.3); }
+/* The deck's --red is scoped to s03; reuse its value when not inherited. */
+.s14-blank-brown .production-digits { color: var(--red, #BA302F); }
+.s14-blank-brown .production-unit { margin-left: .2cqw; font-size: 3.3cqw; letter-spacing: -.035em; }
+.s14-blank-brown .production-range { font-size: 4.2cqw; margin-inline: .43cqw .58cqw; }
+.s14-blank-brown .production-scope {
+  margin-top: 1.25cqw;
+  color: #725D4E;
+  font: 500 1.85cqw/1.3 var(--font-family);
+  letter-spacing: -.025em;
+}
+
+/* === DIGIT COUNT-UP === */
+@property --s14-count-value {
+  syntax: '<integer>';
+  inherits: true;
+  initial-value: 0;
+}
+.s14-blank-brown .production-counter { display: none; }
+@media screen and (prefers-reduced-motion: no-preference) {
+  @supports (counter-reset: s14-count round(down, .5, 1)) {
+    /* Keep the final text in flow and in the accessibility tree. */
+    .s14-blank-brown .production-digits { display: inline-grid; }
+    .s14-blank-brown .production-final,
+    .s14-blank-brown .production-counter { grid-area: 1 / 1; }
+    .s14-blank-brown .production-final { color: transparent; }
+    .s14-blank-brown .production-counter {
+      display: block;
+      /* A freshly mounted slide restarts these tracks; unmounting cancels them. */
+      animation: var(--s14-count-track) 1s step-end both;
+    }
+    .s14-blank-brown .production-counter::before {
+      counter-reset: s14-count var(--s14-count-value);
+      content: counter(s14-count);
+    }
+    /* Hold each sample. Slight timing offsets soften the shared pulse; the
+       upper price bound always moves before its matching lower-bound sample. */
+    @keyframes s14-count-hours {
+      from  { --s14-count-value: 0; }
+      12.8% { --s14-count-value: 4; }
+      25.8% { --s14-count-value: 10; }
+      37.6% { --s14-count-value: 18; }
+      47.1% { --s14-count-value: 27; }
+      56.6% { --s14-count-value: 35; }
+      66.8% { --s14-count-value: 42; }
+      79.4% { --s14-count-value: 46; }
+      to    { --s14-count-value: 50; }
+    }
+    @keyframes s14-count-price-low {
+      from  { --s14-count-value: 0; }
+      13.6% { --s14-count-value: 2; }
+      27%   { --s14-count-value: 4; }
+      38.5% { --s14-count-value: 7; }
+      48.4% { --s14-count-value: 10; }
+      57.6% { --s14-count-value: 13; }
+      67.9% { --s14-count-value: 16; }
+      80.4% { --s14-count-value: 18; }
+      96.8%, to { --s14-count-value: 20; }
+    }
+    @keyframes s14-count-price-high {
+      from  { --s14-count-value: 0; }
+      12%   { --s14-count-value: 3; }
+      25.2% { --s14-count-value: 5; }
+      36.6% { --s14-count-value: 8; }
+      46.6% { --s14-count-value: 12; }
+      55.9% { --s14-count-value: 16; }
+      66.1% { --s14-count-value: 19; }
+      78.4% { --s14-count-value: 22; }
+      99%, to { --s14-count-value: 25; }
+    }
+  }
+}
+
+/* === ENTRY MOTION === */
+@media screen and (prefers-reduced-motion: no-preference) {
+  .s14-blank-brown .production-data { animation: s14-production-enter 320ms ease-out both; }
+  @keyframes s14-production-enter {
+    from { opacity: 0; transform: translateY(.5cqw); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+}
+</style>
+<div class="production-layout">
+  <h2 id="s14-production-title">에셋 자동화 기술 개발의 필요성</h2>
+  <div class="production-data">
+    <section class="production-item" aria-labelledby="s14-production-time">
+      <h3 id="s14-production-time">수작업 시간</h3>
+      <p class="production-amount"><span class="production-unit">약 </span><span class="production-digits" style="--s14-count-track: s14-count-hours"><span class="production-final">50</span><span class="production-counter" aria-hidden="true"></span></span><span class="production-unit">시간</span></p>
+      <p class="production-scope">작업자 1명이 6일 이상 전담해야 하는 작업량</p>
+    </section>
+    <section class="production-item production-item--fee" aria-labelledby="s14-production-fee">
+      <h3 id="s14-production-fee">외주 제작비</h3>
+      <p class="production-amount"><span class="production-digits" style="--s14-count-track: s14-count-price-low"><span class="production-final">20</span><span class="production-counter" aria-hidden="true"></span></span><span class="production-unit">만</span><span class="production-range">~</span><span class="production-digits" style="--s14-count-track: s14-count-price-high"><span class="production-final">25</span><span class="production-counter" aria-hidden="true"></span></span><span class="production-unit">만 원</span></p>
+      <p class="production-scope">국내 작가 13곳 비교, 중앙값</p>
+    </section>
+  </div>
+</div>
+</section>
