@@ -1,0 +1,41 @@
+<section class="slide s17-pricing-references" aria-label="유사 서비스 단가 및 매출">
+  <style>
+    .stage:has(> .s17-pricing-references) { position: fixed; inset: 0; overflow: hidden; background: #FAF7E9; }
+    .stage > .s17-pricing-references {
+      --stage-scale: min(tan(atan2(100vw, 1920px)), tan(atan2(100dvh, 1080px)));
+      position: absolute; top: 50%; left: 50%;
+      display: block; width: 1920px; height: 1080px; min-block-size: 0;
+      padding: 140px 100px 0; align-content: start; overflow: hidden;
+      transform: translate(-50%, -50%) scale(var(--stage-scale));
+      background: #FAF7E9; color: #392A20; word-break: keep-all;
+    }
+    .s17-pricing-references h2 { margin: 0; font: 700 68px/1.2 var(--font-family); letter-spacing: -.045em; }
+    .s17-pricing-references .tbl { margin-top: 22px; }
+    .s17-pricing-references .row { display: grid; grid-template-columns: 440px 350px 360px minmax(0, 1fr); column-gap: 24px; align-items: center; min-height: 100px; border-bottom: 2px solid rgb(185 159 133 / .5); font: 500 42px/1.2 var(--font-family); letter-spacing: -.03em; color: #3D3326; white-space: nowrap; }
+    .s17-pricing-references .row--head { min-height: 52px; color: #846D5C; font-size: 29px; border-bottom: 3px solid #B99F85; }
+    .s17-pricing-references .svc b { display: block; font: 700 44px/1.15 var(--font-family); letter-spacing: -.03em; }
+    .s17-pricing-references .svc span { display: block; margin-top: 2px; color: #BDB09B; font-size: 26px; }
+    .s17-pricing-references .price { font: 700 42px/1.15 var(--font-family); letter-spacing: -.04em; }
+    .s17-pricing-references .basis { font-size: 42px; color: #5A4636; }
+    .s17-pricing-references .row--high { opacity: .5; }
+    .s17-pricing-references .row--high .svc b::after { content: "고가 사례"; margin-left: 10px; padding: 2px 10px; border: 2px solid #846D5C; font: 700 24px/1.2 var(--font-family); vertical-align: 7px; letter-spacing: -.02em; }
+    .s17-pricing-references .price-range { margin: 22px 0 0; text-align: center; white-space: nowrap; font: 700 50px/1.3 var(--font-family); letter-spacing: -.035em; color: #3D3326; }
+    .s17-pricing-references .price-range mark { background: #FFE98A; color: #3D3326; padding: 0 4px; margin: 0; border-radius: 0; box-shadow: none; font: inherit; }
+    @media screen and (prefers-reduced-motion: no-preference) {
+      .s17-pricing-references .anim { animation: s17-enter 320ms ease-out 120ms both; }
+      .stage[aria-busy="true"] > .s17-pricing-references .anim { animation-play-state: paused; }
+      @keyframes s17-enter { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+    }
+  </style>
+  <h2>유사 서비스 단가 및 매출</h2>
+  <div class="tbl anim" role="table" aria-label="유사 서비스 단가">
+    <div class="row row--head" role="row"><span>서비스</span><span>판매 에셋</span><span>단가</span><span>매출</span></div>
+    <div class="row" role="row"><div class="svc"><b>Bongo Cat</b><span>PC 데스크톱 펫</span></div><span>스킨·모자</span><span class="price">약 3,340원</span><span class="basis">월 순수입 268만~542만 원</span></div>
+    <div class="row" role="row"><div class="svc"><b>Rusty's Retirement</b><span>PC 데스크톱 펫</span></div><span>황금 스킨 DLC</span><span class="price">5,340원</span><span class="basis">3.6만 건, 약 1억 4,850만 원</span></div>
+    <div class="row" role="row"><div class="svc"><b>Tiny Pasture</b><span>PC 데스크톱 펫</span></div><span>집 스킨, 수족관 DLC</span><span class="price">2,660원, 4,000원</span><span class="basis">본편 누적 약 25억 원</span></div>
+    <div class="row" role="row"><div class="svc"><b>Pet Pal Paw</b><span>iOS 위젯 펫</span></div><span>알·코인</span><span class="price">1,320원~6,680원</span><span class="basis">미공개</span></div>
+    <div class="row" role="row"><div class="svc"><b>Handy</b><span>iOS 위젯·테마</span></div><span>아이콘·테마 단품</span><span class="price">1,100원~6,600원</span><span class="basis">iOS 월 약 670만 원</span></div>
+    <div class="row row--high" role="row"><div class="svc"><b>Anime Shimeji</b><span>Android 화면 펫</span></div><span>인앱 상품</span><span class="price">6,680원~66,880원</span><span class="basis">월 670만 원 미만</span></div>
+  </div>
+  <div class="price-range anim">⇒ <mark>약 1,100~6,680원대</mark></div>
+</section>
