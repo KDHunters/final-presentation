@@ -75,6 +75,28 @@ const folio = (section, text) => {
   f.className = 'slide-folio'; f.setAttribute('aria-hidden', 'true'); f.textContent = text;
   section.append(f);
 };
+// Prepare only the small gallery after the preceding video slide has started.
+const videoGrid = 'slides/s16-blank-brown.html';
+const gridWarm = new Map();
+let gridWarming = false;
+const warmGrid = async (id) => {
+  if (id !== req || gridWarming || navigator.connection?.saveData) return;
+  const grid = cache.get(videoGrid)?.section;
+  if (!grid) return;
+  gridWarming = true;
+  const paths = [...grid.querySelectorAll('video[src]')].map(v => v.getAttribute('src'));
+  await Promise.all(paths.filter(path => !gridWarm.has(path)).map(async path => {
+    try {
+      const response = await fetch(new URL(path, root), {priority: 'low'});
+      const size = Number(response.headers.get('content-length'));
+      // Six static MP4s, each below 96 KiB; never warm the larger recordings.
+      if (!response.ok || !size || size > 96 * 1024) { await response.body?.cancel(); return; }
+      const blob = await response.blob();
+      if (blob.size === size) gridWarm.set(path, URL.createObjectURL(blob));
+    } catch {} // Unavailable or incomplete warm-ups fall back to the original URL.
+  }));
+  gridWarming = false;
+};
 window.teamShow = async (path, step, opt = {}) => {
   await window.teamReady.catch(() => {});
   if (opt.silent) silence();
@@ -92,7 +114,18 @@ window.teamShow = async (path, step, opt = {}) => {
       const quiet = !(navigator.userActivation?.hasBeenActive ?? true);
       section.querySelectorAll('audio').forEach((a) => { a.muted = quiet; });
     }
+    if (path === videoGrid) {
+      section.querySelectorAll('video[src]').forEach(v => {
+        const src = gridWarm.get(v.getAttribute('src'));
+        if (src) v.src = src;
+      });
+    }
     stage.replaceChildren(section);
+    if (path === 'slides/s15-blank-black.html') {
+      setTimeout(() => {
+        if (id === req && [...section.querySelectorAll('video')].every(v => v.readyState >= 3)) void warmGrid(id);
+      }, 900);
+    }
     dispose = interview?.mountInterviewWave(section, root) ?? null;
   } else if (stage.firstElementChild) stage.firstElementChild.dataset.step = String(step);
 };
