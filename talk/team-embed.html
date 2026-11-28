@@ -122,9 +122,13 @@ window.teamShow = async (path, step, opt = {}) => {
     }
     stage.replaceChildren(section);
     if (path === 'slides/s15-blank-black.html') {
-      setTimeout(() => {
-        if (id === req && [...section.querySelectorAll('video')].every(v => v.readyState >= 3)) void warmGrid(id);
-      }, 900);
+      const previewVideos = [...section.querySelectorAll('video')];
+      const whenReady = (retries = 8) => {
+        if (id !== req) return;
+        if (previewVideos.every(v => v.readyState >= 3)) void warmGrid(id);
+        else if (retries > 0) setTimeout(() => whenReady(retries - 1), 250);
+      };
+      setTimeout(whenReady, 900);
     }
     dispose = interview?.mountInterviewWave(section, root) ?? null;
   } else if (stage.firstElementChild) stage.firstElementChild.dataset.step = String(step);
