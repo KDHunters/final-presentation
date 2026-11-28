@@ -77,6 +77,34 @@ const folio = (section, text) => {
 };
 // Prepare only the small gallery after the preceding video slide has started.
 const videoGrid = 'slides/s16-blank-brown.html';
+const videoPreview = 'slides/s15-blank-black.html';
+let previewWarm;
+const warmPreview = async (id, section) => {
+  const connection = navigator.connection;
+  if (id !== req || document.hidden || connection?.saveData ||
+      connection?.effectiveType !== '4g' || connection.downlink < 2 ||
+      [...section.querySelectorAll('img')].some(i => !i.complete)) return;
+  const videos = cache.get(videoPreview)?.section.querySelectorAll('video[src]');
+  if (videos?.length !== 4) return;
+  const paths = [...videos].map(v => v.getAttribute('src'));
+  const controller = new AbortController();
+  previewWarm = controller;
+  const prime = async path => {
+    try {
+      const r = await fetch(new URL(path, root), {
+        headers: { Range: 'bytes=0-98303' }, priority: 'low', signal: controller.signal,
+      });
+      // Never consume a full file if the server ignores Range.
+      if (r.status !== 206 || !r.headers.get('content-range')?.startsWith('bytes 0-98303/') ||
+          r.headers.get('content-length') !== '98304') { await r.body?.cancel(); return; }
+      await r.arrayBuffer();
+    } catch {} // Native playback does not depend on this opportunistic cache warm-up.
+  };
+  for (let i = 0; i < paths.length && id === req && !document.hidden; i += 2) {
+    await Promise.all(paths.slice(i, i + 2).map(prime));
+  }
+  if (previewWarm === controller) previewWarm = null;
+};
 const gridWarm = new Map();
 let gridWarming = false;
 const warmGrid = async (id) => {
@@ -102,6 +130,7 @@ window.teamShow = async (path, step, opt = {}) => {
   if (opt.silent) silence();
   if (path !== cur) {
     const id = ++req;
+    previewWarm?.abort();
     cur = path; dispose?.(); dispose = null;
     const section = (await load(path)).section.cloneNode(true);
     let interview = null;
@@ -121,7 +150,10 @@ window.teamShow = async (path, step, opt = {}) => {
       });
     }
     stage.replaceChildren(section);
-    if (path === 'slides/s15-blank-black.html') {
+    if (path === 'slides/s14-blank-brown.html' && window.requestIdleCallback) {
+      setTimeout(() => requestIdleCallback(() => void warmPreview(id, section)), 1000);
+    }
+    if (path === videoPreview) {
       const previewVideos = [...section.querySelectorAll('video')];
       const whenReady = (retries = 8) => {
         if (id !== req) return;
@@ -135,7 +167,7 @@ window.teamShow = async (path, step, opt = {}) => {
 };
 // 지금 떠 있는 장에서 열려 있는 단계 수. 4분할 장은 영상 4개가 끝나야 3이 된다(팀 조각이 스스로 정한다).
 window.teamLive = () => Number(stage.firstElementChild?.dataset.steps) || 0;
-window.teamHide = () => { if (cur === null) return; cur = null; req++; dispose?.(); dispose = null; stage.replaceChildren(); };
+window.teamHide = () => { if (cur === null) return; cur = null; req++; previewWarm?.abort(); dispose?.(); dispose = null; stage.replaceChildren(); };
 </script>
 </body>
 </html>
