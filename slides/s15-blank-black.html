@@ -1,5 +1,5 @@
 <section class="slide s15-quadrants" aria-label="1부터 4까지의 4분할 슬라이드" data-step="0" data-step-click data-step-entry="reset"
-  onchange="if (this.querySelectorAll(':scope > .quadrant[data-result]').length === 4) this.dataset.steps = '2'">
+  onchange="if (this.querySelectorAll(':scope > .quadrant[data-result]').length === 4) this.dataset.steps = '3'">
 <style>
 .stage:has(> .s15-quadrants) {
   position: fixed;
@@ -136,9 +136,9 @@
   max-inline-size: none;
 }
 .s15-quadrants [data-version]:not([data-version="0"]),
-.s15-quadrants:is([data-step="1"], [data-step="2"]) [data-version="0"] { display: none; }
-.s15-quadrants[data-step="1"] [data-version="1"],
-.s15-quadrants[data-step="2"] [data-version="2"] { display: block; }
+.s15-quadrants:is([data-step="2"], [data-step="3"]) [data-version="0"] { display: none; }
+.s15-quadrants[data-step="2"] [data-version="1"],
+.s15-quadrants[data-step="3"] [data-version="2"] { display: block; }
 .s15-quadrants [data-version="2"] { image-rendering: pixelated; }
 .s15-quadrants .q4-revised,
 .s15-quadrants:not([data-step="0"]) .q4-original { display: none; }
