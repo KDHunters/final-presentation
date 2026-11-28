@@ -24,5 +24,18 @@
   "slides/s26-vision-scale-voices.html",
   "slides/s28-vision-direction.html",
   "slides/s31-vision-pixel-engine.html",
-  "slides/s33-qna.html"
+  "slides/s33-qna.html",
+  "slides/apx-a00-divider.html",
+  "slides/apx-a02-demand-cost.html",
+  "slides/apx-a03-similar-pricing.html",
+  "slides/apx-a04-pricing-formula.html",
+  "slides/apx-a05-tech-metrics.html",
+  "slides/apx-a06-translation-vision.html",
+  "slides/apx-b01-system-architecture.html",
+  "slides/apx-b01a-technology-stack.html",
+  "slides/apx-b02-capture-to-todo.html",
+  "slides/apx-b03-pii-masking-detail.html",
+  "slides/apx-b04-pixel-pipeline.html",
+  "slides/apx-b04a-pixel-metrics.html",
+  "slides/apx-b05-translation-qa.html"
 ]
