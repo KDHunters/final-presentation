@@ -1,0 +1,71 @@
+<section class="slide apx-a02" aria-labelledby="apx-a02-title">
+<style>
+.stage:has(> .apx-a02) { position: fixed; inset: 0; overflow: hidden; background: var(--cream); }
+.stage > .apx-a02 {
+  --stage-scale: min(tan(atan2(100vw, 1920px)), tan(atan2(100dvh, 1080px)));
+  --body-height: 512px;
+  --line-height: 40px;
+  position: absolute; top: 50%; left: 50%; display: block;
+  width: 1920px; height: 1080px; min-block-size: 0; overflow: hidden; padding: 0;
+  transform: translate(-50%, -50%) scale(var(--stage-scale));
+  background: var(--cream); color: var(--brown); word-break: keep-all;
+}
+.apx-a02 .head { position: absolute; left: 90px; right: 90px; top: 44px; }
+.apx-a02 .meta { display: flex; justify-content: space-between; font: 700 26px/1 var(--font-family); letter-spacing: -.02em; }
+.apx-a02 .meta .no { color: #4F763E; }
+.apx-a02 .meta .rel { color: #725D4E; font-weight: 500; }
+.apx-a02 h2 { margin: 14px 0 0; font: 700 56px/1.2 var(--font-family); letter-spacing: -.045em; }
+.apx-a02 h3 { margin: 0 0 20px; font: 700 32px/40px var(--font-family); letter-spacing: -.035em; color: #725D4E; }
+.apx-a02 .col { position: absolute; top: 214px; }
+.apx-a02 .l { left: 90px; width: 820px; }
+.apx-a02 .r { left: 960px; right: 90px; }
+/* Shared body bounds: align the header/first label and the total/last basis line. */
+.apx-a02 table, .apx-a02 .items { height: var(--body-height); }
+.apx-a02 table { width: 100%; border-collapse: collapse; font: 500 32px/var(--line-height) var(--font-family); letter-spacing: -.03em; color: #54402F; }
+.apx-a02 tr:first-child { height: 56px; }
+.apx-a02 tr:not(:first-child) { height: calc((var(--body-height) - 56px) / 6); }
+.apx-a02 th { text-align: left; vertical-align: top; font-weight: 700; font-size: 30px; color: #725D4E; border-bottom: 3px solid #B99F85; padding: 0; }
+.apx-a02 td { padding: 0; border-bottom: 2px solid rgb(185 159 133 / .5); }
+.apx-a02 th.n, .apx-a02 td.n { text-align: right; }
+.apx-a02 td.n { font-feature-settings: "tnum"; }
+.apx-a02 tr.tot td { vertical-align: bottom; font-weight: 700; color: var(--brown); border-bottom: 0; }
+.apx-a02 .items { display: grid; align-content: space-between; margin: 0; }
+.apx-a02 .it { border-left: 4px solid #B99F85; padding-left: 20px; }
+.apx-a02 .it dt { font: 700 30px/var(--line-height) var(--font-family); color: #725D4E; letter-spacing: -.03em; }
+.apx-a02 .it dd { margin: 10px 0 0; font: 500 30px/var(--line-height) var(--font-family); color: #54402F; letter-spacing: -.025em; }
+.apx-a02 .source-line { display: block; white-space: nowrap; }
+</style>
+<div class="head">
+  <div class="meta"><span class="no">Appendix A-2</span></div>
+  <h2 id="apx-a02-title">수요와 제작비</h2>
+</div>
+<div class="col l">
+  <h3>요청 유형별 언급 비중 (총 257건)</h3>
+  <table>
+    <tr><th>유형</th><th class="n">언급 수</th><th class="n">백분율</th></tr>
+    <tr><td>동물·품종 추가</td><td class="n">112</td><td class="n">43.6%</td></tr>
+    <tr><td>상호작용·행동 추가</td><td class="n">78</td><td class="n">30.4%</td></tr>
+    <tr><td>장식·꾸미기</td><td class="n">25</td><td class="n">9.7%</td></tr>
+    <tr><td>색·외형 선택지</td><td class="n">23</td><td class="n">8.9%</td></tr>
+    <tr><td>소리 등 기타</td><td class="n">19</td><td class="n">7.4%</td></tr>
+    <tr class="tot"><td>합계</td><td class="n">257</td><td class="n">100.0%</td></tr>
+  </table>
+</div>
+<div class="col r">
+  <h3>제작비와 소요 시간 산출 기준</h3>
+  <dl class="items">
+    <div class="it">
+      <dt>외주 제작비</dt>
+      <dd><span class="source-line">크몽·아트머그·크레페 등 13곳 중 6곳 환산 (상업 이용 기준)</span>펫 1마리, 32×32·단방향 5동작 × 5프레임</dd>
+    </div>
+    <div class="it">
+      <dt>자동화 시간</dt>
+      <dd>57건 평균</dd>
+    </div>
+    <div class="it">
+      <dt>자동화 비용</dt>
+      <dd>57건 평균, 환율 약 1334원/$</dd>
+    </div>
+  </dl>
+</div>
+</section>

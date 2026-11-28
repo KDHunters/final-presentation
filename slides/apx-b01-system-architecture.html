@@ -1,0 +1,24 @@
+<section class="slide apx-b01" aria-labelledby="apx-b01-title">
+<style>
+.stage:has(> .apx-b01) { position: fixed; inset: 0; overflow: hidden; background: var(--cream); }
+.stage > .apx-b01 {
+  --stage-scale: min(tan(atan2(100vw, 1920px)), tan(atan2(100dvh, 1080px)));
+  position: absolute; top: 50%; left: 50%; display: block;
+  width: 1920px; height: 1080px; min-block-size: 0; overflow: hidden; padding: 0;
+  transform: translate(-50%, -50%) scale(var(--stage-scale));
+  background: var(--cream); color: var(--brown); font-family: var(--font-family); word-break: keep-all;
+}
+.apx-b01 .head { position: absolute; z-index: 1; left: 90px; top: 44px; }
+.apx-b01 .meta { color: var(--navy); font-size: 26px; font-weight: 700; line-height: 1; letter-spacing: -.02em; }
+.apx-b01 h2 { margin: 14px 0 0; font-size: 56px; font-weight: 700; line-height: 1.2; letter-spacing: -.045em; }
+.apx-b01 .report-diagram {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: contain;
+}
+</style>
+<div class="head">
+  <div class="meta">Appendix B-1</div>
+  <h2 id="apx-b01-title">시스템 구성</h2>
+</div>
+<img class="report-diagram" src="assets/apx-b01-report/system-architecture-themed.png" width="2048" height="1152" alt="최종보고서 시스템 구성도: 모바일 앱과 SQLite·PostHog, AI 서버, 음성 전사, 외부 AI 서비스 간 데이터 흐름">
+</section>

@@ -1,0 +1,57 @@
+<section class="slide apx-b04a" aria-labelledby="apx-b04a-title">
+<style>
+/* Fixed 16:9 canvas, matching the adjacent Appendix B slides. */
+.stage:has(> .apx-b04a) { position: fixed; inset: 0; overflow: hidden; background: var(--cream); }
+.stage > .apx-b04a {
+  --stage-scale: min(tan(atan2(100vw, 1920px)), tan(atan2(100dvh, 1080px)));
+  position: absolute; top: 50%; left: 50%; display: block;
+  width: 1920px; height: 1080px; min-block-size: 0; overflow: hidden; padding: 0;
+  transform: translate(-50%, -50%) scale(var(--stage-scale));
+  background: var(--cream); color: var(--brown); word-break: keep-all;
+}
+
+/* Appendix heading */
+.apx-b04a .head { position: absolute; inset: 44px 90px auto; }
+.apx-b04a .no { color: #4f763e; font: 700 26px/1.25 var(--font-family); letter-spacing: -.02em; }
+.apx-b04a h2 { margin: 14px 0 0; font: 700 64px/1.2 var(--font-family); letter-spacing: -.045em; }
+
+/* Three metrics share the same label, value, and context alignment. */
+.apx-b04a .metrics {
+  position: absolute; inset: 302px 90px auto;
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px;
+}
+.apx-b04a .metric {
+  display: grid; grid-template-rows: auto auto auto; align-content: center; row-gap: 32px;
+  min-height: 408px; padding: 40px 28px;
+  border: 2px solid #bfb19f; border-top: 5px solid #4f763e; border-radius: 14px; background: #fbf7ef;
+}
+.apx-b04a .metric h3 { margin: 0; font: 700 38px/1.25 var(--font-family); letter-spacing: -.04em; }
+.apx-b04a .metric .value {
+  margin: 0; font: 700 76px/1.12 var(--font-family); letter-spacing: -.05em;
+  font-variant-numeric: tabular-nums; white-space: nowrap;
+}
+.apx-b04a .metric .context { margin: 0; color: #54402f; font: 500 34px/1.35 var(--font-family); letter-spacing: -.035em; }
+</style>
+<header class="head">
+  <p class="no">Appendix B-4a</p>
+  <h2 id="apx-b04a-title">픽셀 에셋 품질과 원가</h2>
+</header>
+
+<div class="metrics">
+  <div class="metric">
+    <h3>한 칸 한 색으로 칠해진 비율</h3>
+    <p class="value">82% → 약 98%</p>
+    <p class="context">위아래 격자 칸 크기를 같게 맞춘 뒤</p>
+  </div>
+  <div class="metric">
+    <h3>3회 안에 자동 검사 통과</h3>
+    <p class="value">23/25, 92%</p>
+    <p class="context">시험 반려견 5마리, 25개 자세</p>
+  </div>
+  <div class="metric">
+    <h3>한 마리당 API 원가</h3>
+    <p class="value">평균 $0.62</p>
+    <p class="context">완료 57건 기준<br>최소 $0.46 · 최대 $0.91</p>
+  </div>
+</div>
+</section>

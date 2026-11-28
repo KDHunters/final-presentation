@@ -1,0 +1,79 @@
+<section class="slide apx-b05" aria-labelledby="apx-b05-title">
+<style>
+.stage:has(> .apx-b05) { position: fixed; inset: 0; overflow: hidden; background: var(--cream); }
+.stage > .apx-b05 {
+  --stage-scale: min(tan(atan2(100vw, 1920px)), tan(atan2(100dvh, 1080px)));
+  position: absolute; top: 50%; left: 50%; display: block;
+  width: 1920px; height: 1080px; min-block-size: 0; overflow: hidden; padding: 0;
+  transform: translate(-50%, -50%) scale(var(--stage-scale));
+  background: var(--cream); color: var(--brown); word-break: keep-all;
+}
+.apx-b05 .head { position: absolute; left: 90px; right: 90px; top: 44px; }
+.apx-b05 .meta { display: flex; justify-content: space-between; font: 700 26px/1 var(--font-family); letter-spacing: -.02em; }
+.apx-b05 .meta .no { color: #4F763E; }
+.apx-b05 .meta .rel { color: #725D4E; font-weight: 500; }
+.apx-b05 h2 { margin: 14px 0 0; font: 700 56px/1.2 var(--font-family); letter-spacing: -.045em; }
+.apx-b05 .sec { position: absolute; left: 90px; right: 90px; }
+.apx-b05 .sec h3 { margin: 0 0 12px; font: 700 28px/1.2 var(--font-family); letter-spacing: -.035em; color: #725D4E; }
+
+.apx-b05 .flow { top: 176px; display: grid; grid-template-columns: repeat(5, 1fr); column-gap: 40px; }
+.apx-b05 .st { position: relative; height: 280px; border-radius: 14px; border: 2px solid #BFB19F; background: #FBF7EF; padding: 16px 18px; display: flex; flex-direction: column; gap: 10px; }
+.apx-b05 .st.mid { border: 3px solid #4F763E; background: #F1F5EA; }
+.apx-b05 .st.end { background: #4F763E; border-color: #4F763E; color: #fff; }
+.apx-b05 .st .n { display: inline-grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; background: #4F763E; color: #fff; font: 700 25px/1 var(--font-family); }
+.apx-b05 .st.end .n { background: #fff; color: #4F763E; }
+.apx-b05 .st b { font: 700 31px/1.2 var(--font-family); letter-spacing: -.045em; }
+.apx-b05 .st p { margin: 0; font: 500 27px/1.4 var(--font-family); letter-spacing: -.03em; color: #54402F; }
+.apx-b05 .st.end p { color: #F2E4C9; }
+.apx-b05 .st .top { display: flex; align-items: center; gap: 12px; }
+.apx-b05 .arr { position: absolute; top: 50%; right: -40px; width: 40px; height: 26px; margin-top: -13px; display: flex; justify-content: center; align-items: center; }
+.apx-b05 .arr svg { width: 32px; height: 24px; display: block; }
+
+.apx-b05 .ver { top: 510px; }
+.apx-b05 .vg { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+.apx-b05 .v { border-top: 5px solid #B99F85; padding-top: 12px; }
+.apx-b05 .v.hl { border-top-color: #6DA351; }
+.apx-b05 .v b { display: block; font: 700 31px/1.3 var(--font-family); letter-spacing: -.035em; }
+.apx-b05 .v p { margin: 8px 0 0; font: 500 26px/1.4 var(--font-family); letter-spacing: -.025em; color: #54402F; }
+</style>
+<div class="head">
+  <div class="meta"><span class="no">Appendix B-5</span></div>
+  <h2 id="apx-b05-title">번역과 품질 검수</h2>
+</div>
+
+<div class="sec flow">
+  <div class="st">
+    <div class="top"><span class="n">1</span><b>문구 추출</b></div>
+    <p>사용자 표시 문구를 번역 목록으로 추출</p>
+    <div class="arr"><svg viewBox="0 0 40 26" aria-hidden="true"><path d="M0 8.5H23V0L40 13 23 26V17.5H0Z" fill="#392A20"/></svg></div>
+  </div>
+  <div class="st mid">
+    <div class="top"><span class="n">2</span><b>독립 번역</b></div>
+    <p>서로 다른 AI 모델이 상대 결과를 보지 않고 번역</p>
+    <div class="arr"><svg viewBox="0 0 40 26" aria-hidden="true"><path d="M0 8.5H23V0L40 13 23 26V17.5H0Z" fill="#392A20"/></svg></div>
+  </div>
+  <div class="st mid">
+    <div class="top"><span class="n">3</span><b>상호 토론</b></div>
+    <p>에이전트간 debate로 번역 검토 및 표현 선택</p>
+    <div class="arr"><svg viewBox="0 0 40 26" aria-hidden="true"><path d="M0 8.5H23V0L40 13 23 26V17.5H0Z" fill="#392A20"/></svg></div>
+  </div>
+  <div class="st">
+    <div class="top"><span class="n">4</span><b>에이전틱 브라우저 QA</b></div>
+    <p>빌드, 기기, 언어별 QA 및 촬영</p>
+    <div class="arr"><svg viewBox="0 0 40 26" aria-hidden="true"><path d="M0 8.5H23V0L40 13 23 26V17.5H0Z" fill="#392A20"/></svg></div>
+  </div>
+  <div class="st end">
+    <div class="top"><span class="n">5</span><b>비교 검수</b></div>
+    <p>비교 화면으로 최종 확인</p>
+  </div>
+</div>
+
+<div class="sec ver">
+  <h3>화면 검증 환경</h3>
+  <div class="vg">
+    <div class="v hl"><b>웹 소스 + 에이전틱 브라우저</b><p>Capacitor 웹 화면을 빌드 없이 실행.<br>접근성 트리와 스크린샷으로 문구·레이아웃 확인</p></div>
+    <div class="v"><b>ADB: 에뮬레이터·실기기</b><p>웹에서 보기 어려운 오버레이·권한·키보드 확인</p></div>
+    <div class="v"><b>메모 해시 대조</b><p>앱 재시작·화면 이동 전후 비교로 저장 데이터 무결성 확인</p></div>
+  </div>
+</div>
+</section>

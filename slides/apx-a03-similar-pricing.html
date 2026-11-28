@@ -1,0 +1,47 @@
+<section class="slide apx-a03" aria-labelledby="apx-a03-title">
+<style>
+.stage:has(> .apx-a03) { position: fixed; inset: 0; overflow: hidden; background: var(--cream); }
+.stage > .apx-a03 {
+  --stage-scale: min(tan(atan2(100vw, 1920px)), tan(atan2(100dvh, 1080px)));
+  position: absolute; top: 50%; left: 50%; display: block;
+  width: 1920px; height: 1080px; min-block-size: 0; overflow: hidden; padding: 0;
+  transform: translate(-50%, -50%) scale(var(--stage-scale));
+  background: var(--cream); color: var(--brown); word-break: keep-all;
+}
+.apx-a03 .head { position: absolute; left: 90px; right: 90px; top: 44px; }
+.apx-a03 .meta { display: flex; justify-content: space-between; font: 700 26px/1 var(--font-family); letter-spacing: -.02em; }
+.apx-a03 .meta .no { color: #4F763E; }
+.apx-a03 .meta .rel { color: #725D4E; font-weight: 500; }
+.apx-a03 h2 { margin: 14px 0 0; font: 700 56px/1.2 var(--font-family); letter-spacing: -.045em; }
+.apx-a03 h3 { margin: 0 0 12px; font: 700 28px/1.2 var(--font-family); letter-spacing: -.035em; color: #725D4E; }
+.apx-a03 .note { position: absolute; left: 90px; right: 90px; bottom: 36px; margin: 0; font: 500 22px/1.4 var(--font-family); letter-spacing: -.02em; color: #725D4E; }
+.apx-a03 .cols { position: absolute; left: 90px; right: 90px; top: 168px; }
+.apx-a03 table { width: 100%; border-collapse: collapse; font: 500 28px/1.25 var(--font-family); letter-spacing: -.03em; color: #54402F; table-layout: fixed; }
+.apx-a03 col.c1 { width: 24%; } .apx-a03 col.c2 { width: 34%; } .apx-a03 col.c3 { width: 42%; }
+.apx-a03 th { text-align: left; font: 700 24px/1 var(--font-family); color: #846D5C; border-bottom: 3px solid #B99F85; padding: 0 0 8px; }
+.apx-a03 td { padding: 12px 14px 12px 0; border-bottom: 2px solid rgb(185 159 133 / .5); vertical-align: top; }
+.apx-a03 td.s { font-weight: 700; color: var(--brown); white-space: nowrap; }
+.apx-a03 td small { display: block; margin-top: 4px; font: 500 23px/1.3 var(--font-family); color: #725D4E; }
+.apx-a03 .tag { display: inline-block; padding: 0 8px; margin-right: 6px; border: 2px solid #846D5C; font: 700 22px/1.35 var(--font-family); color: #725D4E; }
+.apx-a03 .tag.est { background: #725D4E; color: #FAF7E9; border-color: #725D4E; }
+.apx-a03 .fx { margin: 26px 0 0; font: 700 32px/1.4 var(--font-family); letter-spacing: -.03em; }
+.apx-a03 .fx span { font-weight: 500; color: #54402F; }
+.apx-a03 .note { font-size: 24px; line-height: 1.45; }
+</style>
+<div class="head">
+  <div class="meta"><span class="no">Appendix A-3</span></div>
+  <h2 id="apx-a03-title">유사 서비스 가격과 매출</h2>
+</div>
+<div class="cols">
+  <table>
+    <colgroup><col class="c1"><col class="c2"><col class="c3"></colgroup>
+    <tr><th>서비스 · 항목</th><th>가격 (1,337.9원/$)</th><th>매출</th></tr>
+    <tr><td class="s">Bongo Cat<small>스킨·모자</small></td><td>$2.50 → 3,340원<small><span class="tag">스토어</span>Steam</small></td><td>월 순수입 268만~542만 원<small><span class="tag">개발자 공개</span>CEO 발언(Eurogamer), 2025년 3~4월</small></td></tr>
+    <tr><td class="s">Rusty's Retirement<small>황금 스킨 DLC</small></td><td>$3.99 → 5,340원<small><span class="tag">스토어</span>Steam</small></td><td>3.6만 건, 약 1억 4,850만 원<small><span class="tag">개발자 공개</span>판매 원자료, 2024년 8월 기준</small></td></tr>
+    <tr><td class="s">Tiny Pasture<small>수족관 DLC · 집 스킨</small></td><td>$2.99 → 4,000원 · $1.99 → 2,660원<small><span class="tag">스토어</span>Steam</small></td><td>본편 누적 약 25억 원<small><span class="tag est">외부 추정</span>Gamalytic ($190만, 범위 16억~34억 원)</small></td></tr>
+    <tr><td class="s">Pet Pal Paw<small>알·코인</small></td><td>$0.99~$4.99 → 1,320~6,680원<small><span class="tag">스토어</span>App Store</small></td><td>미공개</td></tr>
+    <tr><td class="s">Handy<small>아이콘·테마 단품</small></td><td>1,100~6,600원 (한국 실가)<small><span class="tag">스토어</span>App Store 한국</small></td><td>iOS 월 약 670만 원<small><span class="tag est">외부 추정</span>Adapty, 앱 전체 매출</small></td></tr>
+    <tr><td class="s">Anime Shimeji<small>인앱 상품 (고가 사례)</small></td><td>$4.99~$49.99 → 6,680~66,880원<small><span class="tag">스토어</span>Google Play, 미국 가격 환산</small></td><td>월 670만 원 미만<small><span class="tag est">외부 추정</span>Sensor Tower, 인앱만</small></td></tr>
+  </table>
+</div>
+</section>

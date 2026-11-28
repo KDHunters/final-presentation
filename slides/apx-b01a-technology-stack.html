@@ -1,0 +1,66 @@
+<section class="slide apx-b01a" aria-labelledby="apx-b01a-title">
+<style>
+.stage:has(> .apx-b01a) { position: fixed; inset: 0; overflow: hidden; background: var(--cream); }
+.stage > .apx-b01a {
+  --stage-scale: min(tan(atan2(100vw, 1920px)), tan(atan2(100dvh, 1080px)));
+  position: absolute; top: 50%; left: 50%; display: block;
+  width: 1920px; height: 1080px; min-block-size: 0; overflow: hidden; padding: 0;
+  transform: translate(-50%, -50%) scale(var(--stage-scale));
+  background: var(--cream); color: var(--brown); word-break: keep-all;
+}
+.apx-b01a .head { position: absolute; left: 90px; right: 90px; top: 44px; }
+.apx-b01a .no { display: block; font: 700 26px/1 var(--font-family); letter-spacing: -.02em; color: #4F763E; }
+.apx-b01a h2 { margin: 14px 0 0; font: 700 56px/1.2 var(--font-family); letter-spacing: -.045em; }
+.apx-b01a table {
+  position: absolute; left: 90px; top: 180px; width: 1740px;
+  border-collapse: collapse; table-layout: fixed;
+  font: 500 34px/1.25 var(--font-family); letter-spacing: -.025em;
+}
+.apx-b01a .category-col { width: 22%; }
+.apx-b01a .tech-col { width: 28%; }
+.apx-b01a th, .apx-b01a td { padding: 12px 24px 12px 0; text-align: left; }
+.apx-b01a thead th {
+  padding-block: 0 14px; border-bottom: 3px solid #B99F85;
+  font: 700 27px/1.2 var(--font-family); color: #725D4E;
+}
+.apx-b01a tbody th { font-weight: 700; }
+.apx-b01a tbody th[scope="rowgroup"] {
+  vertical-align: top; font-size: 30px; padding-top: 15px; color: #725D4E;
+}
+.apx-b01a tbody td { color: #54402F; }
+.apx-b01a tbody { border-bottom: 2px solid rgb(185 159 133 / .5); }
+</style>
+<div class="head">
+  <span class="no">Appendix B-1a</span>
+  <h2 id="apx-b01a-title">기술 스택과 개발 언어</h2>
+</div>
+<table aria-labelledby="apx-b01a-title">
+  <colgroup><col class="category-col"><col class="tech-col"><col></colgroup>
+  <thead>
+    <tr><th scope="col">구분</th><th scope="col">기술/언어</th><th scope="col">사용처</th></tr>
+  </thead>
+  <tbody>
+    <tr><th scope="rowgroup" rowspan="2">개발 환경</th><th scope="row">Windows</th><td>프론트엔드·백엔드 개발</td></tr>
+    <tr><th scope="row">macOS</th><td>AI 서버 개발</td></tr>
+  </tbody>
+  <tbody>
+    <tr><th scope="rowgroup" rowspan="2">개발 도구</th><th scope="row">VS Code</th><td>앱 UI·Python AI 서버 개발</td></tr>
+    <tr><th scope="row">Android Studio</th><td>Android 네이티브 개발</td></tr>
+  </tbody>
+  <tbody>
+    <tr><th scope="rowgroup" rowspan="3">프로그래밍 언어</th><th scope="row">Kotlin</th><td>펫·메모·음성·캡처 기능</td></tr>
+    <tr><th scope="row">JavaScript</th><td>웹 UI 동작</td></tr>
+    <tr><th scope="row">Python</th><td>할 일 추출 서버</td></tr>
+  </tbody>
+  <tbody>
+    <tr><th scope="rowgroup">웹 마크업·스타일</th><th scope="row">HTML · CSS</th><td>웹 UI의 구조(HTML)와 스타일(CSS)</td></tr>
+  </tbody>
+  <tbody>
+    <tr><th scope="rowgroup">웹 UI 실행</th><th scope="row">Capacitor WebView</th><td>앱 안에서 웹 UI 표시</td></tr>
+  </tbody>
+  <tbody>
+    <tr><th scope="rowgroup" rowspan="2">개발·QA 지원</th><th scope="row">Codex · Claude Code</th><td>코드 작성·테스트</td></tr>
+    <tr><th scope="row">Aside</th><td>앱 화면 QA 자동화</td></tr>
+  </tbody>
+</table>
+</section>

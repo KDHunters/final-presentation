@@ -1,0 +1,94 @@
+<section class="slide apx-b02" aria-labelledby="apx-b02-title">
+<style>
+.stage:has(> .apx-b02) { position: fixed; inset: 0; overflow: hidden; background: var(--cream); }
+.stage > .apx-b02 {
+  --stage-scale: min(tan(atan2(100vw, 1920px)), tan(atan2(100dvh, 1080px)));
+  position: absolute; top: 50%; left: 50%; display: block;
+  width: 1920px; height: 1080px; min-block-size: 0; overflow: hidden; padding: 0;
+  transform: translate(-50%, -50%) scale(var(--stage-scale));
+  background: var(--cream); color: var(--brown); word-break: keep-all;
+}
+.apx-b02 .head { position: absolute; left: 90px; right: 90px; top: 44px; }
+.apx-b02 .meta { display: flex; justify-content: space-between; font: 700 26px/1 var(--font-family); letter-spacing: -.02em; }
+.apx-b02 .meta .no { color: #4F763E; }
+.apx-b02 .meta .rel { color: #725D4E; font-weight: 500; }
+.apx-b02 h2 { margin: 14px 0 0; font: 700 56px/1.2 var(--font-family); letter-spacing: -.045em; }
+
+.apx-b02 .flow {
+  position: absolute; left: 90px; right: 90px; top: 202px;
+  display: grid;
+  grid-template-columns: 150px repeat(5, 1fr 40px) 1fr;
+  grid-template-rows: 64px repeat(3, 208px);
+  row-gap: 18px; align-items: stretch;
+}
+.apx-b02 .col { display: flex; align-items: center; justify-content: center; gap: 8px; font: 700 26px/1.15 var(--font-family); letter-spacing: -.04em; text-align: center; border-bottom: 4px solid #BFB19F; padding-bottom: 6px; }
+.apx-b02 .col i { font: 700 20px/1 var(--font-family); font-style: normal; padding: 4px 8px; border-radius: 6px; background: #EFE6D6; color: #725D4E; letter-spacing: 0; }
+.apx-b02 .col.srv i { background: #fff; border: 1.5px dashed #A89880; }
+.apx-b02 .col.llm { color: #4F763E; border-bottom-color: #4F763E; }
+.apx-b02 .lab { display: flex; align-items: center; font: 700 26px/1.25 var(--font-family); letter-spacing: -.04em; color: #725D4E; border-right: 4px solid #BFB19F; padding-right: 12px; margin-right: 12px; }
+.apx-b02 .lab small { display: block; font: 500 21px/1.3 var(--font-family); letter-spacing: -.02em; margin-top: 4px; }
+.apx-b02 .c { display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; border-radius: 12px; border: 2px solid #BFB19F; background: #FBF7EF; padding: 8px 10px; font: 700 26px/1.25 var(--font-family); letter-spacing: -.04em; }
+.apx-b02 .c span { display: block; margin-top: 6px; font: 500 23px/1.3 var(--font-family); letter-spacing: -.025em; color: #54402F; }
+.apx-b02 .c.dev { background: #EFE6D6; }
+.apx-b02 .c.srv { border-style: dashed; }
+.apx-b02 .c.llm { border: 3px solid #4F763E; background: #F1F5EA; }
+.apx-b02 .c.end { background: #4F763E; border-color: #4F763E; color: #fff; }
+.apx-b02 .c.end span { color: #F2E4C9; }
+.apx-b02 .a { display: flex; align-items: center; justify-content: center; }
+.apx-b02 .a svg { width: 34px; height: 24px; display: block; }
+.apx-b02 .a.direct { grid-column: 7 / 10; }
+.apx-b02 .a.direct::before {
+  content: ""; width: 100%; height: 22px; background: #392A20;
+  clip-path: polygon(0 33%, calc(100% - 14px) 33%, calc(100% - 14px) 0, 100% 50%, calc(100% - 14px) 100%, calc(100% - 14px) 67%, 0 67%);
+}
+</style>
+<div class="head">
+  <div class="meta"><span class="no">Appendix B-2</span></div>
+  <h2 id="apx-b02-title">할 일 추출과 저장</h2>
+</div>
+
+<div class="flow">
+  <div></div>
+  <div class="col">입력</div><div></div>
+  <div class="col">인식·수집</div><div></div>
+  <div class="col">개인정보 가림<i>기기</i></div><div></div>
+  <div class="col srv">판정<i>서버</i></div><div></div>
+  <div class="col llm srv">할 일 추출<i>서버</i></div><div></div>
+  <div class="col">복원·저장<i>기기</i></div>
+
+  <div class="lab"><div>화면 이해<small>자동</small></div></div>
+  <div class="c">다른 앱의 화면 변화<span>자체 앱 제외</span></div>
+  <div class="a"><svg viewBox="0 0 40 26" aria-hidden="true"><path d="M0 8.5H23V0L40 13 23 26V17.5H0Z" fill="#392A20"/></svg></div>
+  <div class="c dev">접근성 텍스트 읽기<span>캡처·OCR 없음<br>날짜·시각 단서 검사</span></div>
+  <div class="a"><svg viewBox="0 0 40 26" aria-hidden="true"><path d="M0 8.5H23V0L40 13 23 26V17.5H0Z" fill="#392A20"/></svg></div>
+  <div class="c dev">PII 마스킹<span>토큰으로 치환</span></div>
+  <div class="a"><svg viewBox="0 0 40 26" aria-hidden="true"><path d="M0 8.5H23V0L40 13 23 26V17.5H0Z" fill="#392A20"/></svg></div>
+  <div class="c srv">Jev 판정<span>0.5 이상만 통과</span></div>
+  <div class="a"><svg viewBox="0 0 40 26" aria-hidden="true"><path d="M0 8.5H23V0L40 13 23 26V17.5H0Z" fill="#392A20"/></svg></div>
+  <div class="c llm">Gemini 추출<span>할 일·날짜·시간</span></div>
+  <div class="a"><svg viewBox="0 0 40 26" aria-hidden="true"><path d="M0 8.5H23V0L40 13 23 26V17.5H0Z" fill="#392A20"/></svg></div>
+  <div class="c end">복원 → 확인 후 저장<span>'할 일' 메모</span></div>
+
+  <div class="lab"><div>음성 메모<small>사용자 선택</small></div></div>
+  <div class="c">음성 입력<span>사전 동의</span></div>
+  <div class="a"><svg viewBox="0 0 40 26" aria-hidden="true"><path d="M0 8.5H23V0L40 13 23 26V17.5H0Z" fill="#392A20"/></svg></div>
+  <div class="c srv">STT<span>글로 변환</span></div>
+  <div class="a"><svg viewBox="0 0 40 26" aria-hidden="true"><path d="M0 8.5H23V0L40 13 23 26V17.5H0Z" fill="#392A20"/></svg></div>
+  <div class="c dev" style="grid-column: 6 / 9">글을 먼저 보여 줌<span>그대로 메모로 저장하거나 '할 일 추출' 선택</span></div>
+  <div class="a"><svg viewBox="0 0 40 26" aria-hidden="true"><path d="M0 8.5H23V0L40 13 23 26V17.5H0Z" fill="#392A20"/></svg></div>
+  <div class="c llm">Gemini 추출<span>캡처와 같은 단계</span></div>
+  <div class="a"><svg viewBox="0 0 40 26" aria-hidden="true"><path d="M0 8.5H23V0L40 13 23 26V17.5H0Z" fill="#392A20"/></svg></div>
+  <div class="c end">저장<span>메모 또는 할 일</span></div>
+
+  <div class="lab"><div>캡처 메모<small>수동</small></div></div>
+  <div class="c">캡처 버튼<span>시스템 캡처 동의</span></div>
+  <div class="a"><svg viewBox="0 0 40 26" aria-hidden="true"><path d="M0 8.5H23V0L40 13 23 26V17.5H0Z" fill="#392A20"/></svg></div>
+  <div class="c srv">OCR<span>Gemini로 글자 인식</span></div>
+  <div class="a"><svg viewBox="0 0 40 26" aria-hidden="true"><path d="M0 8.5H23V0L40 13 23 26V17.5H0Z" fill="#392A20"/></svg></div>
+  <div class="c dev">PII 마스킹<span>인식된 글자에 적용</span></div>
+  <div class="a direct" aria-hidden="true"></div>
+  <div class="c llm">Gemini 추출<span>할 일·날짜·시간</span></div>
+  <div class="a"><svg viewBox="0 0 40 26" aria-hidden="true"><path d="M0 8.5H23V0L40 13 23 26V17.5H0Z" fill="#392A20"/></svg></div>
+  <div class="c end">복원 → 승인 후 저장<span>겹치는 일정 대조</span></div>
+</div>
+</section>

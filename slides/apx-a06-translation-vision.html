@@ -1,0 +1,70 @@
+<section class="slide apx-a06" aria-labelledby="apx-a06-title">
+<style>
+.stage:has(> .apx-a06) { position: fixed; inset: 0; overflow: hidden; background: var(--cream); }
+.stage > .apx-a06 {
+  --stage-scale: min(tan(atan2(100vw, 1920px)), tan(atan2(100dvh, 1080px)));
+  position: absolute; top: 50%; left: 50%; display: block;
+  width: 1920px; height: 1080px; min-block-size: 0; overflow: hidden; padding: 0;
+  transform: translate(-50%, -50%) scale(var(--stage-scale));
+  background: var(--cream); color: var(--brown); word-break: keep-all;
+}
+.apx-a06 .head { position: absolute; left: 90px; right: 90px; top: 44px; }
+.apx-a06 .meta { color: #4F763E; font: 700 26px/1 var(--font-family); letter-spacing: -.02em; }
+.apx-a06 h2 { margin: 14px 0 0; font: 700 56px/1.2 var(--font-family); letter-spacing: -.045em; }
+.apx-a06 .sec { position: absolute; top: 235px; left: 90px; right: 90px; }
+.apx-a06 .review-table { width: 100%; table-layout: fixed; border-collapse: collapse; text-align: left; }
+.apx-a06 .review-table col:first-child { width: 35%; }
+.apx-a06 .review-table th, .apx-a06 .review-table td { border-bottom: 2px solid rgb(185 159 133 / .5); text-align: left; }
+.apx-a06 .review-table thead th { padding: 4px 0 12px; font: 700 25px/1.25 var(--font-family); color: #725D4E; }
+.apx-a06 .review-table tbody th { padding: 18px 12px 18px 0; vertical-align: top; font: 700 27px/1.35 var(--font-family); letter-spacing: -.035em; color: #3D3326; }
+.apx-a06 .review-table td { padding: 16px 0; font: 500 28px/1.35 var(--font-family); letter-spacing: -.025em; color: #54402F; }
+.apx-a06 .review-table strong { font-weight: 700; font-variant-numeric: tabular-nums; color: #3D3326; }
+.apx-a06 .review-table .value { font-size: 34px; line-height: 1.15; }
+.apx-a06 .review-table .detail { display: block; margin-top: 5px; }
+.apx-a06 .review-table .screen-count { white-space: nowrap; }
+.apx-a06 .review-table .checks { margin: 0; display: grid; grid-template-columns: 215px max-content; gap: 5px 0; }
+.apx-a06 .review-table dd { margin: 0; }
+</style>
+<div class="head">
+  <div class="meta">Appendix A-6</div>
+  <h2 id="apx-a06-title">번역·검수 규모</h2>
+</div>
+
+<div class="sec">
+  <table class="review-table" aria-labelledby="apx-a06-title">
+    <colgroup><col><col></colgroup>
+    <thead>
+      <tr><th scope="col">항목</th><th scope="col">세부 내역</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">지원 언어</th>
+        <td><strong class="value">4개</strong><span class="detail">한국어 · 영어 · 일본어 · 브라질 포르투갈어</span></td>
+      </tr>
+      <tr>
+        <th scope="row">번역·검수 문구</th>
+        <td><strong class="value">약 1,090개</strong><span class="detail">번역 대상 3개 언어 합계 · 언어당 약 350개</span></td>
+      </tr>
+      <tr>
+        <th scope="row">번역·검수 소요 시간</th>
+        <td>1회 <strong class="value">40~55분</strong></td>
+      </tr>
+      <tr>
+        <th scope="row">화면 검수</th>
+        <td class="screen-count">56개 화면 × 4개 언어 = <strong>224장</strong></td>
+      </tr>
+      <tr>
+        <th scope="row">오류·수정 내역</th>
+        <td>
+          <dl class="checks">
+            <dt>실기기 확인</dt><dd><strong>3건</strong></dd>
+            <dt>문구 수정 제안</dt><dd><strong>5건</strong></dd>
+            <dt>코드상 확인</dt><dd><strong>1건</strong></dd>
+          </dl>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+</section>

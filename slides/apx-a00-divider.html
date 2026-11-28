@@ -1,0 +1,18 @@
+<section class="slide bg-brown apx-a00" aria-labelledby="apx-a00-title">
+<style>
+.stage:has(> .apx-a00) { position: fixed; inset: 0; overflow: hidden; background: var(--brown); }
+.stage > .apx-a00 {
+  --stage-scale: min(tan(atan2(100vw, 1920px)), tan(atan2(100dvh, 1080px)));
+  position: absolute; top: 50%; left: 50%; display: block;
+  width: 1920px; height: 1080px; min-block-size: 0; overflow: hidden; padding: 0;
+  transform: translate(-50%, -50%) scale(var(--stage-scale));
+  background: var(--brown); color: var(--text-light); word-break: keep-all;
+}
+.apx-a00 .center { position: absolute; inset: 0; display: grid; place-content: center; text-align: center; }
+.slide.apx-a00 > .slide-folio { display: none; }
+.apx-a00 h1 { margin: 0; color: var(--text-light); font: 700 120px/1.12 var(--font-family); letter-spacing: -.045em; white-space: nowrap; }
+</style>
+<div class="center">
+  <h1 id="apx-a00-title">Appendix</h1>
+</div>
+</section>
