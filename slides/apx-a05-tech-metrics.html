@@ -1,0 +1,80 @@
+<section class="slide apx-a05" aria-labelledby="apx-a05-title">
+<style>
+.stage:has(> .apx-a05) { position: fixed; inset: 0; overflow: hidden; background: var(--cream); }
+.stage > .apx-a05 {
+  --stage-scale: min(tan(atan2(100vw, 1920px)), tan(atan2(100dvh, 1080px)));
+  position: absolute; top: 50%; left: 50%; display: block;
+  width: 1920px; height: 1080px; min-block-size: 0; overflow: hidden; padding: 0;
+  transform: translate(-50%, -50%) scale(var(--stage-scale));
+  background: var(--cream); color: var(--brown); word-break: keep-all;
+}
+.apx-a05 .head { position: absolute; left: 90px; right: 90px; top: 44px; }
+.apx-a05 .meta { display: flex; justify-content: space-between; font: 700 26px/1 var(--font-family); letter-spacing: -.02em; }
+.apx-a05 .meta .no { color: #4F763E; }
+.apx-a05 .meta .rel { color: #725D4E; font-weight: 500; }
+.apx-a05 h2 { margin: 14px 0 0; font: 700 56px/1.2 var(--font-family); letter-spacing: -.045em; }
+.apx-a05 .sec { position: absolute; }
+.apx-a05 .sec h3 { margin: 0 0 10px; padding-bottom: 8px; border-bottom: 3px solid #B99F85; font: 700 28px/1.2 var(--font-family); letter-spacing: -.035em; color: #725D4E; }
+.apx-a05 .fn { font: 500 21px/1.35 var(--font-family); letter-spacing: -.02em; color: #725D4E; margin: 8px 0 0; }
+.apx-a05 .eq { font: 700 28px/1.35 var(--font-family); letter-spacing: -.03em; }
+.apx-a05 .num { font-variant-numeric: tabular-nums; }
+.apx-a05 .tag { display: inline-block; padding: 0 8px; border-radius: 6px; background: #EFE6D6; color: #54402F; font: 700 20px/1.5 var(--font-family); letter-spacing: -.02em; }
+
+.apx-a05 .L { left: 90px; width: 860px; }
+.apx-a05 .R { left: 1000px; width: 830px; top: 176px; }
+.apx-a05 .s1 { top: 176px; } .apx-a05 .s2 { top: 570px; }
+.apx-a05 .r3 { display: grid; grid-template-columns: 1fr 360px 130px; column-gap: 14px; align-items: baseline; padding: 11px 0; border-bottom: 2px solid rgb(185 159 133 / .5); font: 500 25px/1.3 var(--font-family); letter-spacing: -.03em; color: #3D3326; }
+.apx-a05 .r3 .v { text-align: right; font: 700 36px/1.1 var(--font-family); letter-spacing: -.04em; }
+.apx-a05 .r3 .fx { font: 700 25px/1.3 var(--font-family); font-variant-numeric: tabular-nums; }
+.apx-a05 .r3 small { display: block; font: 500 20px/1.25 var(--font-family); color: #725D4E; }
+.apx-a05 .rh { color: #846D5C; font-weight: 500; font-size: 22px; border-bottom: 3px solid #B99F85; padding: 6px 0; }
+.apx-a05 .r2 { display: grid; grid-template-columns: 1fr 90px 150px; column-gap: 14px; align-items: baseline; padding: 6px 0; border-bottom: 2px solid rgb(185 159 133 / .5); font: 500 25px/1.3 var(--font-family); letter-spacing: -.03em; color: #3D3326; }
+.apx-a05 .r2 span:nth-child(2), .apx-a05 .r2 span:nth-child(3) { text-align: right; font-variant-numeric: tabular-nums; font-weight: 700; }
+.apx-a05 .rh span:nth-child(n) { font-weight: 500 !important; }
+.apx-a05 .bt { display: grid; grid-template-columns: 1fr 200px 110px; column-gap: 14px; align-items: baseline; padding: 9px 0; border-bottom: 2px solid rgb(185 159 133 / .5); font: 500 25px/1.3 var(--font-family); letter-spacing: -.03em; color: #3D3326; font-variant-numeric: tabular-nums; }
+.apx-a05 .bt span:nth-child(n+2) { text-align: right; }
+.apx-a05 .bt.tot { font-weight: 700; border-bottom: 3px solid #B99F85; }
+.apx-a05 .box { margin-top: 14px; border-radius: 12px; border: 2px solid #BFB19F; background: #EFE6D6; padding: 12px 18px; }
+.apx-a05 .box .eq { font-size: 23px; }
+.apx-a05 .box .eq + .eq { margin-top: 4px; }
+</style>
+<div class="head">
+  <div class="meta"><span class="no">Appendix A-5</span></div>
+  <h2 id="apx-a05-title">픽셀 품질과 앱 자원 사용량</h2>
+</div>
+
+<div class="sec L s1">
+  <h3>StripeFoundry 정량 검증</h3>
+  <div class="r3 rh"><span>지표</span><span>비율 계산</span><span style="text-align:right">값</span></div>
+  <div class="r3"><span>픽셀 경계 정렬 점수</span><span class="fx">0.890 ÷ 0.478 = 1.862</span><span class="v">1.86배</span></div>
+  <div class="r3"><span>3회 이내 품질 검증 통과율</span><span class="fx">23 ÷ 25 = 92.0%</span><span class="v">92%</span></div>
+  <div class="r3"><span>이진 알파 채널 규격 충족률</span><span class="fx">25 ÷ 25 = 100%</span><span class="v">100%</span></div>
+</div>
+
+<div class="sec L s2">
+  <h3>메모리 PSS (MB, 펫 1마리, 회차 평균)</h3>
+  <div class="r2 rh"><span>방식</span><span>MB</span><span>45.0 대비</span></div>
+  <div class="r2"><span>고해상도 애니메이션 (320px 프레임)</span><span>74.0</span><span>−39%</span></div>
+  <div class="r2"><span>픽셀아트 확대 이미지 (320px 프레임)</span><span>70.0</span><span>−36%</span></div>
+  <div class="r2"><span>Sticky Pet 방식 (32px를 화면에서 확대)</span><span>45.0</span><span>기준</span></div>
+  <div class="r2"><span>정적 그림 1장</span><span>41.8</span><span>3.2MB</span></div>
+  <p class="fn">CPU 6.5%, 배터리 온도 28.2°C는 세 방식 모두 같음.</p>
+</div>
+
+<div class="sec R">
+  <h3>배터리 6일</h3>
+  <div class="bt rh"><span>날짜</span><span>화면 표시 시간</span><span>배터리</span></div>
+  <div class="bt"><span>11/21</span><span>9시간 29분</span><span>0.3%</span></div>
+  <div class="bt"><span>11/23</span><span>8시간 13분</span><span>0.2%</span></div>
+  <div class="bt"><span>11/24</span><span>10시간 46분</span><span>0.3%</span></div>
+  <div class="bt"><span>11/25</span><span>5시간 57분</span><span>0.2%</span></div>
+  <div class="bt"><span>11/26</span><span>7시간 55분</span><span>0.2%</span></div>
+  <div class="bt"><span>11/27</span><span>7시간 55분</span><span>0.2%</span></div>
+  <div class="bt tot"><span>합계 (6일)</span><span>50시간 15분</span><span>1.4%</span></div>
+  <div class="box">
+    <div class="eq" style="font-size:26px">3,015분 ÷ 6 = 502.5분 = 8시간 23분/일</div>
+    <div class="eq" style="font-size:26px">1.4% ÷ 6 = 0.233% → 0.23%/일</div>
+    <div class="eq" style="font-size:26px">50.25시간 ÷ 1.4 = 35.9 → 1%당 약 36시간</div>
+  </div>
+</div>
+</section>

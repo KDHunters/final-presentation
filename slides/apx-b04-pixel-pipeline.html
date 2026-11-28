@@ -1,0 +1,121 @@
+<section class="slide apx-b04" aria-labelledby="apx-b04-title">
+<style>
+.stage:has(> .apx-b04) { position: fixed; inset: 0; overflow: hidden; background: var(--cream); }
+.stage > .apx-b04 {
+  --stage-scale: min(tan(atan2(100vw, 1920px)), tan(atan2(100dvh, 1080px)));
+  position: absolute; top: 50%; left: 50%; display: block;
+  width: 1920px; height: 1080px; min-block-size: 0; overflow: hidden; padding: 0;
+  transform: translate(-50%, -50%) scale(var(--stage-scale));
+  background: var(--cream); color: var(--brown); word-break: keep-all;
+}
+.apx-b04 .head { position: absolute; left: 90px; right: 90px; top: 44px; }
+.apx-b04 .meta { font: 700 26px/1 var(--font-family); letter-spacing: -.02em; }
+.apx-b04 .meta .no { color: #4F763E; }
+.apx-b04 h2 { margin: 14px 0 0; font: 700 56px/1.2 var(--font-family); letter-spacing: -.045em; }
+
+/* The deck supplies the typeface, cream canvas, and brown ink. */
+.apx-b04 .flow {
+  --row-height: 148px;
+  --flow-green: #4F763E;
+  --rule: color-mix(in srgb, var(--brown) 23%, transparent);
+  position: absolute; top: 178px; left: 90px;
+  width: 1740px; table-layout: fixed; border-collapse: collapse;
+  text-align: left;
+}
+.apx-b04 .flow .number-col { width: 80px; }
+.apx-b04 .flow .stage-col { width: 276px; }
+.apx-b04 .flow .input-col { width: 310px; }
+.apx-b04 .flow .process-col { width: 750px; }
+.apx-b04 .flow .output-col { width: 324px; }
+.apx-b04 .flow thead th {
+  height: 61px; padding: 0 22px;
+  border-bottom: 2px solid var(--rule);
+  color: #725D4E; font: 700 29px/1.2 var(--font-family);
+  letter-spacing: -.025em;
+}
+.apx-b04 .flow .rail-label { padding: 0; border: 0; }
+.apx-b04 .flow tbody tr { height: var(--row-height); }
+.apx-b04 .flow tbody :is(th, td) {
+  padding: 12px 22px; border-bottom: 1px solid var(--rule);
+  font: 500 34px/1.29 var(--font-family); letter-spacing: -.03em;
+  vertical-align: middle;
+}
+.apx-b04 .flow tbody th { font-weight: 700; font-size: 36px; }
+.apx-b04 .flow tbody td:last-child { font-weight: 700; }
+
+/* The numbered rail connects only adjacent steps, always pointing down. */
+.apx-b04 .flow tbody .step-number { position: relative; padding: 0; border: 0; }
+.apx-b04 .step-number span {
+  display: grid; place-items: center; margin-inline: auto;
+  width: 56px; height: 56px; border-radius: 50%;
+  background: var(--flow-green); color: white;
+  font: 700 33px/1 var(--font-family);
+}
+.apx-b04 .flow tr:not(:last-child) .step-number::after {
+  content: ""; position: absolute; top: calc(50% + 38px); left: 50%;
+  width: 20px; height: calc(var(--row-height) - 76px);
+  transform: translateX(-50%); background: var(--flow-green);
+  clip-path: polygon(42% 0, 58% 0, 58% calc(100% - 13px), 100% calc(100% - 13px), 50% 100%, 0 calc(100% - 13px), 42% calc(100% - 13px));
+}
+</style>
+<div class="head">
+  <div class="meta"><span class="no">Appendix B-4</span></div>
+  <h2 id="apx-b04-title">StripeFoundry 픽셀 에셋 생성</h2>
+</div>
+
+<table class="flow" aria-labelledby="apx-b04-title">
+  <colgroup>
+    <col class="number-col">
+    <col class="stage-col">
+    <col class="input-col">
+    <col class="process-col">
+    <col class="output-col">
+  </colgroup>
+  <thead>
+    <tr>
+      <th scope="col" class="rail-label"><span class="sr-only">번호</span></th>
+      <th scope="col">단계</th>
+      <th scope="col">입력</th>
+      <th scope="col">처리</th>
+      <th scope="col">출력</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="step-number"><span>1</span></td>
+      <th scope="row">레퍼런스 포즈 생성</th>
+      <td>반려동물 사진 1장</td>
+      <td>같은 동물의 5자세를 한 장에 생성. 액세서리는 지움</td>
+      <td>5자세 시트</td>
+    </tr>
+    <tr>
+      <td class="step-number"><span>2</span></td>
+      <th scope="row">자르기·격자</th>
+      <td>5자세 시트</td>
+      <td>코드가 동물 영역 5개를 찾아 자름. 정면 자세의 키로 같은 칸 크기 격자를 정함</td>
+      <td>자세별 이미지 + 격자</td>
+    </tr>
+    <tr>
+      <td class="step-number"><span>3</span></td>
+      <th scope="row">픽셀 변환</th>
+      <td>자세별 이미지 + 격자</td>
+      <td>시각적 프롬프팅으로 모델이 그리고, 코드가 칸마다 대표 색 하나를 고름. 몸 바깥은 투명</td>
+      <td>32칸 픽셀 아트</td>
+    </tr>
+    <tr>
+      <td class="step-number"><span>4</span></td>
+      <th scope="row">자동 검수</th>
+      <td>픽셀 아트 자세</td>
+      <td>코드로 칸 단색·테두리 확인 후, Jev가 외곽선 밖 칸·얼굴 방향 판정. 탈락 자세만 최대 3회 재생성</td>
+      <td>통과한 자세</td>
+    </tr>
+    <tr>
+      <td class="step-number"><span>5</span></td>
+      <th scope="row">동작 생성</th>
+      <td>통과한 5자세</td>
+      <td>PixelLab으로 동작 프레임 생성</td>
+      <td>동작 6종<br>(대기·걷기·잠들기 등)</td>
+    </tr>
+  </tbody>
+</table>
+</section>

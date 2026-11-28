@@ -1,0 +1,96 @@
+<section class="slide apx-a04" aria-labelledby="apx-a04-title">
+<style>
+.stage:has(> .apx-a04) { position: fixed; inset: 0; overflow: hidden; background: var(--cream); }
+.stage > .apx-a04 {
+  --stage-scale: min(tan(atan2(100vw, 1920px)), tan(atan2(100dvh, 1080px)));
+  position: absolute; top: 50%; left: 50%; display: block;
+  width: 1920px; height: 1080px; min-block-size: 0; overflow: hidden; padding: 0;
+  transform: translate(-50%, -50%) scale(var(--stage-scale));
+  background: var(--cream); color: var(--brown); word-break: keep-all;
+}
+.apx-a04 .head { position: absolute; left: 72px; right: 72px; top: 44px; }
+.apx-a04 .meta { font: 700 32px/1.2 var(--font-family); letter-spacing: -.02em; color: #4F763E; }
+.apx-a04 h2 { margin: 14px 0 0; font: 700 68px/1.2 var(--font-family); letter-spacing: -.045em; }
+
+.apx-a04 .comparison { position: absolute; top: 218px; left: 72px; right: 72px; }
+.apx-a04 table { width: 100%; table-layout: fixed; border-collapse: collapse; letter-spacing: -.025em; }
+.apx-a04 col.category { width: 350px; }
+.apx-a04 col.samples { width: 782px; }
+.apx-a04 col.formula { width: 418px; }
+.apx-a04 col.average { width: 226px; }
+.apx-a04 thead th {
+  padding: 6px 20px 20px 0; border-bottom: 3px solid #B99F85; text-align: left;
+  font: 700 34px/1.2 var(--font-family); color: #725D4E; white-space: nowrap;
+}
+.apx-a04 tbody tr { height: 225px; }
+/* Give the first row room for a third line of app-and-price pairs. */
+.apx-a04 tbody tr:first-child { height: 254px; }
+.apx-a04 tbody th, .apx-a04 tbody td {
+  padding: 30px 20px 30px 0; border-bottom: 2px solid rgb(185 159 133 / .5); vertical-align: middle;
+}
+.apx-a04 tbody th { font: 700 44px/1.2 var(--font-family); text-align: left; white-space: nowrap; }
+.apx-a04 .count { display: block; margin-top: 11px; font: 500 34px/1.25 var(--font-family); color: #725D4E; }
+.apx-a04 .sample-list {
+  display: grid; grid-template-columns: 290px minmax(0, 1fr); gap: 16px 20px;
+  margin: 0; padding: 0; list-style: none; font: 500 37px/1.25 var(--font-family); color: #54402F;
+}
+.apx-a04 .sample-list li { display: flex; align-items: baseline; gap: 12px; white-space: nowrap; }
+.apx-a04 .sample-list b { color: var(--brown); }
+.apx-a04 .sample-list b, .apx-a04 .equation, .apx-a04 .result { font-variant-numeric: tabular-nums; }
+.apx-a04 .equation { font: 700 37px/1.25 var(--font-family); white-space: nowrap; }
+.apx-a04 thead .result, .apx-a04 tbody .result { padding-right: 0; text-align: right; }
+.apx-a04 tbody .result { font: 700 58px/1.15 var(--font-family); letter-spacing: -.04em; white-space: nowrap; }
+</style>
+<div class="head">
+  <div class="meta">Appendix A-4</div>
+  <h2 id="apx-a04-title">업계 평균 월 구독료</h2>
+</div>
+
+<div class="comparison">
+  <table aria-labelledby="apx-a04-title">
+    <colgroup><col class="category"><col class="samples"><col class="formula"><col class="average"></colgroup>
+    <thead>
+      <tr><th scope="col">범주</th><th scope="col">비교 앱 · 월 구독료</th><th scope="col">산술평균 계산</th><th scope="col" class="result">월 평균</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">펫 키우기 앱<span class="count">5개</span></th>
+        <td>
+          <ul class="sample-list" role="list">
+            <li>Mooshi <b>5,340원</b></li>
+            <li>Focus Friend <b>5,340원</b></li>
+            <li>할일차곡 <b>5,900원</b></li>
+            <li>루빗 <b>6,600원</b></li>
+            <li>하루콩 <b>6,900원</b></li>
+          </ul>
+        </td>
+        <td class="equation">30,080원 ÷ 5 = 6,016원</td>
+        <td class="result">6,016원</td>
+      </tr>
+      <tr>
+        <th scope="row">기기 간 동기화 앱<span class="count">3개</span></th>
+        <td>
+          <ul class="sample-list" role="list">
+            <li>메모위젯 <b>2,900원</b></li>
+            <li>UpNote <b>3,300원</b></li>
+            <li>Bear <b>6,600원</b></li>
+          </ul>
+        </td>
+        <td class="equation">12,800원 ÷ 3 ≈ 4,267원</td>
+        <td class="result">4,267원</td>
+      </tr>
+      <tr>
+        <th scope="row">AI 메모 정리 앱<span class="count">2개</span></th>
+        <td>
+          <ul class="sample-list" role="list">
+            <li>Cleft <b>9,900원</b></li>
+            <li>Evernote Starter <b>10,500원</b></li>
+          </ul>
+        </td>
+        <td class="equation">20,400원 ÷ 2 = 10,200원</td>
+        <td class="result">10,200원</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</section>

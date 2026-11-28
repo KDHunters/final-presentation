@@ -1,0 +1,106 @@
+<section class="slide apx-b03" aria-labelledby="apx-b03-title">
+<style>
+.stage:has(> .apx-b03) { position: fixed; inset: 0; overflow: hidden; background: var(--cream); }
+.stage > .apx-b03 {
+  --stage-scale: min(tan(atan2(100vw, 1920px)), tan(atan2(100dvh, 1080px)));
+  position: absolute; top: 50%; left: 50%; display: block;
+  width: 1920px; height: 1080px; min-block-size: 0; overflow: hidden; padding: 0;
+  transform: translate(-50%, -50%) scale(var(--stage-scale));
+  background: var(--cream); color: var(--brown); word-break: keep-all;
+}
+.apx-b03 .head { position: absolute; left: 90px; right: 90px; top: 44px; }
+.apx-b03 .meta { display: flex; justify-content: space-between; font: 700 26px/1 var(--font-family); letter-spacing: -.02em; }
+.apx-b03 .meta .no { color: #4F763E; }
+.apx-b03 .meta .rel { color: #725D4E; font-weight: 500; }
+.apx-b03 h2 { margin: 14px 0 0; font: 700 56px/1.2 var(--font-family); letter-spacing: -.045em; }
+.apx-b03 .sec { position: absolute; left: 90px; right: 90px; }
+.apx-b03 .sec h3 { margin: 0 0 12px; font: 700 28px/1.2 var(--font-family); letter-spacing: -.035em; color: #725D4E; }
+
+/* token anatomy */
+.apx-b03 .tok { top: 176px; height: 236px; }
+.apx-b03 .token { display: flex; align-items: flex-start; gap: 0; font: 700 64px/1 'SFMono-Regular', Menlo, Consolas, monospace; letter-spacing: -.02em; }
+.apx-b03 .part { position: relative; padding: 14px 16px 78px; background: #4F763E; color: #fff; }
+.apx-b03 .part + .part { margin-left: 4px; }
+.apx-b03 .part.br { background: #392A20; color: var(--text-light); padding-inline: 12px; }
+.apx-b03 .part .nm { position: absolute; left: 0; right: 0; bottom: 14px; text-align: center; font: 500 24px/1.25 var(--font-family); letter-spacing: -.02em; color: #F2E4C9; white-space: nowrap; }
+.apx-b03 .tokenwrap { display: flex; align-items: flex-start; gap: 40px; }
+.apx-b03 .rules { margin: 0; padding: 0; list-style: none; display: grid; gap: 8px; font: 500 24px/1.35 var(--font-family); letter-spacing: -.025em; color: #54402F; padding-top: 6px; }
+.apx-b03 .rules li::before { content: ""; display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: #6DA351; margin-right: 12px; vertical-align: middle; }
+
+/* flow */
+.apx-b03 .fl { top: 432px; }
+.apx-b03 .steps { display: grid; grid-template-columns: 1fr 40px 1fr 40px 1fr 40px 1fr; align-items: stretch; height: 172px; }
+.apx-b03 .st { border-radius: 12px; border: 2px solid #BFB19F; background: #EFE6D6; padding: 12px 14px; display: flex; flex-direction: column; justify-content: center; text-align: center; font: 700 28px/1.25 var(--font-family); letter-spacing: -.04em; }
+.apx-b03 .st span { display: block; margin-top: 6px; font: 500 22px/1.3 var(--font-family); letter-spacing: -.025em; color: #54402F; }
+.apx-b03 .st code { font: 700 24px/1.2 'SFMono-Regular', Menlo, Consolas, monospace; letter-spacing: -.02em; }
+.apx-b03 .st .chip { display: inline-block; padding: 0 8px; border-radius: 6px; background: #4F763E; color: #fff; }
+.apx-b03 .st.srv { background: #FBF7EF; border-style: dashed; }
+.apx-b03 .st.key { background: #F1F5EA; border: 3px solid #4F763E; }
+.apx-b03 .st.end { background: #4F763E; border-color: #4F763E; color: #fff; }
+.apx-b03 .st.end span { color: #F2E4C9; }
+.apx-b03 .ar { display: flex; align-items: center; justify-content: center; }
+.apx-b03 .ar svg { width: 34px; height: 24px; display: block; }
+.apx-b03 .tagrow { display: grid; grid-template-columns: 1fr 40px 1fr 40px 1fr 40px 1fr; margin-bottom: 8px; font: 700 22px/1 var(--font-family); color: #725D4E; }
+.apx-b03 .tagrow span { text-align: center; }
+
+/* label chips */
+.apx-b03 .lb { top: 736px; }
+.apx-b03 .chips { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.apx-b03 .chipbox { border-radius: 10px; border: 2px solid #B7C7A9; background: #fff; padding: 10px 14px; }
+.apx-b03 .chipbox b { display: block; font: 700 25px/1.2 'SFMono-Regular', Menlo, Consolas, monospace; letter-spacing: -.03em; color: #4F763E; }
+.apx-b03 .chipbox span { display: block; margin-top: 4px; font: 500 21px/1.3 var(--font-family); letter-spacing: -.025em; color: #54402F; }
+</style>
+<div class="head">
+  <div class="meta"><span class="no">Appendix B-3</span></div>
+  <h2 id="apx-b03-title">개인정보 마스킹</h2>
+</div>
+
+<div class="sec tok">
+  <h3>토큰 형식</h3>
+  <div class="tokenwrap">
+    <div class="token" aria-label="토큰 예시 SP_ab12cd34ef56_PERSON_1">
+      <div class="part br">[</div>
+      <div class="part">SP<span class="nm">접두어</span></div>
+      <div class="part br">_</div>
+      <div class="part">ab12cd34ef56<span class="nm">12자리 nonce</span></div>
+      <div class="part br">_</div>
+      <div class="part">PERSON<span class="nm">라벨</span></div>
+      <div class="part br">_</div>
+      <div class="part">1<span class="nm">번호</span></div>
+      <div class="part br">]</div>
+    </div>
+    <ul class="rules">
+      <li>같은 원문은 같은 토큰</li>
+      <li>본문 표기 [PERSON_1]은 단순화</li>
+    </ul>
+  </div>
+</div>
+
+<div class="sec fl">
+  <h3>처리 순서</h3>
+  <div class="tagrow"><span>기기</span><span></span><span>기기 메모리</span><span></span><span>서버·외부 AI</span><span></span><span>기기</span></div>
+  <div class="steps">
+    <div class="st">원문 탐지<span>모델 + 추가 규칙</span></div>
+    <div class="ar"><svg viewBox="0 0 40 26" aria-hidden="true"><path d="M0 8.5H23V0L40 13 23 26V17.5H0Z" fill="#392A20"/></svg></div>
+    <div class="st key">토큰으로 치환<span><b>대응표</b> 생성<br>토큰 → 원문</span></div>
+    <div class="ar"><svg viewBox="0 0 40 26" aria-hidden="true"><path d="M0 8.5H23V0L40 13 23 26V17.5H0Z" fill="#392A20"/></svg></div>
+    <div class="st srv">토큰 포함 글만 전송<span>판정 · 추출</span></div>
+    <div class="ar"><svg viewBox="0 0 40 26" aria-hidden="true"><path d="M0 8.5H23V0L40 13 23 26V17.5H0Z" fill="#392A20"/></svg></div>
+    <div class="st end">응답 받은 뒤 복원<span>대응표로 되돌리고 close()로 비움<br>'[SP_' 남으면 실패 처리</span></div>
+  </div>
+</div>
+
+<div class="sec lb">
+  <div>
+    <h3>가리는 대상</h3>
+    <div class="chips">
+      <div class="chipbox"><b>PERSON</b><span>이름 + 직함·호칭</span></div>
+      <div class="chipbox"><b>SECRET</b><span>비밀번호·예약번호 등 뒤의 값</span></div>
+      <div class="chipbox"><b>PAYMENT</b><span>금액·카드 끝자리·카드번호</span></div>
+      <div class="chipbox"><b>SEAT</b><span>호차·좌석 표기</span></div>
+      <div class="chipbox"><b>ADDRESS</b><span>호·층·동 등 상세가 있을 때</span></div>
+      <div class="chipbox"><b>DATE_OF_BIRTH</b><span>오탐은 보정해 제외</span></div>
+    </div>
+  </div>
+</div>
+</section>
