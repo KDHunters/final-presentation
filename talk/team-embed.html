@@ -46,6 +46,13 @@ window.teamReady = (async () => {
   }
   const from = merge.teamFrom ? paths.indexOf(merge.teamFrom) : 0;
   order = paths.slice(Math.max(0, from));
+  // Reorder only the included team slides, without changing the standalone deck.
+  for (const {path, before} of merge.teamMoves ?? []) {
+    const at = order.indexOf(path);
+    if (at < 0 || path === before || !order.includes(before)) continue;
+    order.splice(at, 1);
+    order.splice(order.indexOf(before), 0, path);
+  }
   const metas = [];
   for (let i = 0; i < order.length; i++) {
     try { const c = await load(order[i]); metas.push({i, path: order[i], steps: stepsOf(c), dyn: !c.section.dataset.steps && 'step' in c.section.dataset, reset: c.section.dataset.stepEntry === 'reset'}); } catch (e) { console.warn(e); }

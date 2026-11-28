@@ -1,5 +1,8 @@
 {
   "teamRoot": "../",
   "teamFrom": "slides/s13-blank-cream.html",
-  "extra": []
+  "extra": [],
+  "teamMoves": [
+    { "path": "slides/s12-blank-cream.html", "before": "slides/s13-blank-cream.html" }
+  ]
 }
